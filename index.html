@@ -1,21 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet><title>Cognitive AI Twin — train a personal AI model you own | tsuin</title>
+
+<!-- SEO / social. Kept in <head> (not <helmet>) so non-JS scrapers see it. -->
+<title>Cognitive AI Twin — train a personal AI model you own | tsuin</title>
 <meta name="description" content="A Cognitive AI Twin is a personal AI model that learns your reasoning from your own corrections and runs on your machine. Train your twin with RLPF, keep the reasoning in your repo, own it outright. Pre-order the Solo plan.">
 <link rel="canonical" href="https://tsuin.ai/">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<meta name="author" content="Tsuin AI Sdn Bhd">
+<meta name="theme-color" content="#FDF6E3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1A1B26" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="tsuin">
+<meta property="og:locale" content="en_US">
 <meta property="og:title" content="Cognitive AI Twin — train a personal AI model you own">
 <meta property="og:description" content="A Cognitive AI Twin is a personal AI model that learns your reasoning and runs on your machine. You bring the intelligence. You keep the asset.">
 <meta property="og:url" content="https://tsuin.ai/">
+<meta property="og:image" content="https://tsuin.ai/assets/og-cover.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="tsuin — Train your twin. A personal AI model that learns your reasoning and runs on your machine.">
+
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cognitive AI Twin — train a personal AI model you own">
+<meta name="twitter:description" content="A Cognitive AI Twin is a personal AI model that learns your reasoning and runs on your machine. You bring the intelligence. You keep the asset.">
+<meta name="twitter:image" content="https://tsuin.ai/assets/og-cover.png">
+<meta name="twitter:image:alt" content="tsuin — Train your twin. A personal AI model that learns your reasoning and runs on your machine.">
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
@@ -50,7 +76,7 @@
       "inDefinedTermSet": {
         "@type": "DefinedTermSet",
         "name": "tsuin glossary",
-        "url": "https://tsuin.ai/manifesto"
+        "url": "https://tsuin.ai/manifesto.html"
       }
     },
     {
@@ -76,11 +102,15 @@
         "price": "500",
         "priceCurrency": "MYR",
         "availability": "https://schema.org/PreOrder",
-        "url": "https://tsuin.ai/pricing"
+        "url": "https://tsuin.ai/pricing.html"
       }
     }
   ]
 }</script>
+</head>
+<body>
+<x-dc>
+<helmet>
 <script src="./ds-base.js"></script><style>body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-human);font-size:var(--text-body)}*{box-sizing:border-box}a{color:var(--twin-ink);text-decoration:none}a:hover{color:var(--human-ink)}input,textarea,button{font-family:inherit}@keyframes tsuin-blink{0%,49%{opacity:1}50%,100%{opacity:0}}</style></helmet>
 <div class="{{ themeClass }}" style="background:var(--paper);color:var(--ink);font-family:var(--font-voice);min-height:100vh">
 <sc-if value="{{ isLight }}" hint-placeholder-val="{{ true }}">
