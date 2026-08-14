@@ -1,5 +1,4 @@
 uploads/
+.git/
 .DS_Store
 *.zip
-.vercel
-.env*
