@@ -1,0 +1,9 @@
+/* Motion is functional: colour and opacity transitions on interaction.
+   No bounce, no spring, no decorative entrance animation. */
+:root{
+  --duration-fast:120ms; /* @kind other */   /* dropdown close delay, rotate chevron */
+  --duration:150ms; /* @kind other */
+  --duration-slow:200ms; /* @kind other */   /* card hover, sidebar slide */
+  --ease:cubic-bezier(0.4,0,0.2,1); /* @kind other */
+  --transition-colors:color var(--duration) var(--ease),background-color var(--duration) var(--ease),border-color var(--duration) var(--ease);
+}

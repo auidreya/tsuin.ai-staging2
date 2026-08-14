@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="./ds-base.js"></script><script src="./image-slot.js"></script><style>body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-human);font-size:var(--text-body)}*{box-sizing:border-box}a{color:var(--ink-muted);text-decoration:none}a:hover{color:var(--human-ink)}input,textarea,button{font-family:inherit}</style></helmet>
+<div style="background:var(--paper);color:var(--ink);font-family:var(--font-human);min-height:100vh">
+
+<header style="position:sticky;top:0;z-index:50;border-bottom:1px solid var(--rule);background:color-mix(in srgb, var(--paper) 82%, transparent);backdrop-filter:blur(6px)">
+<div style="margin:0 auto;max-width:var(--container-max);padding:10px var(--gutter);min-height:var(--nav-height);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+<div style="display:flex;align-items:center;gap:12px">
+<a href="index.html" style="display:flex"><img src="assets/tsuin-black-horizontal-full.png" alt="tsuin" style="height:26px;width:auto;mix-blend-mode:multiply" /></a>
+<span style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--primary);padding:3px 8px;border-radius:var(--radius-artifact);font-weight:700;background-color:var(--human-wash)">EARLY ACCESS</span>
+</div>
+<sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+<nav style="display:flex;align-items:center;gap:20px;font-family:var(--font-twin);font-size:var(--twin-label);letter-spacing:var(--tracking-twin);color:var(--ink-muted)"><a href="about.html" style="color:var(--human-ink)">About Us</a><a href="manifesto.html" style="color:var(--ink-muted)">Manifesto</a><a href="#" style="color:var(--ink-muted)">Research</a><a href="pricing.html" style="color:var(--ink-muted)">Pricing</a></nav>
+</sc-if>
+<div style="display:flex;align-items:center;gap:12px">
+<a href="#stripe" style="text-decoration:none"><x-import component-from-global-scope="TsuinAiDesignSystem_e97952.Button" hint-size="120px,36px">Pre-order</x-import></a>
+<sc-if value="{{ narrow }}">
+<button type="button" aria-label="Menu" aria-expanded="{{ menuOpen }}" onClick="{{ onToggleMenu }}" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;background:transparent;border:1px solid var(--rule);border-radius:var(--radius);color:var(--ink-muted);cursor:pointer" style-hover="border-color:color-mix(in srgb, var(--human) 35%, var(--rule))">
+<sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+</sc-if>
+<sc-if value="{{ menuOpen }}">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+</sc-if>
+</button>
+</sc-if>
+</div>
+</div>
+<sc-if value="{{ menuOpen }}">
+<nav style="border-top:1px solid var(--rule);background:var(--paper);padding:8px var(--gutter) 14px;display:flex;flex-direction:column;font-family:var(--font-twin);font-size:var(--twin-label);letter-spacing:var(--tracking-twin);color:var(--ink-muted)">
+<a href="about.html" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">About Us</a>
+<a href="manifesto.html" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">Manifesto</a>
+<a href="#" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">Research</a>
+<a href="pricing.html" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">Pricing</a>
+<a href="index.html#waitlist" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;color:var(--human-ink)">Join the waitlist</a>
+</nav>
+</sc-if>
+</header>
+
+<section id="about" style="position:relative;overflow:hidden;padding:clamp(56px,8vw,88px) 0 clamp(48px,7vw,72px);border-bottom:1px solid var(--rule)">
+<sc-if value="{{ paperTexture }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="pointer-events:none;position:absolute;inset:0;z-index:0;background-image:var(--texture-paper);opacity:var(--texture-paper-opacity);mix-blend-mode:var(--texture-paper-blend)"></div></sc-if>
+<div style="margin:0 auto;max-width:var(--container-max);padding:0 var(--gutter);position:relative;z-index:1">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(32px,5vw,56px);align-items:end">
+<div style="display:flex;flex-direction:column;align-items:flex-start;gap:22px">
+<span style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--twin-ink);font-weight:700;border:1px solid color-mix(in srgb, var(--twin) 45%, transparent);border-radius:var(--radius-artifact);padding:6px 10px">FOUNDING TEAM</span>
+<h1 style="margin:0;font-family:var(--font-human);font-size:clamp(32px,5.6vw,54px);font-weight:600;letter-spacing:var(--tracking-tight);line-height:1.08;max-width:24ch;text-wrap:pretty">We are building Cognitive AI Twin that capture our thought process.</h1>
+<p style="margin:0;font-family:var(--font-human);font-size:var(--human-lead);color:var(--ink-2);line-height:1.6;max-width:48ch;text-wrap:pretty">Our objective is&nbsp;to build a personal AGI that you own.</p>
+
+</div>
+<img src="assets/shibasuke-scene-highfive.png" alt="The painted shiba and its blue circuit-lit twin high-fiving over a network of nodes" style="display:block;width:min(100%,620px);height:auto;justify-self:end">
+</div>
+</div>
+</section>
+
+<section style="padding:clamp(56px,8vw,88px) 0 0">
+<div style="margin:0 auto;max-width:var(--container-prose);padding:0 var(--gutter);display:flex;flex-direction:column;gap:26px;font-family:var(--font-human);font-size:clamp(19px,2.2vw,21px);line-height:1.65;text-wrap:pretty">
+<p style="margin:0">We are not another AI coding agents or AI tools. We are building the part of you that fades when the codebase grows past what one head can hold — and bringing it back to you.</p>
+<p style="margin:0">Tsuin (双) means twin in Japanese. A second brain that remembers what you decided, why you decided it, and what you'd say if the same question came again. Not your replacement. Your continuity.</p>
+</div>
+</section>
+
+<section style="padding:clamp(56px,8vw,88px) 0 0">
+<div style="margin:0 auto;max-width:var(--container-max);padding:0 var(--gutter)">
+<div style="display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin:0 0 32px">
+<h2 style="margin:0;font-family:var(--font-human);font-size:clamp(26px,4vw,34px);font-weight:600;letter-spacing:var(--tracking-tight);line-height:1.15">We Are Not Twins</h2>
+<span style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--ink-muted);font-weight:700">双 // founders</span>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:24px">
+
+<div style="display:flex;flex-direction:column;border:1px solid var(--rule);border-radius:var(--radius-xl);background:var(--paper-2);overflow:hidden;box-shadow:var(--shadow-desk-sm)">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;border-bottom:1px solid var(--rule);font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);font-weight:700">
+<span style="color:var(--ink)">Audrey Aui Yong</span>
+<span style="color:var(--human-ink)">CEO</span>
+</div>
+<div style="position:relative;height:clamp(200px,55vw,260px);border-bottom:1px solid var(--rule)">
+<image-slot id="about-founder-audrey" shape="rect" placeholder="Drop Audrey's portrait"></image-slot>
+</div>
+<div style="padding:26px;display:flex;flex-direction:column;gap:18px">
+<p style="margin:0;font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--ink-muted);font-weight:700">CEO &amp; CO-FOUNDER&nbsp;<span style="color: rgb(92, 108, 112); letter-spacing: 1.4px;">· Product</span></p>
+<p style="margin:0;font-family:var(--font-human);font-size:clamp(22px,2.6vw,26px);font-weight:600;letter-spacing:var(--tracking-tight);line-height:1.28">Built systems that last after she left the team, and grew up to 1000x users growth.</p>
+<blockquote style="margin:0;padding:18px 0 0;border-top:2px solid var(--ink);display:flex;flex-direction:column;gap:10px">
+<p style="margin:0;font-family:var(--font-human);font-size:17px;line-height:1.55;text-wrap:pretty">The best engineers who left the team. We lost the reasoning that got them there.</p>
+<cite style="font-family:var(--font-twin);font-size:var(--twin-micro);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--ink-muted);font-style:normal;line-height:1.5">— Audrey, on why she never got raised or promotion as a PM. Developer left, her project was stalled.</cite>
+</blockquote>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;border:1px solid var(--rule);border-radius:var(--radius-xl);background:var(--paper-2);overflow:hidden;box-shadow:var(--shadow-desk-sm)">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;border-bottom:1px solid var(--rule);font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);font-weight:700">
+<span style="color:var(--ink)">David Fu</span>
+<span style="color:var(--twin-ink)">CAIO</span>
+</div>
+<div style="position:relative;height:clamp(200px,55vw,260px);border-bottom:1px solid var(--rule)">
+<image-slot id="about-founder-david" shape="rect" placeholder="Drop David's portrait"></image-slot>
+</div>
+<div style="padding:26px;display:flex;flex-direction:column;gap:18px">
+<p style="margin:0;font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--ink-muted);font-weight:700">CHIEF AI OFFICER &amp; CO-FOUNDER · SOFTWARE &amp; AI/ML ENGINEER</p>
+<p style="margin:0;font-family:var(--font-human);font-size:clamp(22px,2.6vw,26px);font-weight:600;letter-spacing:var(--tracking-tight);line-height:1.28">Built web server similar to Node.JS two years before Node.JS was launched.</p>
+<blockquote style="margin:0;padding:18px 0 0;border-top:2px solid var(--ink);display:flex;flex-direction:column;gap:10px">
+<p style="margin:0;font-family:var(--font-human);font-size:17px;line-height:1.55;text-wrap:pretty">Doreamon is a form of AGI, why does this blue shiba twin looks like Doreamon with ears?</p>
+<cite style="font-family:var(--font-twin);font-size:var(--twin-micro);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--ink-muted);font-style:normal;line-height:1.5">— David, internal memo · jan '26</cite>
+</blockquote>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<section style="padding:clamp(56px,8vw,88px) 0 0">
+<div style="margin:0 auto;max-width:var(--container-max);padding:0 var(--gutter)">
+<div style="display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin:0 0 32px">
+<h2 style="margin:0;font-family:var(--font-human);font-size:clamp(26px,4vw,34px);font-weight:600;letter-spacing:var(--tracking-tight);line-height:1.15">What we believe</h2>
+
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:var(--radius-xl);overflow:hidden">
+<div style="background:var(--paper-2);padding:34px;display:flex;flex-direction:column;gap:14px">
+<span style="font-family:var(--font-twin);font-size:var(--twin-micro);letter-spacing:var(--tracking-widest);color:var(--twin-ink);font-weight:700">01</span>
+<p style="margin:0;font-family:var(--font-human);font-size:clamp(22px,2.6vw,26px);font-weight:600;letter-spacing:var(--tracking-tight);line-height:1.25">AGI is near.</p>
+<p style="margin:0;font-family:var(--font-human);font-size:17px;color:var(--ink-2);line-height:1.6;text-wrap:pretty">We're just 1 or 2 breakthroughs away from AGI.</p>
+</div>
+<div style="background:var(--paper-2);padding:34px;display:flex;flex-direction:column;gap:14px">
+<span style="font-family:var(--font-twin);font-size:var(--twin-micro);letter-spacing:var(--tracking-widest);color:var(--twin-ink);font-weight:700">02</span>
+<p style="margin:0;font-family:var(--font-human);font-size:clamp(22px,2.6vw,26px);font-weight:600;letter-spacing:var(--tracking-tight);line-height:1.25"><span style="color: rgb(46, 54, 56); letter-spacing: -0.39px;">Decentralised AGI.</span></p>
+<p style="margin:0;font-family:var(--font-human);font-size:17px;color:var(--ink-2);line-height:1.6;text-wrap:pretty">Human is a form of AGI, and we should own a personal AGI.</p>
+</div>
+<div style="background:var(--paper-2);padding:34px;display:flex;flex-direction:column;gap:14px">
+<span style="font-family:var(--font-twin);font-size:var(--twin-micro);letter-spacing:var(--tracking-widest);color:var(--twin-ink);font-weight:700">03</span>
+<p style="margin:0;font-family:var(--font-human);font-size:clamp(22px,2.6vw,26px);font-weight:600;letter-spacing:var(--tracking-tight);line-height:1.25">Your twin should behave like you.</p>
+<p style="margin:0;font-family:var(--font-human);font-size:17px;color:var(--ink-2);line-height:1.6;text-wrap:pretty">Your Twin trains on you. It speaks only for you. It leaves with you.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section style="padding:clamp(56px,8vw,88px) 0 clamp(72px,10vw,120px)">
+<div style="margin:0 auto;max-width:var(--container-max);padding:0 var(--gutter)">
+<div style="border-top:1px solid var(--rule);padding-top:clamp(40px,6vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(32px,5vw,56px);align-items:center">
+<div style="display:flex;flex-direction:column;align-items:flex-start;gap:22px">
+<h2 style="margin:0;font-family:var(--font-human);font-size:clamp(30px,5vw,46px);font-weight:600;letter-spacing:var(--tracking-tight);line-height:1.1">Train your Twin with us.</h2>
+<p style="margin:0;font-family:var(--font-human);font-size:var(--human-lead);color:var(--ink-2);line-height:1.6;max-width:44ch">We're gathering our Technical Advisory Board. <br>A small group. High signal.</p>
+<div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+<a href="#stripe" style="text-decoration:none"><x-import component-from-global-scope="TsuinAiDesignSystem_e97952.Button" size="lg" hint-size="150px,44px">Pre-order now</x-import></a>
+<a href="pricing.html" style="text-decoration:none"><x-import component-from-global-scope="TsuinAiDesignSystem_e97952.Button" variant="outline" size="lg" hint-size="130px,44px">See pricing</x-import></a>
+</div>
+<p style="margin:0;font-family:var(--font-human);font-size:17px;color:var(--ink-muted);line-height:1.6;max-width:52ch;text-wrap:pretty">The best developer is not the one who codes the fastest, but the one who thinks the deepest.</p>
+</div>
+<img src="assets/shibasuke-scene-training.png" alt="The blue circuit-lit twin at the keyboard in a 合格 headband, the painted shiba on the monitor" style="display:block;width:min(100%,420px);height:auto;justify-self:end">
+</div>
+</div>
+</section>
+
+<footer style="border-top:1px solid var(--rule);padding:44px 0;background:var(--paper)">
+<div style="margin:0 auto;max-width:var(--container-max);padding:0 var(--gutter);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+<a href="index.html" style="display:flex"><img src="assets/tsuin-black-horizontal-full.png" alt="tsuin" style="height:20px;width:auto;mix-blend-mode:multiply" /></a>
+<span style="font-family:var(--font-twin);font-size:var(--twin-caption);color:var(--ink-muted);max-width:230px;line-height:var(--leading-relaxed)">Cognitive AI Twin captures your thinking and continuously learns from you, to become more like you.</span>
+</div>
+<div>
+<p style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--ink-muted);font-weight:700;margin:0 0 14px">COMPANY</p>
+<div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+<a href="about.html" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">About Us</a>
+<a href="manifesto.html" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Manifesto</a>
+<a href="#" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Research</a>
+</div>
+</div>
+<div>
+<p style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--ink-muted);font-weight:700;margin:0 0 14px">SHOPPING</p>
+<div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+<a href="pricing.html" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Pricing</a>
+<a href="#stripe" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Pre-order</a>
+<a href="#" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Merchandise</a>
+</div>
+</div>
+<div>
+<p style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--ink-muted);font-weight:700;margin:0 0 14px">FOLLOW</p>
+<div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+<a href="https://www.linkedin.com/company/tsuin-ai" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+<a href="https://discord.gg/5DyMNFum44" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)" target="_blank" rel="noopener noreferrer">Discord</a>
+<a href="https://www.instagram.com/tsuin.ai/" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)" target="_blank" rel="noopener noreferrer">Instagram</a>
+</div>
+</div>
+</div>
+<div style="margin:36px auto 0;max-width:var(--container-max);padding:22px var(--gutter) 0;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;font-family:var(--font-twin);font-size:var(--twin-caption);color:var(--ink-muted)">
+<span>© 2026 Tsuin AI Sdn Bhd. All rights reserved.</span>
+<div style="display:flex;gap:20px;flex-wrap:wrap">
+<a href="#">Terms &amp; conditions</a>
+<a href="#">Privacy policy</a>
+<a href="#">Refund policy</a>
+<a href="mailto:hello@tsuin.ai">Contact</a>
+</div>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:940},&quot;paperTexture&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Texture&quot;}}">
+class Component extends DCLogic {
+  state = { narrow: false, menuOpen: false };
+
+  measure = () => {
+    const narrow = window.innerWidth < 760;
+    if (narrow !== this.state.narrow) this.setState({ narrow, menuOpen: false });
+  };
+  componentDidMount() {
+    this.measure();
+    window.addEventListener("resize", this.measure);
+  }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.measure);
+  }
+
+  renderVals() {
+    const s = this.state;
+    return {
+      paperTexture: this.props.paperTexture ?? true,
+      narrow: s.narrow,
+      wide: !s.narrow,
+      menuOpen: s.narrow && s.menuOpen,
+      menuClosed: !(s.narrow && s.menuOpen),
+      onToggleMenu: () => this.setState(p => ({ menuOpen: !p.menuOpen })),
+      onCloseMenu: () => this.setState({ menuOpen: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

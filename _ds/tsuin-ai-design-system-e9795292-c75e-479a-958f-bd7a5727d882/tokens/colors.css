@@ -1,0 +1,123 @@
+/* Two souls, coloured from design.tsuin.ai itself. Each theme belongs to one of them:
+     light mode -> the human's teal is primary; dark mode -> the twin's blue is primary.
+     the human = the light-mode primary teal  (--primary hsl(175 59% 40%) = #2AA198)
+     the twin  = the dark-mode primary blue   (--primary hsl(221 92% 72%) = #7AA2F7)
+   Surfaces are the repo's own: Solarized Light and Tokyo Night Storm.
+   No purple — the repo's decorative --accent purple is dropped. No moss.
+   Bright values are illustration colours; the *-ink values are what passes as text.
+   See guidelines/colors-contrast.card.html. */
+:root{
+  /* --- Surfaces: Solarized Light, verbatim from the repo's src/index.css --- */
+  --paper:hsl(44 87% 94%);      /* #FDF6E3 — page */
+  --paper-2:hsl(44 70% 90%);    /* cards */
+  --paper-3:hsl(45 47% 89%);    /* #EEE8D5 — secondary bands, tracks */
+  --ink:hsl(192 10% 20%);       /* body text — 11.8:1 on paper */
+  --ink-2:#2B3134;              /* headings */
+  --ink-muted:hsl(192 10% 40%); /* captions, meta — 4.8:1 */
+  --rule:hsl(45 20% 80%);       /* hairlines */
+
+  /* The Human/Twin switch shell. Declared once on :root only — it must NOT flip
+     with the theme, or the floating control vanishes into whichever page it sits on. */
+  --toggle-shell:#2A2724;
+  --toggle-shell-fg:#9C948A;
+  --toggle-thumb:#F5EEDC;
+
+  /* --- The human: the repo's teal --- */
+  --human:hsl(175 59% 30%);     /* #207A73 — fill / primary action, paper text 5.0:1 */
+  --human-bright:hsl(175 59% 40%); /* #2AA198 — the repo primary: illustration, large graphics */
+  --human-ink:hsl(175 59% 30%); /* #207A73 — teal as TEXT on paper */
+  --human-wash:hsl(177 36% 79%); /* #B4DEDC — the repo's primary-light */
+
+  /* --- The twin: the repo's dark-mode blue --- */
+  --twin:#3F63CC;               /* fill on paper — cream text 5.4:1 */
+  --twin-bright:hsl(221 92% 72%); /* #7AA2F7 — illustration, and the dark-mode CTA */
+  --twin-ink:#2F55BE;           /* blue as TEXT on paper — 6.6:1 */
+  --twin-wash:#E2E9FA;
+  --phosphor:#9ECE6A;           /* Tokyo Night green — code surfaces only */
+
+  /* --- Artifact ink --- */
+  --hanko:#B33A2B;              /* the red seal, and only the seal */
+
+  /* --- Semantic --- */
+  --success:#2E7D4F;
+  --warning:#B4740C;
+  --destructive:hsl(0 72% 51%);
+
+  /* --- ShadCN-compatible aliases: existing components read these --- */
+  --background:var(--paper);
+  --foreground:var(--ink);
+  --card:var(--paper-2);
+  --card-foreground:var(--ink);
+  --popover:var(--paper);
+  --popover-foreground:var(--ink);
+  --primary:var(--human);
+  --primary-foreground:var(--paper);
+  --primary-dark:var(--human-ink);
+  --primary-light:var(--human-wash);
+  --secondary:var(--paper-3);
+  --secondary-foreground:var(--ink-2);
+  --muted:var(--paper-3);
+  --muted-foreground:var(--ink-muted);
+  --accent:var(--twin);
+  --accent-foreground:var(--paper);
+  --destructive-foreground:var(--paper);
+  --border:var(--rule);
+  --input:var(--rule);
+  --ring:var(--human);
+}
+
+/* Tokyo Night Storm — the dark palette, signed off from the repo's own values. */
+.dark{
+  --paper:#1A1B26;              /* hsl(235 24% 13%) — deep navy canvas */
+  --paper-2:hsl(231 25% 16%);
+  --paper-3:#252737;            /* hsl(231 25% 22%) — hover, disabled, secondary surfaces */
+  --ink:#C0CAF5;                /* hsl(228 35% 85%) — cool lavender-white */
+  --ink-2:#D5DCF0;
+  --ink-muted:hsl(228 20% 60%);
+  --rule:#414868;               /* hsl(231 15% 30%) — all UI borders */
+
+  --human:hsl(175 59% 40%);     /* #2AA198 — teal holds up on navy */
+  --human-bright:hsl(177 36% 79%);
+  --human-ink:hsl(177 36% 79%); /* #B4DEDC — teal as text on navy */
+  --human-wash:hsl(175 59% 18%);
+
+  --twin:hsl(221 92% 72%);      /* #7AA2F7 — the CTA colour in dark mode */
+  --twin-bright:#9DBBFA;
+  --twin-ink:#9DBBFA;
+  --twin-wash:#1B2440;
+  --phosphor:#9ECE6A;
+
+  --hanko:#D4503C;
+
+  --success:#9ECE6A;
+  --warning:#E0AF68;
+  --destructive:hsl(0 63% 55%);
+
+  /* Dark mode belongs to the twin: blue is primary, accent and ring here.
+     Teal stays available as --human-* for the human's own moments. */
+  --primary:var(--twin);
+  --primary-foreground:#1A1B26;
+  --primary-dark:var(--twin-bright);
+  --primary-light:var(--twin-wash);
+  --accent:var(--twin);
+  --accent-foreground:#1A1B26;
+  --ring:var(--twin);
+  --destructive-foreground:#1A1B26;
+
+  /* Surface aliases must be re-declared here, not inherited: var() resolves at the
+     declaring element, so a .dark on a wrapper (not :root) would otherwise keep the
+     light values its ancestors already resolved. This is what makes nested dark
+     bands — the Solo section, a dark CTA — actually flip. */
+  --background:var(--paper);
+  --foreground:var(--ink);
+  --card:var(--paper-2);
+  --card-foreground:var(--ink);
+  --popover:var(--paper-2);
+  --popover-foreground:var(--ink);
+  --secondary:var(--paper-3);
+  --secondary-foreground:var(--ink-2);
+  --muted:var(--paper-3);
+  --muted-foreground:var(--ink-muted);
+  --border:var(--rule);
+  --input:var(--rule);
+}

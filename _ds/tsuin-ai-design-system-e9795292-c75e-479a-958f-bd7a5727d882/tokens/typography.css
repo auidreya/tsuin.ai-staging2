@@ -1,0 +1,82 @@
+/* Rule 0, made typographic: who is speaking decides the font.
+   Lora = the human voice. Martian Mono = the twin voice. Never blended into mush.
+
+   THEME RULE (locked): the theme decides whose world you are in.
+     Light mode is the human's  -> Lora carries headlines and body.
+     Dark mode is the twin's    -> Martian Mono carries everything, serif gives way.
+   Nothing in a component needs to know this: --font-human resolves to Martian Mono
+   inside .dark, so every existing usage follows the rule automatically. */
+:root{
+  --face-lora:"Lora",Georgia,serif; /* @kind font */
+  --face-martian:"Martian Mono",ui-monospace,"SFMono-Regular",monospace; /* @kind font */
+
+  --font-human:var(--face-lora);      /* emotional headlines, story, manifesto, the human's dialogue */
+  --font-twin:var(--face-martian);   /* UI, labels, data, specs, the twin's dialogue */
+  --font-voice:var(--face-lora);     /* whichever voice owns the current theme */
+  --font-body:var(--face-lora);      /* light mode reads as Lora */
+  /* Legacy aliases so older markup keeps rendering; prefer the two above. */
+  --font-display:var(--font-human);
+  --font-mono:var(--font-twin);
+
+  /* Human scale (Lora) — emotional claim */
+  --human-display:52px;
+  --human-h1:38px;
+  --human-h2:28px;
+  --human-lead:19px;      /* manifesto / story paragraph */
+  --human-quote:17px;
+
+  /* Twin scale (Martian Mono) — labels, data, system voice.
+     Martian Mono runs wide and tall; sizes sit a step below a normal mono. */
+  --twin-h3:16px;
+  --twin-body:13px;
+  --twin-label:12px;
+  --twin-caption:11px;
+  --twin-code:12px;
+  --twin-micro:10px;      /* uppercase section labels, widest tracking */
+
+  /* Compatibility aliases for components written against the earlier scale */
+  --text-display:var(--human-display);
+  --text-h1:var(--human-h1);
+  --text-h2:var(--human-h2);
+  --text-h3:var(--twin-h3);
+  --text-body:16px;             /* Lora body in light mode; the twin scale takes over in .dark */
+  --text-label:var(--twin-label);
+  --text-caption:var(--twin-caption);
+  --text-code:var(--twin-code);
+  --text-micro:var(--twin-micro);
+  --human-body:16px;
+
+  --weight-regular:400;
+  --weight-medium:500;
+  --weight-semibold:600;
+  --weight-bold:700;
+
+  --leading-tight:1.12;
+  --leading-snug:1.35;
+  --leading-normal:1.5;
+  --leading-relaxed:1.7;   /* Martian Mono needs air */
+  --leading-loose:1.9;
+
+  --tracking-tight:-0.015em;  /* Lora headlines */
+  --tracking-normal:0;
+  --tracking-twin:-0.02em;    /* Martian Mono at body sizes */
+  --tracking-widest:0.14em;   /* micro-labels only */
+}
+
+/* Dark mode is the twin's world: one face, his. Martian Mono runs wide and tall,
+   so the human display scale steps down to hold the same layouts. */
+.dark{
+  --font-human:var(--face-martian);
+  --font-voice:var(--face-martian);
+  --font-body:var(--face-martian);
+
+  --human-display:34px;
+  --human-h1:26px;
+  --human-h2:20px;
+  --human-lead:14px;
+  --human-quote:13px;
+  --text-body:var(--twin-body);
+
+  --tracking-tight:-0.03em;
+  --leading-tight:1.25;
+}

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="./ds-base.js"></script><style>body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-human);font-size:var(--text-body)}*{box-sizing:border-box}a{color:var(--ink-muted);text-decoration:none}a:hover{color:var(--human-ink)}input,textarea,button{font-family:inherit}</style></helmet>
+<div style="background:var(--paper);color:var(--ink);font-family:var(--font-human);min-height:100vh">
+
+<header style="position:sticky;top:0;z-index:50;border-bottom:1px solid var(--rule);background:color-mix(in srgb, var(--paper) 82%, transparent);backdrop-filter:blur(6px)">
+<div style="margin:0 auto;max-width:var(--container-max);padding:10px var(--gutter);min-height:var(--nav-height);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+<div style="display:flex;align-items:center;gap:12px">
+<a href="index.html" style="display:flex"><img src="assets/tsuin-black-horizontal-full.png" alt="tsuin" style="height:26px;width:auto;mix-blend-mode:multiply" /></a>
+<span style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--primary);padding:3px 8px;border-radius:var(--radius-artifact);font-weight:700;background-color:var(--human-wash)">EARLY ACCESS</span>
+</div>
+<sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+<nav style="display:flex;align-items:center;gap:20px;font-family:var(--font-twin);font-size:var(--twin-label);letter-spacing:var(--tracking-twin);color:var(--ink-muted)"><a href="about.html" style="color:var(--ink-muted)">About Us</a><a href="manifesto.html" style="color:var(--human-ink)">Manifesto</a><a href="#" style="color:var(--ink-muted)">Research</a><a href="pricing.html" style="color:var(--ink-muted)">Pricing</a></nav>
+</sc-if>
+<div style="display:flex;align-items:center;gap:12px">
+<a href="#stripe" style="text-decoration:none"><x-import component-from-global-scope="TsuinAiDesignSystem_e97952.Button" hint-size="120px,36px">Pre-order</x-import></a>
+<sc-if value="{{ narrow }}">
+<button type="button" aria-label="Menu" aria-expanded="{{ menuOpen }}" onClick="{{ onToggleMenu }}" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;background:transparent;border:1px solid var(--rule);border-radius:var(--radius);color:var(--ink-muted);cursor:pointer" style-hover="border-color:color-mix(in srgb, var(--human) 35%, var(--rule))">
+<sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+</sc-if>
+<sc-if value="{{ menuOpen }}">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+</sc-if>
+</button>
+</sc-if>
+</div>
+</div>
+<sc-if value="{{ menuOpen }}">
+<nav style="border-top:1px solid var(--rule);background:var(--paper);padding:8px var(--gutter) 14px;display:flex;flex-direction:column;font-family:var(--font-twin);font-size:var(--twin-label);letter-spacing:var(--tracking-twin);color:var(--ink-muted)">
+<a href="about.html" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">About Us</a>
+<a href="manifesto.html" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">Manifesto</a>
+<a href="#" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">Research</a>
+<a href="pricing.html" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">Pricing</a>
+<a href="index.html#waitlist" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;color:var(--human-ink)">Join the waitlist</a>
+</nav>
+</sc-if>
+</header>
+
+<main id="manifesto" style="position:relative;overflow:hidden;padding:clamp(56px,8vw,96px) 0 clamp(64px,9vw,104px)">
+<sc-if value="{{ paperTexture }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="pointer-events:none;position:absolute;inset:0;z-index:0;background-image:var(--texture-paper);opacity:var(--texture-paper-opacity);mix-blend-mode:var(--texture-paper-blend)"></div></sc-if>
+<div style="margin:0 auto;max-width:var(--container-prose);padding:0 var(--gutter);position:relative;z-index:1">
+
+<p style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--twin-ink);font-weight:700;margin:0 0 16px">The tsuin Manifesto</p>
+<h1 style="font-family:var(--font-human);font-size:clamp(38px,8vw,var(--human-display));font-weight:600;letter-spacing:var(--tracking-tight);line-height:var(--leading-tight);margin:0 0 20px">AGI is near.</h1>
+
+<div style="display:flex;flex-direction:column;gap:32px;font-family:var(--font-human);font-size:clamp(19px,2.4vw,22px);line-height:1.6;color:var(--ink);max-width:56ch;text-wrap:pretty">
+
+<p style="margin:0;color:var(--ink-2)">We believe it is one or two breakthroughs away.</p>
+
+<p style="margin:0">Everyone racing to build it is building the same thing:<br>one giant model, owned by one company, the same for everyone.<br>You will rent it by the month.</p>
+
+<p style="margin:0">And here is what's already happening while you wait.<br>Every prompt you write teaches their model.<br>Your data, your skills, your way of thinking — collected, trained on, and sold back to you as a subscription.</p>
+
+<p style="margin:0;font-weight:600">You bring the intelligence. They keep the asset.</p>
+
+<p style="margin:0;font-family:var(--font-human);font-size:clamp(26px,4.4vw,var(--human-h2));font-weight:600;letter-spacing:var(--tracking-tight);line-height:1.25">We are building AGI the other way.</p>
+
+<p style="margin:0">Cognitive AI Twin: a personal AGI model that captures your thinking and continuously learns from you, to become more like you.<br>Not another AI agent, not another chatbot.</p>
+
+</div>
+
+<div style="position:relative;margin:38px 0;max-width:60ch;border:1px solid var(--rule);border-radius:var(--radius-artifact);background:var(--paper-2);padding:26px 24px 22px;box-shadow:var(--shadow-desk-sm)">
+<div aria-hidden="true" style="position:absolute;inset:0;background-image:var(--spec-grid);background-size:var(--spec-grid-size);opacity:0.45;pointer-events:none"></div>
+<div aria-hidden="true" style="position:absolute;top:8px;left:8px;width:12px;height:12px;border-top:var(--spec-hairline);border-left:var(--spec-hairline)"></div>
+<div aria-hidden="true" style="position:absolute;top:8px;right:8px;width:12px;height:12px;border-top:var(--spec-hairline);border-right:var(--spec-hairline)"></div>
+<div aria-hidden="true" style="position:absolute;bottom:8px;left:8px;width:12px;height:12px;border-bottom:var(--spec-hairline);border-left:var(--spec-hairline)"></div>
+<div aria-hidden="true" style="position:absolute;bottom:8px;right:8px;width:12px;height:12px;border-bottom:var(--spec-hairline);border-right:var(--spec-hairline)"></div>
+<p style="position:relative;font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--ink-muted);font-weight:700;margin:0 0 18px">The road to yours</p>
+<div style="position:relative;display:flex;flex-direction:column;gap:2px">
+<div style="display:flex;align-items:baseline;gap:18px;padding:16px 0;border-top:1px solid var(--rule);flex-wrap:wrap">
+<span style="font-family:var(--font-twin);font-size:var(--twin-micro);letter-spacing:var(--tracking-widest);color:var(--twin-ink);font-weight:700;flex-shrink:0">01</span>
+<span style="flex:1;font-family:var(--font-twin);font-size:var(--twin-body);letter-spacing:var(--tracking-twin);color:var(--ink)">Continual learning</span>
+<span style="flex-shrink:0;display:flex;align-items:center;gap:7px;font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);font-weight:700;color:var(--success)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0"><path d="M20 6 9 17l-5-5"></path></svg>We have this</span>
+</div>
+<div style="display:flex;align-items:baseline;gap:18px;padding:16px 0;border-top:1px solid var(--rule);flex-wrap:wrap">
+<span style="font-family:var(--font-twin);font-size:var(--twin-micro);letter-spacing:var(--tracking-widest);color:var(--twin-ink);font-weight:700;flex-shrink:0">02</span>
+<span style="flex:1;font-family:var(--font-twin);font-size:var(--twin-body);letter-spacing:var(--tracking-twin);color:var(--ink)">Recursive self-improvement</span>
+<span style="flex-shrink:0;font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);font-weight:700;color:var(--twin-ink);background:var(--twin-wash);padding:4px 9px;border-radius:var(--radius-artifact)">Next</span>
+</div>
+<div style="display:flex;align-items:baseline;gap:18px;padding:16px 0;border-top:1px solid var(--rule);flex-wrap:wrap">
+<span style="font-family:var(--font-twin);font-size:var(--twin-micro);letter-spacing:var(--tracking-widest);color:var(--twin-ink);font-weight:700;flex-shrink:0">03</span>
+<span style="flex:1;font-family:var(--font-twin);font-size:var(--twin-body);letter-spacing:var(--tracking-twin);color:var(--ink)">Then AGI</span>
+<span style="flex-shrink:0;font-family:var(--font-human);font-size:18px;font-weight:500;color:var(--human-ink)">Yours. It behaves like you.</span>
+</div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:32px;font-family:var(--font-human);font-size:clamp(19px,2.4vw,22px);line-height:1.6;color:var(--ink);max-width:56ch;text-wrap:pretty">
+
+<p style="margin:0">One problem still stands in the way: catastrophic forgetting — a model forgets what it learned when it learns something new.<br>That is the type of research we do.</p>
+
+<p style="margin:0">Our solo plan - Twin model can be self-hosted on your machine.<br>You buy it once. You own it.</p>
+
+<p style="margin:0;font-family:var(--font-human);font-size:clamp(26px,4.4vw,var(--human-h2));font-weight:600;letter-spacing:var(--tracking-tight);line-height:1.25">AGI won't be theirs. It will be yours.</p>
+
+</div>
+
+<p style="font-family:var(--font-human);font-size:clamp(34px,6.5vw,var(--human-display));font-weight:600;letter-spacing:var(--tracking-tight);line-height:1.1;margin:52px 0 26px">Train your twin.</p>
+
+<div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+<a href="#stripe" style="text-decoration:none"><x-import component-from-global-scope="TsuinAiDesignSystem_e97952.Button" size="lg" hint-size="150px,44px">Pre-order now</x-import></a>
+<a href="pricing.html" style="text-decoration:none"><x-import component-from-global-scope="TsuinAiDesignSystem_e97952.Button" variant="outline" size="lg" hint-size="130px,44px">See pricing</x-import></a>
+</div>
+
+<p style="font-family:var(--font-twin);font-size:var(--twin-caption);color:var(--ink-muted);margin:30px 0 0;letter-spacing:var(--tracking-twin)">tsuin · ツイン</p>
+
+
+</div>
+</main>
+
+<footer style="border-top:1px solid var(--rule);padding:44px 0;background:var(--paper)">
+<div style="margin:0 auto;max-width:var(--container-max);padding:0 var(--gutter);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+<a href="index.html" style="display:flex"><img src="assets/tsuin-black-horizontal-full.png" alt="tsuin" style="height:20px;width:auto;mix-blend-mode:multiply" /></a>
+<span style="font-family:var(--font-twin);font-size:var(--twin-caption);color:var(--ink-muted);max-width:230px;line-height:var(--leading-relaxed)">Cognitive AI Twin captures your thinking and continuously learns from you, to become more like you.</span>
+</div>
+<div>
+<p style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--ink-muted);font-weight:700;margin:0 0 14px">COMPANY</p>
+<div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+<a href="about.html" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">About Us</a>
+<a href="manifesto.html" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Manifesto</a>
+<a href="#" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Research</a>
+</div>
+</div>
+<div>
+<p style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--ink-muted);font-weight:700;margin:0 0 14px">SHOPPING</p>
+<div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+<a href="pricing.html" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Pricing</a>
+<a href="#stripe" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Pre-order</a>
+<a href="#" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Merchandise</a>
+</div>
+</div>
+<div>
+<p style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--ink-muted);font-weight:700;margin:0 0 14px">FOLLOW</p>
+<div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+<a href="https://www.linkedin.com/company/tsuin-ai" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+<a href="https://discord.gg/5DyMNFum44" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)" target="_blank" rel="noopener noreferrer">Discord</a>
+<a href="https://www.instagram.com/tsuin.ai/" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)" target="_blank" rel="noopener noreferrer">Instagram</a>
+</div>
+</div>
+</div>
+<div style="margin:36px auto 0;max-width:var(--container-max);padding:22px var(--gutter) 0;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;font-family:var(--font-twin);font-size:var(--twin-caption);color:var(--ink-muted)">
+<span>© 2026 Tsuin AI Sdn Bhd. All rights reserved.</span>
+<div style="display:flex;gap:20px;flex-wrap:wrap">
+<a href="#">Terms &amp; conditions</a>
+<a href="#">Privacy policy</a>
+<a href="#">Refund policy</a>
+<a href="mailto:hello@tsuin.ai">Contact</a>
+</div>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:940},&quot;paperTexture&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Texture&quot;}}">
+class Component extends DCLogic {
+  state = { narrow: false, menuOpen: false };
+
+  measure = () => {
+    const narrow = window.innerWidth < 760;
+    if (narrow !== this.state.narrow) this.setState({ narrow, menuOpen: false });
+  };
+  componentDidMount() {
+    this.measure();
+    window.addEventListener("resize", this.measure);
+  }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.measure);
+  }
+
+  renderVals() {
+    const s = this.state;
+    return {
+      paperTexture: this.props.paperTexture ?? true,
+      narrow: s.narrow,
+      wide: !s.narrow,
+      menuOpen: s.narrow && s.menuOpen,
+      menuClosed: !(s.narrow && s.menuOpen),
+      onToggleMenu: () => this.setState(p => ({ menuOpen: !p.menuOpen })),
+      onCloseMenu: () => this.setState({ menuOpen: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

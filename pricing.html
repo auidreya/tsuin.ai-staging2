@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="./ds-base.js"></script><style>body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-human);font-size:var(--text-body)}*{box-sizing:border-box}a{color:var(--ink-muted);text-decoration:none}a:hover{color:var(--human-ink)}input,textarea,button{font-family:inherit}@keyframes tsuin-blink{0%,49%{opacity:1}50%,100%{opacity:0}}</style></helmet>
+<div style="background:var(--paper);color:var(--ink);font-family:var(--font-human);min-height:100vh">
+
+<div>
+<header style="position:sticky;top:0;z-index:50;border-bottom:1px solid var(--rule);background:color-mix(in srgb, var(--paper) 82%, transparent);backdrop-filter:blur(6px)">
+<div style="margin:0 auto;max-width:var(--container-max);padding:10px var(--gutter);min-height:var(--nav-height);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+<div style="display:flex;align-items:center;gap:12px">
+<a href="index.html" style="display:flex"><img src="assets/tsuin-black-horizontal-full.png" alt="tsuin" style="height:26px;width:auto;mix-blend-mode:multiply" /></a>
+<span style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--primary);padding:3px 8px;border-radius:var(--radius-artifact);font-weight:700;background-color:var(--human-wash)">EARLY ACCESS</span>
+</div>
+<sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+<nav style="display:flex;align-items:center;gap:20px;font-family:var(--font-twin);font-size:var(--twin-label);letter-spacing:var(--tracking-twin);color:var(--ink-muted)"><a href="about.html" style="color:var(--ink-muted)">About Us</a><a href="manifesto.html" style="color:var(--ink-muted)">Manifesto</a><a href="#" style="color:var(--ink-muted)">Research</a><a href="pricing.html" style="color:var(--human-ink)">Pricing</a></nav>
+</sc-if>
+<div style="display:flex;align-items:center;gap:12px">
+<a href="#stripe" style="text-decoration:none"><x-import component-from-global-scope="TsuinAiDesignSystem_e97952.Button" hint-size="120px,36px">Pre-order</x-import></a>
+<sc-if value="{{ narrow }}">
+<button type="button" aria-label="Menu" aria-expanded="{{ menuOpen }}" onClick="{{ onToggleMenu }}" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;background:transparent;border:1px solid var(--rule);border-radius:var(--radius);color:var(--ink-muted);cursor:pointer" style-hover="border-color:color-mix(in srgb, var(--human) 35%, var(--rule))">
+<sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+</sc-if>
+<sc-if value="{{ menuOpen }}">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+</sc-if>
+</button>
+</sc-if>
+</div>
+</div>
+<sc-if value="{{ menuOpen }}">
+<nav style="border-top:1px solid var(--rule);background:var(--paper);padding:8px var(--gutter) 14px;display:flex;flex-direction:column;font-family:var(--font-twin);font-size:var(--twin-label);letter-spacing:var(--tracking-twin);color:var(--ink-muted)">
+<a href="about.html" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">About Us</a>
+<a href="manifesto.html" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">Manifesto</a>
+<a href="#" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">Research</a>
+<a href="pricing.html" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">Pricing</a>
+<a href="index.html#waitlist" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;color:var(--human-ink)">Join the waitlist</a>
+</nav>
+</sc-if>
+</header>
+
+<section id="plans" style="position:relative;overflow:hidden;padding:clamp(56px,8vw,88px) 0 clamp(48px,7vw,72px)">
+<sc-if value="{{ paperTexture }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="pointer-events:none;position:absolute;inset:0;z-index:0;background-image:var(--texture-paper);opacity:var(--texture-paper-opacity);mix-blend-mode:var(--texture-paper-blend)"></div></sc-if>
+<div style="margin:0 auto;max-width:var(--container-max);padding:0 var(--gutter);position:relative;z-index:1">
+<div style="max-width:650px;margin:0 0 44px">
+<p style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--twin-ink);font-weight:700;margin:0 0 14px">Pricing</p>
+<h1 style="font-family:var(--font-human);font-size:clamp(34px,6.5vw,var(--human-display));font-weight:600;letter-spacing:var(--tracking-tight);line-height:var(--leading-tight);margin:0 0 18px">You own your twin.</h1>
+<p style="font-family:var(--font-human);font-size:var(--human-lead);color:var(--ink-2);line-height:1.6;margin:0">Every tool you use already learns from you and the vendor keeps the copy. This one belongs to you.</p>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:24px;align-items:stretch">
+
+<div style="display:flex;flex-direction:column;padding:26px;border:2px solid var(--human);border-radius:var(--radius-xl);background:var(--paper-2);box-shadow:var(--shadow-desk-lg)">
+
+<p style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);font-weight:700;color:var(--ink-muted);margin:0 0 8px">Solo</p>
+<div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap">
+<span style="font-family:var(--font-human);font-size:clamp(34px,4vw,var(--human-h1));font-weight:600;letter-spacing:var(--tracking-tight)">RM500</span>
+<span style="font-family:var(--font-twin);font-size:var(--twin-caption);color:var(--ink-muted);text-decoration:line-through">RM2000</span>
+<span style="font-family:var(--font-twin);font-size:var(--twin-caption);color:var(--ink-muted)">one time</span>
+</div>
+<p style="display:inline-block;align-self:flex-start;font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);font-weight:700;color:var(--human-ink);background:var(--human-wash);padding:4px 8px;border-radius:var(--radius-artifact);margin:12px 0 0">USD99, was USD500 · save 75%</p>
+<p style="font-family:var(--font-human);font-size:17px;color:var(--ink-2);line-height:1.5;margin:14px 0 0">Your twin, on your machine.</p>
+<div style="display:flex;flex-direction:column;gap:10px;margin:24px 0 28px;flex:1">
+<div style="display:flex;gap:9px;align-items:flex-start;font-size:var(--text-body)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--twin-ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0;margin-top:5px"><path d="M20 6 9 17l-5-5"></path></svg>One twin, trained only by you</div>
+<div style="display:flex;gap:9px;align-items:flex-start;font-size:var(--text-body)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--twin-ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0;margin-top:5px"><path d="M20 6 9 17l-5-5"></path></svg>Host Twin model locally</div>
+<div style="margin:0 0 0 22px">
+<p style="font-family:var(--font-twin);font-size:var(--twin-caption);color:var(--ink-muted);line-height:var(--leading-relaxed);margin:0">Minimum requirements:</p>
+<ul style="list-style:disc;padding:0 0 0 16px;margin:4px 0 0;font-family:var(--font-twin);font-size:var(--twin-caption);color:var(--ink-muted);line-height:var(--leading-relaxed)">
+<li>16GB GPU VRAM (NVIDIA)</li>
+<li>16GB CPU RAM</li>
+<li>32GB available storage</li>
+</ul>
+</div>
+<div style="display:flex;gap:9px;align-items:flex-start;font-size:var(--text-body)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--twin-ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0;margin-top:5px"><path d="M20 6 9 17l-5-5"></path></svg>Software Engineer Skill</div>
+<div style="display:flex;gap:9px;align-items:flex-start;font-size:var(--text-body)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--twin-ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0;margin-top:5px"><path d="M20 6 9 17l-5-5"></path></svg>Available on Windows/MacOS on Steam</div>
+
+<div style="display:flex;gap:9px;align-items:flex-start;font-size:var(--text-body)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--twin-ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0;margin-top:5px"><path d="M20 6 9 17l-5-5"></path></svg><span>First 100 buyers: a seat on our Technical Advisory Board, plus early-supporter merch</span></div>
+</div>
+<div style="border:1px dashed color-mix(in srgb, var(--human) 55%, transparent);border-radius:var(--radius-artifact);padding:12px 14px;margin:0 0 18px;background:color-mix(in srgb, var(--human) 8%, transparent)">
+<p style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--ink-muted);font-weight:700;margin:0 0 6px">Promo code</p>
+<p style="font-family:var(--font-twin);font-size:var(--twin-h3);font-weight:700;letter-spacing:0.06em;color:var(--human-ink);margin:0">PJSTARTUP2026</p>
+<p style="font-family:var(--font-twin);font-size:var(--twin-caption);color:var(--ink-muted);margin:6px 0 0">15–16 August 2026 only</p>
+</div>
+<a href="#stripe" style="text-decoration:none;display:block"><x-import component-from-global-scope="TsuinAiDesignSystem_e97952.Button" dc-props="{{ fullBtn }}" hint-size="100%,40px">Pre-order</x-import></a>
+</div>
+
+<div style="display:flex;flex-direction:column;padding:26px;border:1px solid var(--rule);border-radius:var(--radius-xl);background:var(--paper-2);box-shadow:var(--shadow-desk-sm)">
+<p style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);font-weight:700;color:var(--ink-muted);margin:0 0 8px">Team</p>
+<div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap">
+<span style="font-family:var(--font-human);font-size:clamp(34px,4vw,var(--human-h1));font-weight:600;letter-spacing:var(--tracking-tight)">$200</span>
+<span style="font-family:var(--font-twin);font-size:var(--twin-caption);color:var(--ink-muted)">per seat / month</span>
+</div>
+<p style="display:inline-block;align-self:flex-start;font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);font-weight:700;color:var(--twin-ink);background:var(--twin-wash);padding:4px 8px;border-radius:var(--radius-artifact);margin:12px 0 0">TWIN-TO-TWIN COMMUNICATION</p>
+<p style="font-family:var(--font-human);font-size:17px;color:var(--ink-2);line-height:1.5;margin:14px 0 0">The cloud between twins. Your twin itself is never rented.</p>
+<div style="display:flex;flex-direction:column;gap:10px;margin:24px 0 28px;flex:1">
+<div style="display:flex;gap:9px;align-items:flex-start;font-size:var(--text-body)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--twin-ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0;margin-top:5px"><path d="M20 6 9 17l-5-5"></path></svg>Everything in Solo, per person</div>
+<div style="display:flex;gap:9px;align-items:flex-start;font-size:var(--text-body)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--twin-ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0;margin-top:5px"><path d="M20 6 9 17l-5-5"></path></svg>Twins talk to each other</div>
+<div style="display:flex;gap:9px;align-items:flex-start;font-size:var(--text-body)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--twin-ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0;margin-top:5px"><path d="M20 6 9 17l-5-5"></path></svg>Onboarding on your past decisions</div>
+<div style="display:flex;gap:9px;align-items:flex-start;font-size:var(--text-body)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--twin-ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0;margin-top:5px"><path d="M20 6 9 17l-5-5"></path></svg>Shared reasoning across the team</div>
+<div style="display:flex;gap:9px;align-items:flex-start;font-size:var(--text-body)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--twin-ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0;margin-top:5px"><path d="M20 6 9 17l-5-5"></path></svg>Priority support</div>
+</div>
+<a href="#waitlist" style="text-decoration:none;display:block"><x-import component-from-global-scope="TsuinAiDesignSystem_e97952.Button" variant="outline" dc-props="{{ fullBtn }}" hint-size="100%,40px">Join the waitlist</x-import></a>
+</div>
+
+<div style="display:flex;flex-direction:column;padding:26px;border:1px solid var(--rule);border-radius:var(--radius-xl);background:var(--paper-2);box-shadow:var(--shadow-desk-sm)">
+<p style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);font-weight:700;color:var(--ink-muted);margin:0 0 8px">Company</p>
+<div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap">
+<span style="font-family:var(--font-human);font-size:clamp(34px,4vw,var(--human-h1));font-weight:600;letter-spacing:var(--tracking-tight)">Let's talk</span>
+</div>
+<p style="display:inline-block;align-self:flex-start;font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);font-weight:700;color:var(--ink-muted);background:color-mix(in srgb, var(--paper-3) 70%, transparent);padding:4px 8px;border-radius:var(--radius-artifact);margin:12px 0 0">Next year</p>
+<p style="font-family:var(--font-human);font-size:17px;color:var(--ink-2);line-height:1.5;margin:14px 0 0">People first, companies next year — when twins learn to talk at scale.</p>
+<div style="display:flex;flex-direction:column;gap:10px;margin:24px 0 28px;flex:1">
+<div style="display:flex;gap:9px;align-items:flex-start;font-size:var(--text-body)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--twin-ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0;margin-top:5px"><path d="M20 6 9 17l-5-5"></path></svg>Volume licensing</div>
+<div style="display:flex;gap:9px;align-items:flex-start;font-size:var(--text-body)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--twin-ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0;margin-top:5px"><path d="M20 6 9 17l-5-5"></path></svg>SSO / SAML</div>
+<div style="display:flex;gap:9px;align-items:flex-start;font-size:var(--text-body)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--twin-ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0;margin-top:5px"><path d="M20 6 9 17l-5-5"></path></svg>Audit logs</div>
+<div style="display:flex;gap:9px;align-items:flex-start;font-size:var(--text-body)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--twin-ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0;margin-top:5px"><path d="M20 6 9 17l-5-5"></path></svg>Deployment support</div>
+<div style="display:flex;gap:9px;align-items:flex-start;font-size:var(--text-body)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--twin-ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0;margin-top:5px"><path d="M20 6 9 17l-5-5"></path></svg>Named contact</div>
+</div>
+<a href="#contact" style="text-decoration:none;display:block"><x-import component-from-global-scope="TsuinAiDesignSystem_e97952.Button" variant="outline" dc-props="{{ fullBtn }}" hint-size="100%,40px">Talk to us</x-import></a>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="faq" style="padding:clamp(48px,7vw,80px) 0 clamp(56px,8vw,88px);background:color-mix(in srgb, var(--paper-3) 55%, transparent);border-top:1px solid var(--rule)">
+<div style="margin:0 auto;max-width:var(--container-prose);padding:0 var(--gutter)">
+<p style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--twin-ink);font-weight:700;margin:0 0 14px">FAQ</p>
+<h2 style="font-family:var(--font-human);font-size:clamp(28px,5vw,var(--human-h1));font-weight:600;letter-spacing:var(--tracking-tight);line-height:1.15;margin:0 0 32px">Questions we get asked a lot</h2>
+<div style="border-top:1px solid var(--rule)">
+<div style="border-bottom:1px solid var(--rule)">
+
+<sc-if value="{{ open0 }}">
+<p style="font-family:var(--font-human);font-size:17px;color:var(--ink-2);line-height:1.6;margin:0 0 22px;max-width:70ch;text-wrap:pretty">Solo is a one-time payment of USD 500 (RM2000) — lifetime access, no subscription. During early access, it's USD 99 (RM500). This discount is available only while we're in alpha. Once we launch publicly, the price goes to USD 500 permanently.</p>
+</sc-if>
+</div>
+<div style="border-bottom:1px solid var(--rule)">
+<button type="button" onClick="{{ t1 }}" aria-expanded="{{ open1 }}" style="width:100%;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:20px 2px;background:transparent;border:0;text-align:left;cursor:pointer;color:var(--ink)" style-hover="color:var(--human-ink)">
+<span style="font-family:var(--font-human);font-size:19px;font-weight:500;line-height:1.45;text-wrap:pretty">Why is Solo only available on Steam?</span>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0;margin-top:5px;transform:rotate({{ rot1 }});transition:transform var(--duration) var(--ease)"><path d="m6 9 6 6 6-6"></path></svg>
+</button>
+<sc-if value="{{ open1 }}">
+<p style="font-family:var(--font-human);font-size:17px;color:var(--ink-2);line-height:1.6;margin:0 0 22px;max-width:70ch;text-wrap:pretty">Steam handles our distribution, licensing, and updates for Solo. It gives you a permanent license tied to your Steam account, automatic updates, and refund protection under Steam's standard policy. Just search 'Tsuin' on Steam to find it.</p>
+</sc-if>
+</div>
+<div style="border-bottom:1px solid var(--rule)">
+
+<sc-if value="{{ open2 }}">
+<p style="font-family:var(--font-human);font-size:17px;color:var(--ink-2);line-height:1.6;margin:0 0 22px;max-width:70ch;text-wrap:pretty">In the Solo plan, all reasoning and context is stored locally in your git repository. Nothing is sent to our servers. On the Team plan, encrypted reasoning metadata is synced to enable team-wide search — your actual source code never leaves your environment.</p>
+</sc-if>
+</div>
+<div style="border-bottom:1px solid var(--rule)">
+<button type="button" onClick="{{ t3 }}" aria-expanded="{{ open3 }}" style="width:100%;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:20px 2px;background:transparent;border:0;text-align:left;cursor:pointer;color:var(--ink)" style-hover="color:var(--human-ink)">
+<span style="font-family:var(--font-human);font-size:19px;font-weight:500;line-height:1.45;text-wrap:pretty">How does the AI Twin learn? Do I need to write prompts or do anything special?</span>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0;margin-top:5px;transform:rotate({{ rot3 }});transition:transform var(--duration) var(--ease)"><path d="m6 9 6 6 6-6"></path></svg>
+</button>
+<sc-if value="{{ open3 }}">
+<p style="font-family:var(--font-human);font-size:17px;color:var(--ink-2);line-height:1.6;margin:0 0 22px;max-width:70ch;text-wrap:pretty">No prompts, no friction. Tsuin actively learn from you through error correction and builds a model of your reasoning automatically. You get your reasoning capture without writing another skills.md file.</p>
+</sc-if>
+</div>
+<div style="border-bottom:1px solid var(--rule)">
+<button type="button" onClick="{{ t9 }}" aria-expanded="{{ open9 }}" style="width:100%;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:20px 2px;background:transparent;border:0;text-align:left;cursor:pointer;color:var(--ink)" style-hover="color:var(--human-ink)">
+<span style="font-family:var(--font-human);font-size:19px;font-weight:500;line-height:1.45;text-wrap:pretty">If I'm not a software engineer, can I still use the twin?</span>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0;margin-top:5px;transform:rotate({{ rot9 }});transition:transform var(--duration) var(--ease)"><path d="m6 9 6 6 6-6"></path></svg>
+</button>
+<sc-if value="{{ open9 }}">
+<p style="font-family:var(--font-human);font-size:17px;color:var(--ink-2);line-height:1.6;margin:0 0 22px;max-width:70ch;text-wrap:pretty">Yes. Just train your reasoning and it will still capture your thought process.</p>
+</sc-if>
+</div>
+<div style="border-bottom:1px solid var(--rule)">
+<button type="button" onClick="{{ t10 }}" aria-expanded="{{ open10 }}" style="width:100%;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:20px 2px;background:transparent;border:0;text-align:left;cursor:pointer;color:var(--ink)" style-hover="color:var(--human-ink)">
+<span style="font-family:var(--font-human);font-size:19px;font-weight:500;line-height:1.45;text-wrap:pretty">Can I get a refund if my machine can't run it?</span>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0;margin-top:5px;transform:rotate({{ rot10 }});transition:transform var(--duration) var(--ease)"><path d="m6 9 6 6 6-6"></path></svg>
+</button>
+<sc-if value="{{ open10 }}">
+<p style="font-family:var(--font-human);font-size:17px;color:var(--ink-2);line-height:1.6;margin:0 0 22px;max-width:70ch;text-wrap:pretty">Yes. The pre-order is charged through Stripe, not Steam — so the refund is ours to handle, not theirs. Write to us any time before launch, or after launch if the twin will not run on your machine, and we refund the full amount. Your Steam key is only issued when the Solo plan ships, and Steam's own policy applies to anything you buy there later. Check the minimum requirements above first: 16GB GPU VRAM (NVIDIA), 16GB CPU RAM, 32GB available storage.</p>
+</sc-if>
+</div>
+<div style="border-bottom:1px solid var(--rule)">
+<button type="button" onClick="{{ t11 }}" aria-expanded="{{ open11 }}" style="width:100%;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:20px 2px;background:transparent;border:0;text-align:left;cursor:pointer;color:var(--ink)" style-hover="color:var(--human-ink)">
+<span style="font-family:var(--font-human);font-size:19px;font-weight:500;line-height:1.45;text-wrap:pretty">What perks do I get on Solo?</span>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0;margin-top:5px;transform:rotate({{ rot11 }});transition:transform var(--duration) var(--ease)"><path d="m6 9 6 6 6-6"></path></svg>
+</button>
+<sc-if value="{{ open11 }}">
+<p style="font-family:var(--font-human);font-size:17px;color:var(--ink-2);line-height:1.6;margin:0 0 22px;max-width:70ch;text-wrap:pretty">First 100 customers get to be on our Technical Advisory Board (TAB), which will be in a closed community group with the founders of tsuin.ai to share feedback, crazy ideas and influence the product roadmap. On top of that, get exclusive merchandise as early supporters.</p>
+</sc-if>
+</div><div style="border-bottom:1px solid var(--rule)">
+
+<sc-if value="{{ open4 }}">
+
+</sc-if>
+</div>
+<div style="border-bottom:1px solid var(--rule)">
+<button type="button" onClick="{{ t5 }}" aria-expanded="{{ open5 }}" style="width:100%;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:20px 2px;background:transparent;border:0;text-align:left;cursor:pointer;color:var(--ink)" style-hover="color:var(--human-ink)">
+<span style="font-family:var(--font-human);font-size:19px;font-weight:500;line-height:1.45;text-wrap:pretty">What counts as a 'seat' on the Team plan?</span>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0;margin-top:5px;transform:rotate({{ rot5 }});transition:transform var(--duration) var(--ease)"><path d="m6 9 6 6 6-6"></path></svg>
+</button>
+<sc-if value="{{ open5 }}">
+<p style="font-family:var(--font-human);font-size:17px;color:var(--ink-2);line-height:1.6;margin:0 0 22px;max-width:70ch;text-wrap:pretty">A seat is any developer who installs the Tsuin extension and is actively contributing reasoning to the shared knowledge base. Read-only users (e.g. product managers searching decisions) don't consume seats.</p>
+</sc-if>
+</div>
+<div style="border-bottom:1px solid var(--rule)">
+
+<sc-if value="{{ open6 }}">
+<p style="font-family:var(--font-human);font-size:17px;color:var(--ink-2);line-height:1.6;margin:0 0 22px;max-width:70ch;text-wrap:pretty">Yes. Tsuin is language-agnostic — it captures reasoning at the git and editor level, not the syntax level. TypeScript, Python, Go, Rust, Ruby: if you commit it, Tsuin understands it.</p>
+</sc-if>
+</div>
+<div style="border-bottom:1px solid var(--rule)">
+
+<sc-if value="{{ open7 }}">
+<p style="font-family:var(--font-human);font-size:17px;color:var(--ink-2);line-height:1.6;margin:0 0 22px;max-width:70ch;text-wrap:pretty">Full access to every Team feature — unlimited seats, team knowledge base, Slack integration, Onboarding Mode, everything — for 14 days with no card required. At the end you choose to continue or revert to Solo automatically.</p>
+</sc-if>
+</div>
+<div style="border-bottom:1px solid var(--rule)">
+<button type="button" onClick="{{ t8 }}" aria-expanded="{{ open8 }}" style="width:100%;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:20px 2px;background:transparent;border:0;text-align:left;cursor:pointer;color:var(--ink)" style-hover="color:var(--human-ink)">
+<span style="font-family:var(--font-human);font-size:19px;font-weight:500;line-height:1.45;text-wrap:pretty">How is Enterprise priced?</span>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block;flex-shrink:0;margin-top:5px;transform:rotate({{ rot8 }});transition:transform var(--duration) var(--ease)"><path d="m6 9 6 6 6-6"></path></svg>
+</button>
+<sc-if value="{{ open8 }}">
+<p style="font-family:var(--font-human);font-size:17px;color:var(--ink-2);line-height:1.6;margin:0 0 22px;max-width:70ch;text-wrap:pretty">Enterprise is custom-quoted based on team size, deployment model (cloud vs on-prem), and compliance requirements. Most Enterprise customers land between $12–18 per seat per month at volume. Reach out and we'll scope it within 24 hours.</p>
+</sc-if>
+</div>
+
+</div>
+<p style="font-family:var(--font-twin);font-size:var(--twin-caption);color:var(--ink-muted);margin:28px 0 0;line-height:var(--leading-relaxed)">Still have questions? <a href="mailto:hello@tsuin.ai" style="color:var(--human-ink)">Email us</a> or <a href="https://discord.gg/5DyMNFum44" target="_blank" rel="noopener noreferrer" style="color:var(--human-ink)">join our Discord</a>.</p>
+</div>
+</section>
+
+<div class="dark">
+
+</div>
+
+<footer style="border-top:1px solid var(--rule);padding:44px 0;background:var(--paper)">
+<div style="margin:0 auto;max-width:var(--container-max);padding:0 var(--gutter);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+<a href="index.html" style="display:flex"><img src="assets/tsuin-black-horizontal-full.png" alt="tsuin" style="height:20px;width:auto;mix-blend-mode:multiply" /></a>
+<span style="font-family:var(--font-twin);font-size:var(--twin-caption);color:var(--ink-muted);max-width:230px;line-height:var(--leading-relaxed)">Cognitive AI Twin captures your thinking and continuously learns from you, to become more like you.</span>
+</div>
+<div>
+<p style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--ink-muted);font-weight:700;margin:0 0 14px">COMPANY</p>
+<div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+<a href="about.html" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">About Us</a>
+<a href="manifesto.html" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Manifesto</a>
+<a href="#" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Research</a>
+</div>
+</div>
+<div>
+<p style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--ink-muted);font-weight:700;margin:0 0 14px">SHOPPING</p>
+<div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+<a href="pricing.html" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Pricing</a>
+<a href="#stripe" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Pre-order</a>
+<a href="#" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Merchandise</a>
+</div>
+</div>
+<div>
+<p style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--ink-muted);font-weight:700;margin:0 0 14px">FOLLOW</p>
+<div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+<a href="https://www.linkedin.com/company/tsuin-ai" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+<a href="https://discord.gg/5DyMNFum44" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)" target="_blank" rel="noopener noreferrer">Discord</a>
+<a href="https://www.instagram.com/tsuin.ai/" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)" target="_blank" rel="noopener noreferrer">Instagram</a>
+</div>
+</div>
+</div>
+<div style="margin:36px auto 0;max-width:var(--container-max);padding:22px var(--gutter) 0;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;font-family:var(--font-twin);font-size:var(--twin-caption);color:var(--ink-muted)">
+<span>© 2026 Tsuin AI Sdn Bhd. All rights reserved.</span>
+<div style="display:flex;gap:20px;flex-wrap:wrap">
+<a href="#">Terms &amp; conditions</a>
+<a href="#">Privacy policy</a>
+<a href="#">Refund policy</a>
+<a href="mailto:hello@tsuin.ai">Contact</a>
+</div>
+</div>
+</footer>
+</div>
+
+
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:940},&quot;paperTexture&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Texture&quot;}}">
+class Component extends DCLogic {
+  state = { narrow: false, menuOpen: false, faq: null };
+
+  toggleFaq(i) {
+    this.setState(p => ({ faq: p.faq === i ? null : i }));
+  }
+
+  measure = () => {
+    const narrow = window.innerWidth < 760;
+    if (narrow !== this.state.narrow) this.setState({ narrow, menuOpen: false });
+  };
+  componentDidMount() {
+    this.measure();
+    window.addEventListener("resize", this.measure);
+  }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.measure);
+  }
+
+  renderVals() {
+    const s = this.state;
+    const faq = {};
+    for (let i = 0; i < 12; i++) {
+      faq["open" + i] = s.faq === i;
+      faq["rot" + i] = s.faq === i ? "180deg" : "0deg";
+      faq["t" + i] = () => this.toggleFaq(i);
+    }
+    return {
+      ...faq,
+      paperTexture: this.props.paperTexture ?? true,
+      fullBtn: { style: { width: "100%" } },
+      narrow: s.narrow,
+      wide: !s.narrow,
+      menuOpen: s.narrow && s.menuOpen,
+      menuClosed: !(s.narrow && s.menuOpen),
+      onToggleMenu: () => this.setState(p => ({ menuOpen: !p.menuOpen })),
+      onCloseMenu: () => this.setState({ menuOpen: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

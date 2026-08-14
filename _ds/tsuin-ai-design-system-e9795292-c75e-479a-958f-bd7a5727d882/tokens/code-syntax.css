@@ -1,0 +1,31 @@
+/* Code and terminal surfaces are always Tokyo Night, in both themes —
+   the original design.tsuin.ai dark palette, kept verbatim.
+   Purple survives HERE ONLY, as a syntax colour; it is not a brand role colour. */
+:root{
+  --code-bg:#1a1b26;
+  --code-bg-chrome:#16161e;
+  --code-bg-pane:#1f2335;
+  --code-border:#2f334d;
+  --code-fg:#c0caf5;
+  --code-fg-dim:#a9b1d6;
+  --code-gutter:#3b4261;
+  --code-comment:#565f89;
+  --code-muted:#787c99;
+
+  /* Syntax palette (Tokyo Night literals, as used in the repo's Hero mockup) */
+  --code-blue:#7aa2f7;
+  --code-purple:#bb9af7;
+  --code-cyan:#2ac3de;
+  --code-green:#9ece6a;
+  --code-yellow:#e0af68;
+  --code-orange:#ff9e64;
+  --code-red:#f7768e;
+
+  /* Role aliases for annotation UI drawn on code surfaces */
+  --code-twin:#7aa2f7;      /* the twin speaking — blue */
+  --code-human:#2ac3de;     /* the human's identifiers — teal */
+  --code-phosphor:#9ece6a;
+  --code-keyword:#bb9af7;
+  --code-number:#ff9e64;
+  --code-alert:#f7768e;
+}

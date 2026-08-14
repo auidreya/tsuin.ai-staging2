@@ -1,0 +1,11 @@
+/* Printed objects have modest, honest corners. Nothing pill-shaped by default. */
+:root{
+  --radius:6px;                 /* base — buttons, inputs, badges */
+  --radius-lg:var(--radius);
+  --radius-md:4px;
+  --radius-sm:3px;
+  --radius-xl:10px;             /* cards, panels */
+  --radius-2xl:14px;            /* the floating Twin window */
+  --radius-full:9999px;         /* seals, avatars, postmarks only */
+  --radius-artifact:2px;        /* stamps, box labels, certificates — paper is cut, not rounded */
+}

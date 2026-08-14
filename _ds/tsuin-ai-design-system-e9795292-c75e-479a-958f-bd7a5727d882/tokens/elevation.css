@@ -1,0 +1,15 @@
+/* Shadows are desk-object shadows: warm, soft, close. See tokens/texture.css
+   for the --shadow-desk-* set, which is the preferred vocabulary.
+   The neutral --shadow-* aliases below exist so earlier components keep working. */
+:root{
+  --shadow-sm:var(--shadow-desk-sm);
+  --shadow:var(--shadow-desk);
+  --shadow-md:var(--shadow-desk);
+  --shadow-lg:var(--shadow-desk-lg);
+  --shadow-xl:var(--shadow-desk-lg);
+  --shadow-2xl:var(--shadow-desk-lift);
+
+  --border-width:1px;
+  --border-width-emphasis:2px;
+  --backdrop-blur:blur(6px); /* @kind other */
+}

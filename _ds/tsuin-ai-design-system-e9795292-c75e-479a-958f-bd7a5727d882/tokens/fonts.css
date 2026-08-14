@@ -1,0 +1,4 @@
+/* Two voices, two faces (Taste Spec, Rule 0 — locked 12 Aug 2026).
+   Lora = the human. Martian Mono = the twin. Both are Google Fonts.
+   Production should self-host these; this system loads them from the CDN. */
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..600&family=Martian+Mono:wght@300..800&display=swap");

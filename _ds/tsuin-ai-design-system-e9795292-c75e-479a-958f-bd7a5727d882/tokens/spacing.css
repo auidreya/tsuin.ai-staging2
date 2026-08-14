@@ -1,0 +1,29 @@
+/* 4px base grid (Tailwind-derived, as used across both source repos). */
+:root{
+  --space-0:0px;
+  --space-1:4px;
+  --space-1-5:6px;
+  --space-2:8px;
+  --space-2-5:10px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-5:20px;
+  --space-6:24px;
+  --space-8:32px;
+  --space-10:40px;
+  --space-12:48px;
+  --space-14:56px;
+  --space-16:64px;
+  --space-20:80px;
+  --space-24:96px;
+  --space-32:128px;
+
+  /* Layout */
+  --container-max:1152px;   /* max-w-6xl — every marketing section */
+  --container-prose:896px;  /* max-w-4xl — docs column */
+  --gutter:16px;            /* px-4 */
+  --nav-height:64px;        /* site header h-16 */
+  --docs-header-height:56px;/* docs header h-14 */
+  --sidebar-width:288px;    /* w-72 */
+  --spec-cell:16px;         /* spec-grid background-size — the twin's register */
+}
