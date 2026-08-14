@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tsuin.ai/sitemap.xml
+Sitemap: https://www.tsuin.ai/sitemap.xml
