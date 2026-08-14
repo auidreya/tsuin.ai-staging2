@@ -380,10 +380,14 @@
 <x-import component-from-global-scope="TsuinAiDesignSystem_e97952.Label" for="wl-use" hint-size="100%,18px">What would you hand to a twin?</x-import>
 <textarea id="wl-use" rows="3" placeholder="The auth layer nobody else understands." value="{{ useCase }}" onChange="{{ onUse }}" style="width:100%;resize:vertical;background:transparent;color:var(--ink);border:1px solid var(--input);border-radius:var(--radius);padding:9px 12px;font-family:var(--font-twin);font-size:var(--twin-body);line-height:var(--leading-relaxed);letter-spacing:var(--tracking-twin);outline:none" style-focus="border-color:var(--twin);box-shadow:0 0 0 2px color-mix(in srgb, var(--twin) 35%, transparent)"></textarea>
 </div>
+<div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden">
+<label for="wl-company">Company</label>
+<input id="wl-company" name="company" type="text" tabindex="-1" autocomplete="off" value="{{ company }}" onChange="{{ onCompany }}">
+</div>
 <sc-if value="{{ error }}">
 <p style="font-family:var(--font-twin);font-size:var(--twin-caption);color:var(--destructive);margin:0 0 12px">{{ error }}</p>
 </sc-if>
-<div style="margin-top:12px"><x-import component-from-global-scope="TsuinAiDesignSystem_e97952.Button" variant="outline" onClick="{{ onSubmit }}" hint-size="150px,36px">Join the waitlist</x-import></div>
+<div style="margin-top:12px"><x-import component-from-global-scope="TsuinAiDesignSystem_e97952.Button" variant="outline" onClick="{{ onSubmit }}" hint-size="150px,36px">{{ submitLabel }}</x-import></div>
 <p style="font-family:var(--font-twin);font-size:var(--twin-caption);color:var(--ink-muted);margin:14px 0 0;line-height:var(--leading-relaxed)">Get updates on tsuin research and the launch.&nbsp;</p>
 </div>
 </sc-if>
@@ -555,7 +559,7 @@ class Component extends DCLogic {
   state = {
     theme: "light",
     q1: false, q2: false, typingA1: false, typingA2: false, a1: "", a2: "",
-    email: "", useCase: "", sent: false, sentEmail: "", error: "",
+    email: "", useCase: "", sent: false, sentEmail: "", error: "", sending: false, company: "",
     narrow: false, menuOpen: false
   };
 
@@ -608,13 +612,36 @@ class Component extends DCLogic {
     }
   }
 
-  submit = () => {
+  submit = async () => {
+    if (this.state.sending) return;
     const email = this.state.email.trim();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
       this.setState({ error: "That address doesn't look right. Check it and try again." });
       return;
     }
-    this.setState({ sent: true, sentEmail: email, error: "" });
+    this.setState({ sending: true, error: "" });
+    try {
+      const r = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          useCase: this.state.useCase,
+          source: "landing",
+          company: this.state.company || "",
+        }),
+      });
+      const data = await r.json().catch(() => ({}));
+      if (this.dead) return;
+      if (!r.ok) {
+        this.setState({ sending: false, error: data.error || "We couldn't save that just now. Please try again." });
+        return;
+      }
+      this.setState({ sending: false, sent: true, sentEmail: email, error: "" });
+    } catch {
+      if (this.dead) return;
+      this.setState({ sending: false, error: "Network problem — check your connection and try again." });
+    }
   };
 
   renderVals() {
@@ -646,6 +673,10 @@ class Component extends DCLogic {
       onEmail: e => this.setState({ email: e.target.value, error: "" }),
       onUse: e => this.setState({ useCase: e.target.value }),
       onSubmit: this.submit,
+      sending: s.sending,
+      submitLabel: s.sending ? "Joining\u2026" : "Join the waitlist",
+      company: s.company,
+      onCompany: e => this.setState({ company: e.target.value }),
       error: s.error,
       sent: s.sent, notSent: !s.sent, sentEmail: s.sentEmail,
       ...(dark ? { q1: true, q2: true, typingA1: false, typingA2: false, a1: this.A1, a2: this.A2, a1Shown: true, a2Shown: true } : {})
