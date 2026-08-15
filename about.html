@@ -8,7 +8,7 @@
 <!-- SEO / social. Kept in <head> (not <helmet>) so non-JS scrapers see it. -->
 <title>About tsuin — the team building the Cognitive AI Twin | tsuin</title>
 <meta name="description" content="We are building a Cognitive AI Twin that captures your thought process. Our objective is to build a personal AGI that you own. Meet the founding team behind tsuin.">
-<link rel="canonical" href="https://www.tsuin.ai/about.html">
+<link rel="canonical" href="https://www.tsuin.ai/about">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <meta name="author" content="Tsuin AI Sdn Bhd">
 <meta name="theme-color" content="#FDF6E3" media="(prefers-color-scheme: light)">
@@ -20,7 +20,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="About tsuin — the team building the Cognitive AI Twin">
 <meta property="og:description" content="We are building a Cognitive AI Twin that captures your thought process. Our objective is to build a personal AGI that you own.">
-<meta property="og:url" content="https://www.tsuin.ai/about.html">
+<meta property="og:url" content="https://www.tsuin.ai/about">
 <meta property="og:image" content="https://www.tsuin.ai/assets/og-cover.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -44,7 +44,7 @@
 <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "VideoObject",
-  "@id": "https://www.tsuin.ai/about.html#video-MunSUk0smoQ",
+  "@id": "https://www.tsuin.ai/about#video-MunSUk0smoQ",
   "name": "What Tsuin.ai is about",
   "description": "Let's watch our CEO pitch for Tsuin.ai!",
   "thumbnailUrl": [
@@ -70,11 +70,11 @@
 <header style="position:sticky;top:0;z-index:50;border-bottom:1px solid var(--rule);background:color-mix(in srgb, var(--paper) 82%, transparent);backdrop-filter:blur(6px)">
 <div style="margin:0 auto;max-width:var(--container-max);padding:10px var(--gutter);min-height:var(--nav-height);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
 <div style="display:flex;align-items:center;gap:12px">
-<a href="index.html" style="display:flex"><img src="assets/tsuin-black-horizontal-full.png" alt="tsuin" style="height:26px;width:auto;mix-blend-mode:multiply" /></a>
+<a href="/" style="display:flex"><img src="assets/tsuin-black-horizontal-full.png" alt="tsuin" style="height:26px;width:auto;mix-blend-mode:multiply" /></a>
 <span style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--primary);padding:3px 8px;border-radius:var(--radius-artifact);font-weight:700;background-color:var(--human-wash)">EARLY ACCESS</span>
 </div>
 <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
-<nav style="display:flex;align-items:center;gap:20px;font-family:var(--font-twin);font-size:var(--twin-label);letter-spacing:var(--tracking-twin);color:var(--ink-muted)"><a href="about.html" style="color:var(--human-ink)">About Us</a><a href="manifesto.html" style="color:var(--ink-muted)">Manifesto</a><a href="#" style="color:var(--ink-muted)">Research</a><a href="pricing.html" style="color:var(--ink-muted)">Pricing</a></nav>
+<nav style="display:flex;align-items:center;gap:20px;font-family:var(--font-twin);font-size:var(--twin-label);letter-spacing:var(--tracking-twin);color:var(--ink-muted)"><a href="/about" style="color:var(--human-ink)">About Us</a><a href="/manifesto" style="color:var(--ink-muted)">Manifesto</a><a href="#" style="color:var(--ink-muted)">Research</a><a href="/pricing" style="color:var(--ink-muted)">Pricing</a></nav>
 </sc-if>
 <div style="display:flex;align-items:center;gap:12px">
 <a href="https://buy.stripe.com/aFafZj0KN5Tc2Q5dLN5Vu01" style="text-decoration:none"><x-import component-from-global-scope="TsuinAiDesignSystem_e97952.Button" hint-size="120px,36px">Pre-order</x-import></a>
@@ -92,11 +92,11 @@
 </div>
 <sc-if value="{{ menuOpen }}">
 <nav style="border-top:1px solid var(--rule);background:var(--paper);padding:8px var(--gutter) 14px;display:flex;flex-direction:column;font-family:var(--font-twin);font-size:var(--twin-label);letter-spacing:var(--tracking-twin);color:var(--ink-muted)">
-<a href="about.html" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">About Us</a>
-<a href="manifesto.html" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">Manifesto</a>
+<a href="/about" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">About Us</a>
+<a href="/manifesto" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">Manifesto</a>
 <a href="#" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">Research</a>
-<a href="pricing.html" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">Pricing</a>
-<a href="index.html#waitlist" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;color:var(--human-ink)">Join the waitlist</a>
+<a href="/pricing" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">Pricing</a>
+<a href="/#waitlist" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;color:var(--human-ink)">Join the waitlist</a>
 </nav>
 </sc-if>
 </header>
@@ -217,7 +217,7 @@
 <p style="margin:0;font-family:var(--font-human);font-size:var(--human-lead);color:var(--ink-2);line-height:1.6;max-width:44ch">We're gathering our Technical Advisory Board. <br>A small group. High signal.</p>
 <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
 <a href="https://buy.stripe.com/aFafZj0KN5Tc2Q5dLN5Vu01" style="text-decoration:none"><x-import component-from-global-scope="TsuinAiDesignSystem_e97952.Button" size="lg" hint-size="150px,44px">Pre-order now</x-import></a>
-<a href="pricing.html" style="text-decoration:none"><x-import component-from-global-scope="TsuinAiDesignSystem_e97952.Button" variant="outline" size="lg" hint-size="130px,44px">See pricing</x-import></a>
+<a href="/pricing" style="text-decoration:none"><x-import component-from-global-scope="TsuinAiDesignSystem_e97952.Button" variant="outline" size="lg" hint-size="130px,44px">See pricing</x-import></a>
 </div>
 <p style="margin:0;font-family:var(--font-human);font-size:17px;color:var(--ink-muted);line-height:1.6;max-width:52ch;text-wrap:pretty">The best developer is not the one who codes the fastest, but the one who thinks the deepest.</p>
 </div>
@@ -229,21 +229,21 @@
 <footer style="border-top:1px solid var(--rule);padding:44px 0;background:var(--paper)">
 <div style="margin:0 auto;max-width:var(--container-max);padding:0 var(--gutter);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:40px">
 <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
-<a href="index.html" style="display:flex"><img src="assets/tsuin-black-horizontal-full.png" alt="tsuin" style="height:20px;width:auto;mix-blend-mode:multiply" /></a>
+<a href="/" style="display:flex"><img src="assets/tsuin-black-horizontal-full.png" alt="tsuin" style="height:20px;width:auto;mix-blend-mode:multiply" /></a>
 <span style="font-family:var(--font-twin);font-size:var(--twin-caption);color:var(--ink-muted);max-width:230px;line-height:var(--leading-relaxed)">Cognitive AI Twin captures your thinking and continuously learns from you, to become more like you.</span>
 </div>
 <div>
 <p style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--ink-muted);font-weight:700;margin:0 0 14px">COMPANY</p>
 <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start">
-<a href="about.html" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">About Us</a>
-<a href="manifesto.html" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Manifesto</a>
+<a href="/about" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">About Us</a>
+<a href="/manifesto" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Manifesto</a>
 <a href="#" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Research</a>
 </div>
 </div>
 <div>
 <p style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--ink-muted);font-weight:700;margin:0 0 14px">SHOPPING</p>
 <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start">
-<a href="pricing.html" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Pricing</a>
+<a href="/pricing" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Pricing</a>
 <a href="https://buy.stripe.com/aFafZj0KN5Tc2Q5dLN5Vu01" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Pre-order</a>
 <a href="#" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Merchandise</a>
 </div>

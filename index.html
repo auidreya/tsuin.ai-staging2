@@ -76,7 +76,7 @@
       "inDefinedTermSet": {
         "@type": "DefinedTermSet",
         "name": "tsuin glossary",
-        "url": "https://www.tsuin.ai/manifesto.html"
+        "url": "https://www.tsuin.ai/manifesto"
       }
     },
     {
@@ -102,7 +102,7 @@
         "price": "500",
         "priceCurrency": "MYR",
         "availability": "https://schema.org/PreOrder",
-        "url": "https://www.tsuin.ai/pricing.html"
+        "url": "https://www.tsuin.ai/pricing"
       }
     }
   ]
@@ -138,11 +138,11 @@
 <header style="position:sticky;top:0;z-index:50;border-bottom:1px solid var(--rule);background:color-mix(in srgb, var(--paper) 82%, transparent);backdrop-filter:blur(6px)">
 <div style="margin:0 auto;max-width:var(--container-max);padding:10px var(--gutter);min-height:var(--nav-height);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
 <div style="display:flex;align-items:center;gap:12px">
-<a href="index.html" style="display:flex"><img src="assets/tsuin-black-horizontal-full.png" alt="tsuin" style="height:26px;width:auto;mix-blend-mode:multiply" /></a>
+<a href="/" style="display:flex"><img src="assets/tsuin-black-horizontal-full.png" alt="tsuin" style="height:26px;width:auto;mix-blend-mode:multiply" /></a>
 <span style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--primary);padding:3px 8px;border-radius:var(--radius-artifact);font-weight:700;background-color:var(--human-wash)">EARLY ACCESS</span>
 </div>
 <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
-<nav style="display:flex;align-items:center;gap:20px;font-family:var(--font-twin);font-size:var(--twin-label);letter-spacing:var(--tracking-twin);color:var(--ink-muted)"><a href="about.html" style="color:var(--ink-muted)">About Us</a><a href="manifesto.html" style="color:var(--ink-muted)">Manifesto</a><a href="#" style="color:var(--ink-muted)">Research</a><a href="pricing.html" style="color:var(--ink-muted)">Pricing</a></nav>
+<nav style="display:flex;align-items:center;gap:20px;font-family:var(--font-twin);font-size:var(--twin-label);letter-spacing:var(--tracking-twin);color:var(--ink-muted)"><a href="/about" style="color:var(--ink-muted)">About Us</a><a href="/manifesto" style="color:var(--ink-muted)">Manifesto</a><a href="#" style="color:var(--ink-muted)">Research</a><a href="/pricing" style="color:var(--ink-muted)">Pricing</a></nav>
 </sc-if>
 <div style="display:flex;align-items:center;gap:12px">
 <a href="https://buy.stripe.com/aFafZj0KN5Tc2Q5dLN5Vu01" style="text-decoration:none"><x-import component-from-global-scope="TsuinAiDesignSystem_e97952.Button" hint-size="120px,36px">Pre-order</x-import></a>
@@ -160,11 +160,11 @@
 </div>
 <sc-if value="{{ menuOpen }}">
 <nav style="border-top:1px solid var(--rule);background:var(--paper);padding:8px var(--gutter) 14px;display:flex;flex-direction:column;font-family:var(--font-twin);font-size:var(--twin-label);letter-spacing:var(--tracking-twin);color:var(--ink-muted)">
-<a href="about.html" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">About Us</a>
-<a href="manifesto.html" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">Manifesto</a>
+<a href="/about" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">About Us</a>
+<a href="/manifesto" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">Manifesto</a>
 <a href="#" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">Research</a>
-<a href="pricing.html" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">Pricing</a>
-<a href="index.html#waitlist" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;color:var(--human-ink)">Join the waitlist</a>
+<a href="/pricing" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;border-bottom:1px solid var(--rule)">Pricing</a>
+<a href="/#waitlist" onClick="{{ onCloseMenu }}" style="display:flex;align-items:center;min-height:44px;color:var(--human-ink)">Join the waitlist</a>
 </nav>
 </sc-if>
 </header>
@@ -405,21 +405,21 @@
 </section><footer style="border-top:1px solid var(--rule);padding:44px 0;background:var(--paper)">
 <div style="margin:0 auto;max-width:var(--container-max);padding:0 var(--gutter);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:40px">
 <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
-<a href="index.html" style="display:flex"><img src="assets/tsuin-black-horizontal-full.png" alt="tsuin" style="height:20px;width:auto;mix-blend-mode:multiply" /></a>
+<a href="/" style="display:flex"><img src="assets/tsuin-black-horizontal-full.png" alt="tsuin" style="height:20px;width:auto;mix-blend-mode:multiply" /></a>
 <span style="font-family:var(--font-twin);font-size:var(--twin-caption);color:var(--ink-muted);max-width:230px;line-height:var(--leading-relaxed)">Cognitive AI Twin captures your thinking and continuously learns from you, to become more like you.</span>
 </div>
 <div>
 <p style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--ink-muted);font-weight:700;margin:0 0 14px">COMPANY</p>
 <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start">
-<a href="about.html" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">About Us</a>
-<a href="manifesto.html" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Manifesto</a>
+<a href="/about" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">About Us</a>
+<a href="/manifesto" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Manifesto</a>
 <a href="#" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Research</a>
 </div>
 </div>
 <div>
 <p style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--ink-muted);font-weight:700;margin:0 0 14px">SHOPPING</p>
 <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start">
-<a href="pricing.html" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Pricing</a>
+<a href="/pricing" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Pricing</a>
 <a href="https://buy.stripe.com/aFafZj0KN5Tc2Q5dLN5Vu01" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Pre-order</a>
 <a href="#" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Merchandise</a>
 </div>

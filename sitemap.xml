@@ -7,19 +7,19 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.tsuin.ai/pricing.html</loc>
+    <loc>https://www.tsuin.ai/pricing</loc>
     <lastmod>2026-08-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.tsuin.ai/manifesto.html</loc>
+    <loc>https://www.tsuin.ai/manifesto</loc>
     <lastmod>2026-08-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.tsuin.ai/about.html</loc>
+    <loc>https://www.tsuin.ai/about</loc>
     <lastmod>2026-08-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
