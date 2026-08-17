@@ -1,17 +1,24 @@
 // Waitlist intake -> Supabase.
 //
 // Runs as a Vercel Node function so the service_role key stays server-side and
-// never reaches the browser. Writes to public.waitlist (id, email, source,
-// created_at). The form also asks "What would you hand to a twin?"; that has no
-// column in the current schema, so we attempt to write `use_case` and silently
-// retry without it if the column does not exist. Add the column and the answer
-// starts being captured with no code change:
+// never reaches the browser. Writes to public.waitlist (id, name, email, source,
+// created_at). The form also asks "What would you hand to a twin?", stored in
+// `use_case`.
 //
+// The optional columns (`name`, `use_case`) may not exist on older schemas, so
+// each insert drops them and retries rather than losing the signup. Add them and
+// the values start being captured with no code change:
+//
+//   alter table public.waitlist add column name text;
 //   alter table public.waitlist add column use_case text;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const MAX_EMAIL = 254;
+const MAX_NAME = 120;
 const MAX_USE_CASE = 2000;
+
+// Columns we'll shed one at a time if the schema doesn't have them yet.
+const OPTIONAL = ["use_case", "name"];
 
 // Postgres/PostgREST codes for "that column isn't there"
 const MISSING_COLUMN = new Set(["PGRST204", "42703"]);
@@ -66,18 +73,29 @@ module.exports = async function handler(req, res) {
     return json(res, 400, { error: "That address doesn't look right. Check it and try again." });
   }
 
+  const name = String(body.name || "").trim().slice(0, MAX_NAME);
+  if (!name) {
+    return json(res, 400, { error: "Please tell us your name so we know how to address you." });
+  }
+
   const useCase = String(body.useCase || "").trim().slice(0, MAX_USE_CASE);
   const source = String(body.source || "landing").trim().slice(0, 60) || "landing";
 
   try {
-    let r = await insert(url, key, useCase ? { email, source, use_case: useCase } : { email, source });
+    const row = { email, source, name };
+    if (useCase) row.use_case = useCase;
 
-    if (!r.ok && useCase) {
+    let r = await insert(url, key, row);
+
+    // Shed optional columns one at a time if this schema predates them, so a
+    // missing column costs us the field rather than the whole signup.
+    for (const column of OPTIONAL) {
+      if (r.ok || !(column in row)) continue;
       const detail = await r.clone().json().catch(() => ({}));
-      if (MISSING_COLUMN.has(detail.code)) {
-        // No use_case column yet — keep the signup rather than lose it.
-        r = await insert(url, key, { email, source });
-      }
+      if (!MISSING_COLUMN.has(detail.code)) break;
+      console.warn(`waitlist: public.waitlist has no "${column}" column; dropping it`);
+      delete row[column];
+      r = await insert(url, key, row);
     }
 
     if (!r.ok) {
