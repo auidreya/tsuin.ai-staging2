@@ -2,3 +2,5 @@ uploads/
 .git/
 .DS_Store
 *.zip
+supabase/
+assets/_icons-shibasuke-backup/

@@ -5,12 +5,9 @@
 // created_at). The form also asks "What would you hand to a twin?", stored in
 // `use_case`.
 //
-// The optional columns (`name`, `use_case`) may not exist on older schemas, so
-// each insert drops them and retries rather than losing the signup. Add them and
-// the values start being captured with no code change:
-//
-//   alter table public.waitlist add column name text;
-//   alter table public.waitlist add column use_case text;
+// The full schema lives in supabase/schema.sql [run it in the Supabase SQL
+// editor]. The optional columns (`name`, `use_case`) may not exist on older
+// schemas, so each insert drops them and retries rather than losing the signup.
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const MAX_EMAIL = 254;
@@ -29,14 +26,16 @@ function json(res, status, body) {
   res.status(status).send(JSON.stringify(body));
 }
 
+// Upsert on email: public.waitlist has a unique constraint there, so someone
+// signing up twice refreshes their row instead of getting an error.
 async function insert(url, key, row) {
-  return fetch(`${url}/rest/v1/waitlist`, {
+  return fetch(`${url}/rest/v1/waitlist?on_conflict=email`, {
     method: "POST",
     headers: {
       apikey: key,
       Authorization: `Bearer ${key}`,
       "Content-Type": "application/json",
-      Prefer: "return=minimal",
+      Prefer: "return=minimal,resolution=merge-duplicates",
     },
     body: JSON.stringify(row),
   });
