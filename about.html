@@ -3,6 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KKZJWMVZ');</script>
+<!-- End Google Tag Manager -->
+<!-- GA4 is deliberately NOT configured in this container. It loads via the
+     gtag.js snippet below. Adding a GA4 Configuration tag in GTM would double
+     every pageview. GTM here is for third-party pixels and heatmaps only. -->
+<!-- Google tag (gtag.js) - GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EPN2VM6WKJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EPN2VM6WKJ');
+</script>
+<script src="./analytics.js" defer></script>
+
 <script src="./support.js"></script>
 
 <!-- SEO / social. Kept in <head> (not <helmet>) so non-JS scrapers see it. -->
@@ -64,6 +84,10 @@
 }</script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KKZJWMVZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <x-dc>
 <helmet><script src="./ds-base.js"></script><script src="./image-slot.js"></script><style>body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-human);font-size:var(--text-body)}*{box-sizing:border-box}a{color:var(--ink-muted);text-decoration:none}a:hover{color:var(--human-ink)}input,textarea,button{font-family:inherit}</style></helmet>
 <div style="background:var(--paper);color:var(--ink);font-family:var(--font-human);min-height:100vh">
