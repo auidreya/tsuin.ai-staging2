@@ -1,4 +1,8 @@
-// GA4 custom events. Loaded on every page, after the gtag snippet in <head>.
+// GA4 events. Loaded on every page, after the gtag snippet in <head>.
+//
+// Event names follow Google's recommended-event vocabulary wherever one exists
+// (begin_checkout, generate_lead, select_content) rather than invented names,
+// so they map onto GA4's built-in reports and Google Ads conversion import.
 //
 // Clicks are caught by one delegated listener rather than inline handlers: the
 // design-system components re-render on setState, so per-element handlers would
@@ -46,14 +50,14 @@
     }
 
     // Waitlist CTA. This is the click on the anchor, not the signup itself:
-    // waitlist_signup fires separately once the API confirms the write.
+    // generate_lead fires separately once the API confirms the write.
     if (href === "#waitlist" || href === "/#waitlist") {
-      send("cta_click", { cta_name: "join_waitlist", cta_location: where });
+      send("select_content", { content_type: where, item_id: "join_waitlist" });
       return;
     }
 
     if (href === "/pricing") {
-      send("cta_click", { cta_name: "view_pricing", cta_location: where });
+      send("select_content", { content_type: where, item_id: "view_pricing" });
     }
   }, true);
 })();

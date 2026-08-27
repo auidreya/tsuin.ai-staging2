@@ -661,11 +661,19 @@ class Component extends DCLogic {
         this.setState({ sending: false, error: data.error || "We couldn't save that just now. Please try again." });
         return;
       }
+      // generate_lead is GA4's recommended event for a form submission requesting
+      // contact, which is what the waitlist is. sign_up is deliberately not used:
+      // that one is for account creation and expects a `method` param.
+      //
       // Fires only after the API confirms the write, so failed submissions and
       // validation bounces never count. Note the endpoint upserts on email, so a
       // repeat submission by the same person is a fresh event, not a new lead.
+      //
+      // No `value` is sent. A lead is not worth the $500 order value, and GA4
+      // sums value across events, so reusing it would inflate reported revenue.
+      // Set an estimated lead value here if one is ever agreed.
       if (typeof window.gtag === "function") {
-        window.gtag("event", "waitlist_signup", {
+        window.gtag("event", "generate_lead", {
           form_location: "waitlist_section",
           use_case: this.state.useCase || "unspecified",
           page_path: window.location.pathname,
