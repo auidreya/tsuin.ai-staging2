@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script src="./support.js"></script>
 
 <!-- SEO / social. Kept in <head> (not <helmet>) so non-JS scrapers see it. -->
-<title>Core Values | How we decide | tsuin</title>
+<title>Tsuin Culture | The five principles we run on | tsuin</title>
 <meta name="description" content="The five core principles we run on at tsuin: Bias for Action, Ownership, Dare to Be Different, Feedback Over Venting, and Vote to Unblock.">
 <link rel="canonical" href="https://www.tsuin.ai/values">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
@@ -38,7 +38,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="tsuin">
 <meta property="og:locale" content="en_US">
-<meta property="og:title" content="Core Values | How we decide">
+<meta property="og:title" content="Tsuin Culture | The five principles we run on">
 <meta property="og:description" content="Bias for Action, Ownership, Dare to Be Different, Feedback Over Venting, Vote to Unblock. How we decide, argue, and ship at tsuin.">
 <meta property="og:url" content="https://www.tsuin.ai/values">
 <meta property="og:image" content="https://www.tsuin.ai/assets/og-cover-v2.png">
@@ -48,7 +48,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:image:alt" content="tsuin (Train your twin). A personal pre-AGI that learns your reasoning from your own corrections and runs on your machine.">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Core Values | How we decide">
+<meta name="twitter:title" content="Tsuin Culture | The five principles we run on">
 <meta name="twitter:description" content="Bias for Action, Ownership, Dare to Be Different, Feedback Over Venting, Vote to Unblock. How we decide, argue, and ship at tsuin.">
 <meta name="twitter:image" content="https://www.tsuin.ai/assets/og-cover-v2.png">
 <meta name="twitter:image:alt" content="tsuin (Train your twin). A personal pre-AGI that learns your reasoning from your own corrections and runs on your machine.">
@@ -119,8 +119,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 #cv .cv-wrap{max-width:var(--container-max);margin:0 auto;padding:0 28px}
 #cv .cv-hero{padding:var(--section-y) 0 var(--space-11)}
 #cv .cv-hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:var(--space-10);align-items:center}
-#cv .cv-eyebrow{font:600 13px/1 var(--font-mono);letter-spacing:var(--tracking-wide);
-  text-transform:uppercase;color:var(--electric-600)}
+/* matches the manifesto page's section label exactly: --twin-ink #2F55BE at
+   --twin-micro 10px, --tracking-widest .14em, weight 700. Those three tokens are
+   deliberately NOT redeclared in the #cv block above, so they resolve to the
+   bound design system's values, the same ones manifesto.html reads. */
+#cv .cv-eyebrow{font-family:var(--font-twin);font-size:var(--twin-micro);font-weight:700;
+  line-height:1.4;text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--twin-ink)}
 #cv .cv-h1{margin:0;font:700 clamp(2.6rem,4.2vw,3.75rem)/1.05 var(--font-human);letter-spacing:var(--tracking-display)}
 #cv .cv-lead{margin:var(--space-6) 0 0;font:400 var(--text-lead)/1.65 var(--font-human);color:var(--ink-700);max-width:44ch;text-wrap:pretty}
 #cv .cv-scene{margin:0;display:flex;flex-direction:column;align-items:center;gap:var(--space-3)}
@@ -206,12 +210,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="cv-hero-grid">
 <div>
 <div class="cv-eyebrow" style="margin-bottom:var(--space-5)">Company Values</div>
-<h1 class="cv-h1">How we decide.</h1>
+<h1 class="cv-h1">Tsuin Culture</h1>
 <p class="cv-lead">We run on five core principles: move fast on reversible choices, treat the business like you own it, think bold to stand out, speak up with solutions, and when debate stalls, vote to unblock and execute with 100% commitment.</p>
 </div>
 <figure class="cv-scene">
 <img src="assets/twin-reading-rulebook-cut.png" alt="The blue circuit-lit twin in round glasses and a green 双 bandana, reading the Cyber-Shiba Rule Book at a wooden desk" width="380" height="380" fetchpriority="high" decoding="async">
-<figcaption>Debate hard. Then decide, and back it.</figcaption>
+<figcaption>Shibasuke's Rule Book</figcaption>
 </figure>
 </div>
 </div>
@@ -289,7 +293,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--ink-muted);font-weight:700;margin:0 0 14px">COMPANY</p>
 <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start">
 <a href="/about" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">About Us</a>
-<a href="/values" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Core Values</a>
+<a href="/values" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Culture</a>
 <a href="/manifesto" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Manifesto</a>
 <a href="#" style="color:var(--ink-muted);font-family:var(--font-twin);font-size:var(--twin-caption)">Research</a>
 </div>
