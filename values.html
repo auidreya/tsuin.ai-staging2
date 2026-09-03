@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script src="./support.js"></script>
 
 <!-- SEO / social. Kept in <head> (not <helmet>) so non-JS scrapers see it. -->
-<title>Core Values | The five principles we run on | tsuin</title>
+<title>Core Values | How we decide | tsuin</title>
 <meta name="description" content="The five core principles we run on at tsuin: Bias for Action, Ownership, Dare to Be Different, Feedback Over Venting, and Vote to Unblock.">
 <link rel="canonical" href="https://www.tsuin.ai/values">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
@@ -38,7 +38,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="tsuin">
 <meta property="og:locale" content="en_US">
-<meta property="og:title" content="Core Values | The five principles we run on">
+<meta property="og:title" content="Core Values | How we decide">
 <meta property="og:description" content="Bias for Action, Ownership, Dare to Be Different, Feedback Over Venting, Vote to Unblock. How we decide, argue, and ship at tsuin.">
 <meta property="og:url" content="https://www.tsuin.ai/values">
 <meta property="og:image" content="https://www.tsuin.ai/assets/og-cover-v2.png">
@@ -48,7 +48,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:image:alt" content="tsuin (Train your twin). A personal pre-AGI that learns your reasoning from your own corrections and runs on your machine.">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Core Values | The five principles we run on">
+<meta name="twitter:title" content="Core Values | How we decide">
 <meta name="twitter:description" content="Bias for Action, Ownership, Dare to Be Different, Feedback Over Venting, Vote to Unblock. How we decide, argue, and ship at tsuin.">
 <meta name="twitter:image" content="https://www.tsuin.ai/assets/og-cover-v2.png">
 <meta name="twitter:image:alt" content="tsuin (Train your twin). A personal pre-AGI that learns your reasoning from your own corrections and runs on your machine.">
@@ -69,7 +69,110 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <x-dc>
-<helmet><script src="./ds-base.js"></script><style>body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-human);font-size:var(--text-body)}*{box-sizing:border-box}a{color:var(--ink-muted);text-decoration:none}a:hover{color:var(--human-ink)}input,textarea,button{font-family:inherit}</style></helmet>
+<helmet><script src="./ds-base.js"></script><style>body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-human);font-size:var(--text-body)}*{box-sizing:border-box}a{color:var(--ink-muted);text-decoration:none}a:hover{color:var(--human-ink)}input,textarea,button{font-family:inherit}</style>
+<style>
+/* --- Company Values page ---------------------------------------------------
+   Imported from Claude Design: "Company Values.dc.html"
+   (project 69e4ce12, design system tsuin-ai-design-system-64a181c8).
+
+   That design system is a later generation than the one bound in _ds/
+   (e9795292): cream #FAF3E3, industrial orange as the human, electric blue as
+   the twin. Its token names collide with the bound system's (--rule is a colour
+   there and a 2px length here, --human is teal there and orange here), so the
+   64a181c8 tokens are declared on #cv instead of :root. They inherit down into
+   the page body only, and the site header and footer keep the bound system's
+   values untouched. */
+#cv{
+  /* paper + warm ink */
+  --cream-50:#FAF7F0;--cream-100:#FAF3E3;--cream-200:#F1E8D3;--cream-300:#E2D6BC;
+  --ink-900:#111111;--ink-800:#1A1A1A;--ink-700:#2B2A27;--ink-600:#403C34;
+  --ink-500:#57524A;--ink-400:#7C7568;
+  /* the human register */
+  --orange-900:#7A3510;--orange-800:#96491A;--orange-700:#B85720;--orange-600:#D96B27;
+  --orange-200:#F4CBA5;--orange-100:#FBE7D2;
+  /* the twin register */
+  --electric-900:#00246E;--electric-600:#0055FF;--electric-200:#BFD2FF;--electric-100:#E2EAFF;
+  /* semantic aliases */
+  --surface-page:var(--cream-100);--surface-card:var(--cream-50);--surface-sunken:var(--cream-200);
+  --text-body:var(--ink-900);--text-muted:var(--ink-500);--text-faint:var(--ink-400);
+  --border-hairline:var(--cream-300);
+  --human:var(--orange-600);--human-strong:var(--orange-800);
+  /* type */
+  --font-human:"Lora",Georgia,"Times New Roman",serif;
+  --font-twin:"Martian Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --font-body:var(--font-human);--font-mono:var(--font-twin);
+  --text-h3:1.4375rem;--text-lead:1.1875rem;--text-body-size:1.0625rem;
+  --tracking-label:0.04em;--tracking-wide:0.1em;--tracking-display:-0.015em;
+  /* space, radius, elevation, motion */
+  --space-1:4px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;
+  --space-7:32px;--space-8:40px;--space-10:64px;--space-11:80px;
+  --section-y:96px;--container-max:1180px;
+  --radius-1:3px;--radius-3:10px;--hairline:1px;
+  --shadow-desk-sm:0 1px 2px rgba(90,62,30,.10),0 2px 6px rgba(90,62,30,.07);
+  --shadow-desk:0 2px 4px rgba(43,34,20,.07),0 10px 22px rgba(43,34,20,.09);
+  --grain-tint:rgba(120,94,58,.05);
+  --ease-paper:cubic-bezier(.2,.8,.2,1);
+
+  background:var(--surface-page);
+  color:var(--text-body);
+  font:400 var(--text-body-size)/1.65 var(--font-human);
+}
+/* .paper-grain, from the 64a181c8 elevation tokens */
+#cv .paper-grain{position:relative}
+#cv .paper-grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(var(--grain-tint) 1px,transparent 1px);background-size:3px 3px}
+
+#cv .cv-wrap{max-width:var(--container-max);margin:0 auto;padding:0 28px}
+#cv .cv-hero{padding:var(--section-y) 0 var(--space-11)}
+#cv .cv-hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:var(--space-10);align-items:center}
+#cv .cv-eyebrow{display:inline-block;padding:6px 14px;background:var(--orange-100);color:var(--orange-800);
+  font:500 12px/1.4 var(--font-mono);letter-spacing:var(--tracking-label);text-transform:uppercase;
+  transform:rotate(-1.5deg);box-shadow:0 1px 0 rgba(43,34,20,.12);
+  clip-path:polygon(0 6%,2% 0,98% 3%,100% 0,100% 94%,97% 100%,3% 97%,0 100%)}
+#cv .cv-h1{margin:0;font:700 clamp(2.6rem,4.2vw,3.75rem)/1.05 var(--font-human);letter-spacing:var(--tracking-display)}
+#cv .cv-lead{margin:var(--space-6) 0 0;font:400 var(--text-lead)/1.65 var(--font-human);color:var(--ink-700);max-width:44ch;text-wrap:pretty}
+#cv .cv-scene{margin:0;display:flex;flex-direction:column;align-items:center;gap:var(--space-3)}
+#cv .cv-scene img{width:380px;max-width:100%;height:auto}
+#cv .cv-scene figcaption{font:400 13px/1.5 var(--font-body);color:var(--text-muted);max-width:42ch;text-align:center}
+
+#cv .cv-values{background:var(--surface-sunken);border-top:1px solid var(--border-hairline);
+  border-bottom:1px solid var(--border-hairline);padding:var(--section-y) 0;scroll-margin-top:80px}
+#cv .cv-values-grid{display:grid;grid-template-columns:200px 1fr;gap:var(--space-10);align-items:start}
+#cv .cv-index{position:sticky;top:110px;display:flex;flex-direction:column;gap:2px;
+  border-left:2px solid var(--cream-300);padding-left:16px}
+#cv .cv-index span{font:500 9px/1.4 var(--font-mono);letter-spacing:var(--tracking-wide);
+  text-transform:uppercase;color:var(--text-faint);margin-bottom:10px}
+#cv .cv-index a{font:400 12px/1.9 var(--font-mono);letter-spacing:-.02em;text-decoration:none;color:var(--ink-600)}
+#cv .cv-index a:hover{color:var(--orange-800)}
+#cv .cv-rows{display:flex;flex-direction:column;gap:var(--space-6)}
+#cv .cv-row{scroll-margin-top:120px;display:grid;grid-template-columns:120px 1fr;gap:var(--space-7);
+  padding:var(--space-7) var(--space-8);background:var(--surface-card);border:1px solid var(--border-hairline);
+  border-radius:var(--radius-3);box-shadow:var(--shadow-desk-sm);
+  transition:transform 200ms var(--ease-paper),box-shadow 200ms var(--ease-paper),border-color 200ms var(--ease-paper)}
+#cv .cv-row:hover{transform:translateY(-2px);box-shadow:var(--shadow-desk);border-color:var(--human)}
+#cv .cv-num{font:500 34px/1 var(--font-mono);letter-spacing:-.04em;color:var(--orange-600)}
+#cv .cv-row h2{margin:0;font:600 var(--text-h3)/1.2 var(--font-human);letter-spacing:0}
+#cv .cv-row p{margin:var(--space-4) 0 0;font:400 var(--text-body-size)/1.7 var(--font-human);
+  color:var(--ink-700);max-width:58ch;text-wrap:pretty}
+
+@media (max-width:900px){
+  #cv{--section-y:56px}
+  #cv .cv-wrap{padding:0 20px}
+  #cv .cv-hero-grid{grid-template-columns:1fr;gap:var(--space-8)}
+  #cv .cv-scene{align-items:flex-start}
+  #cv .cv-scene figcaption{text-align:left}
+  #cv .cv-values-grid{grid-template-columns:1fr;gap:var(--space-7)}
+  #cv .cv-index{position:static;top:auto}
+}
+@media (max-width:600px){
+  #cv .cv-row{grid-template-columns:1fr;gap:var(--space-4);padding:var(--space-6)}
+}
+@media (prefers-reduced-motion:reduce){
+  #cv .cv-row{transition:none}
+  #cv .cv-row:hover{transform:none}
+}
+</style>
+</helmet>
 <div style="background:var(--paper);color:var(--ink);font-family:var(--font-human);min-height:100vh">
 
 <header style="position:sticky;top:0;z-index:50;border-bottom:1px solid var(--rule);background:color-mix(in srgb, var(--paper) 82%, transparent);backdrop-filter:blur(6px)">
@@ -105,73 +208,80 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </nav>
 </sc-if>
 </header>
-<main id="values">
+<main id="cv">
 
-<section style="position:relative;overflow:hidden;padding:clamp(56px,8vw,88px) 0 clamp(48px,7vw,72px);border-bottom:1px solid var(--rule)">
-<sc-if value="{{ paperTexture }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="pointer-events:none;position:absolute;inset:0;z-index:0;background-image:var(--texture-paper);opacity:var(--texture-paper-opacity);mix-blend-mode:var(--texture-paper-blend)"></div></sc-if>
-<div style="margin:0 auto;max-width:var(--container-max);padding:0 var(--gutter);position:relative;z-index:1">
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(32px,5vw,56px);align-items:end">
-<div style="display:flex;flex-direction:column;align-items:flex-start;gap:22px">
-<span style="font-family:var(--font-twin);font-size:var(--twin-micro);text-transform:uppercase;letter-spacing:var(--tracking-widest);color:var(--twin-ink);font-weight:700;border:1px solid color-mix(in srgb, var(--twin) 45%, transparent);border-radius:var(--radius-artifact);padding:6px 10px">CORE VALUES</span>
-<h1 style="margin:0;font-family:var(--font-human);font-size:clamp(32px,5.6vw,54px);font-weight:600;letter-spacing:var(--tracking-tight);line-height:1.08;max-width:20ch;text-wrap:pretty">We run on five core principles.</h1>
-<p style="margin:0;font-family:var(--font-human);font-size:var(--human-lead);color:var(--ink-2);line-height:1.6;max-width:52ch;text-wrap:pretty">Move fast on reversible choices, treat the business like you own it, think bold to stand out, speak up with solutions, and when debate stalls, vote to unblock and execute with 100% commitment.</p>
+<section id="top" class="cv-hero paper-grain">
+<div class="cv-wrap">
+<div class="cv-hero-grid">
+<div>
+<div style="margin-bottom:var(--space-5)"><span class="cv-eyebrow">company values</span></div>
+<h1 class="cv-h1">How we decide.</h1>
+<p class="cv-lead">We run on five core principles: move fast on reversible choices, treat the business like you own it, think bold to stand out, speak up with solutions, and when debate stalls, vote to unblock and execute with 100% commitment.</p>
 </div>
-<img src="assets/shibasuke-scene-highfive.png" alt="The painted shiba and its blue circuit-lit twin high-fiving over a network of nodes" style="display:block;width:min(100%,560px);height:auto;justify-self:end">
+<figure class="cv-scene">
+<img src="assets/shibasuke-scene-training.png" alt="The blue circuit-lit twin at the keyboard in a 合格 headband, the painted shiba on the monitor">
+<figcaption>Debate hard. Then decide, and back it.</figcaption>
+</figure>
 </div>
 </div>
 </section>
 
-<section style="padding:clamp(48px,7vw,80px) 0 clamp(56px,8vw,88px)">
-<div style="margin:0 auto;max-width:var(--container-max);padding:0 var(--gutter)">
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:20px">
+<section id="values" class="cv-values">
+<div class="cv-wrap">
+<div class="cv-values-grid">
 
-<div style="border:1px solid var(--rule);border-radius:var(--radius-xl);background:var(--paper-2);padding:34px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow-desk-sm)">
-<span style="font-family:var(--font-twin);font-size:var(--twin-micro);letter-spacing:var(--tracking-widest);color:var(--twin-ink);font-weight:700">01</span>
-<h2 style="margin:0;font-family:var(--font-human);font-size:clamp(22px,2.6vw,26px);font-weight:600;letter-spacing:var(--tracking-tight);line-height:1.25">Bias for Action</h2>
-<p style="margin:0;font-family:var(--font-human);font-size:17px;color:var(--ink-2);line-height:1.6;text-wrap:pretty">Prioritize speed, calculated risk-taking, and rapid execution. Most decisions are reversible, so favor action over analysis paralysis.</p>
-</div>
+<nav class="cv-index" aria-label="Core values">
+<span>index</span>
+<a href="#v01">01 bias for action</a>
+<a href="#v02">02 ownership</a>
+<a href="#v03">03 dare to be different</a>
+<a href="#v04">04 feedback over venting</a>
+<a href="#v05">05 vote to unblock</a>
+</nav>
 
-<div style="border:1px solid var(--rule);border-radius:var(--radius-xl);background:var(--paper-2);padding:34px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow-desk-sm)">
-<span style="font-family:var(--font-twin);font-size:var(--twin-micro);letter-spacing:var(--tracking-widest);color:var(--twin-ink);font-weight:700">02</span>
-<h2 style="margin:0;font-family:var(--font-human);font-size:clamp(22px,2.6vw,26px);font-weight:600;letter-spacing:var(--tracking-tight);line-height:1.25">Ownership</h2>
-<p style="margin:0;font-family:var(--font-human);font-size:17px;color:var(--ink-2);line-height:1.6;text-wrap:pretty">Make decisions based on long-term value creation rather than short-term gains, treating the company like true owners rather than short-sighted tenants.</p>
-</div>
+<div class="cv-rows">
 
-<div style="border:1px solid var(--rule);border-radius:var(--radius-xl);background:var(--paper-2);padding:34px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow-desk-sm)">
-<span style="font-family:var(--font-twin);font-size:var(--twin-micro);letter-spacing:var(--tracking-widest);color:var(--twin-ink);font-weight:700">03</span>
-<h2 style="margin:0;font-family:var(--font-human);font-size:clamp(22px,2.6vw,26px);font-weight:600;letter-spacing:var(--tracking-tight);line-height:1.25">Dare to Be Different</h2>
-<p style="margin:0;font-family:var(--font-human);font-size:17px;color:var(--ink-2);line-height:1.6;text-wrap:pretty">Stand out from the competition by embracing bold, unconventional thinking. Being different goes beyond taking risks: we actively encourage crazy ideas that challenge the status quo.</p>
+<article id="v01" class="cv-row">
+<div><span class="cv-num">01</span></div>
+<div>
+<h2>Bias for Action</h2>
+<p>Prioritize speed, calculated risk-taking, and rapid execution. Most decisions are reversible, so favor action over analysis paralysis.</p>
 </div>
+</article>
 
-<div style="border:1px solid var(--rule);border-radius:var(--radius-xl);background:var(--paper-2);padding:34px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow-desk-sm)">
-<span style="font-family:var(--font-twin);font-size:var(--twin-micro);letter-spacing:var(--tracking-widest);color:var(--twin-ink);font-weight:700">04</span>
-<h2 style="margin:0;font-family:var(--font-human);font-size:clamp(22px,2.6vw,26px);font-weight:600;letter-spacing:var(--tracking-tight);line-height:1.25">Feedback Over Venting</h2>
-<p style="margin:0;font-family:var(--font-human);font-size:17px;color:var(--ink-2);line-height:1.6;text-wrap:pretty">Challenge ideas openly, but always pair criticism with a suggested fix or next step. Complaints without solutions drain energy, while constructive feedback builds momentum.</p>
+<article id="v02" class="cv-row">
+<div><span class="cv-num">02</span></div>
+<div>
+<h2>Ownership</h2>
+<p>Make decisions based on long-term value creation rather than short-term gains, treating the company like true owners rather than short-sighted tenants.</p>
 </div>
+</article>
 
-<div style="border:1px solid var(--rule);border-radius:var(--radius-xl);background:var(--paper-2);padding:34px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow-desk-sm)">
-<span style="font-family:var(--font-twin);font-size:var(--twin-micro);letter-spacing:var(--tracking-widest);color:var(--twin-ink);font-weight:700">05</span>
-<h2 style="margin:0;font-family:var(--font-human);font-size:clamp(22px,2.6vw,26px);font-weight:600;letter-spacing:var(--tracking-tight);line-height:1.25">Vote to Unblock</h2>
-<p style="margin:0;font-family:var(--font-human);font-size:17px;color:var(--ink-2);line-height:1.6;text-wrap:pretty">Debate hard, but never get stuck. When a decision is genuinely deadlocked, we take a vote to break the stalemate and move on. Once locked, the whole team commits 100% to execution.</p>
+<article id="v03" class="cv-row">
+<div><span class="cv-num">03</span></div>
+<div>
+<h2>Dare to Be Different</h2>
+<p>Stand out from the competition by embracing bold, unconventional thinking. Being different goes beyond taking risks: we actively encourage crazy ideas that challenge the status quo.</p>
 </div>
+</article>
+
+<article id="v04" class="cv-row">
+<div><span class="cv-num">04</span></div>
+<div>
+<h2>Feedback Over Venting</h2>
+<p>Challenge ideas openly, but always pair criticism with a suggested fix or next step. Complaints without solutions drain energy, while constructive feedback builds momentum.</p>
+</div>
+</article>
+
+<article id="v05" class="cv-row">
+<div><span class="cv-num">05</span></div>
+<div>
+<h2>Vote to Unblock</h2>
+<p>Debate hard, but never get stuck. When a decision is genuinely deadlocked, we take a vote to break the stalemate and move on. Once locked, the whole team commits 100% to execution.</p>
+</div>
+</article>
 
 </div>
-</div>
-</section>
-
-<section style="padding:0 0 clamp(72px,10vw,120px)">
-<div style="margin:0 auto;max-width:var(--container-max);padding:0 var(--gutter)">
-<div style="border-top:1px solid var(--rule);padding-top:clamp(40px,6vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(32px,5vw,56px);align-items:center">
-<div style="display:flex;flex-direction:column;align-items:flex-start;gap:22px">
-<h2 style="margin:0;font-family:var(--font-human);font-size:clamp(30px,5vw,46px);font-weight:600;letter-spacing:var(--tracking-tight);line-height:1.1">Train your Twin with us.</h2>
-<p style="margin:0;font-family:var(--font-human);font-size:var(--human-lead);color:var(--ink-2);line-height:1.6;max-width:44ch">If this is how you already work, you are the kind of person we are building with.</p>
-<div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
-<a href="https://buy.stripe.com/bJe8wR1ORgxQcqF6jl5Vu02" style="text-decoration:none"><x-import component-from-global-scope="TsuinAiDesignSystem_e97952.Button" size="lg" hint-size="150px,44px">Pre-order now</x-import></a>
-<a href="/manifesto" style="text-decoration:none"><x-import component-from-global-scope="TsuinAiDesignSystem_e97952.Button" variant="outline" size="lg" hint-size="130px,44px">Read the manifesto</x-import></a>
-</div>
-<p style="margin:0;font-family:var(--font-twin);font-size:var(--twin-caption);color:var(--ink-muted);letter-spacing:var(--tracking-twin)">tsuin · ツイン</p>
-</div>
-<img src="assets/shibasuke-scene-training.png" alt="The blue circuit-lit twin at the keyboard in a 合格 headband, the painted shiba on the monitor" style="display:block;width:min(100%,420px);height:auto;justify-self:end">
 </div>
 </div>
 </section>
