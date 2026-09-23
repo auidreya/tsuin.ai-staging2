@@ -1,12 +1,15 @@
 import Script from "next/script";
-import { GA_ID, GTM_ID } from "@/lib/site";
+import { GA_ID } from "@/lib/site";
+import { DeferredAnalytics } from "./deferred-analytics";
 
-// Analytics without blocking the page.
+// Analytics without costing page speed.
 //
 // The inline snippet runs right after hydration: it creates dataLayer and the
-// gtag() stub, so pageviews and click events (begin_checkout, generate_lead)
-// queue up immediately. The two Google libraries (~290 KB) load later, when the
-// browser is idle, and replay the queue.
+// gtag() stub, so the pageview and any events queue up immediately. The Google
+// libraries themselves (~290 KB, ~600 ms of main-thread work on a mid-range
+// phone) load on the visitor's first interaction (see DeferredAnalytics), then
+// replay the queue. Trade-off, chosen deliberately: a visitor who leaves
+// without scrolling, tapping, typing or moving the mouse is not counted.
 //
 // GTM carries third-party pixels and heatmaps only. GA4 loads via gtag.js;
 // adding a GA4 tag inside GTM would double every pageview.
@@ -25,8 +28,7 @@ export function ThirdPartyScripts() {
       <Script id="analytics-init" strategy="afterInteractive">
         {INIT}
       </Script>
-      <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="lazyOnload" />
-      <Script src={`https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`} strategy="lazyOnload" />
+      <DeferredAnalytics />
     </>
   );
 }
