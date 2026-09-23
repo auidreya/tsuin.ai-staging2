@@ -1,0 +1,121 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--rule);
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+.row {
+  margin: 0 auto;
+  max-width: var(--container-max);
+  padding: 10px var(--gutter);
+  min-height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.brand,
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.badge {
+  font-family: var(--font-twin);
+  font-size: var(--twin-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--primary);
+  padding: 3px 8px;
+  border-radius: var(--radius-artifact);
+  font-weight: 700;
+  background-color: var(--human-wash);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-family: var(--font-twin);
+  font-size: var(--twin-label);
+  letter-spacing: var(--tracking-twin);
+  color: var(--ink-muted);
+}
+
+.navLink {
+  color: var(--ink-muted);
+}
+
+.navLink[aria-current="page"] {
+  color: var(--human-ink);
+}
+
+.menuButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  color: var(--ink-muted);
+  cursor: pointer;
+}
+
+.menuButton:hover {
+  border-color: color-mix(in srgb, var(--human) 35%, var(--rule));
+}
+
+.menuButton svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+.mobileNav {
+  border-top: 1px solid var(--rule);
+  background: var(--paper);
+  padding: 8px var(--gutter) 14px;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-twin);
+  font-size: var(--twin-label);
+  letter-spacing: var(--tracking-twin);
+  color: var(--ink-muted);
+}
+
+.mobileNav a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.mobileNav a:last-child {
+  border-bottom: 0;
+  color: var(--human-ink);
+}
+
+/* Matches the old runtime breakpoint (window.innerWidth < 760). */
+@media (max-width: 759.98px) {
+  .nav {
+    display: none;
+  }
+
+  .menuButton {
+    display: flex;
+  }
+}
+
+@media (min-width: 760px) {
+  .mobileNav {
+    display: none;
+  }
+}

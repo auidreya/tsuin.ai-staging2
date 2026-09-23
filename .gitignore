@@ -3,3 +3,9 @@ uploads/
 *.zip
 .vercel
 .env*
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+schema.sql

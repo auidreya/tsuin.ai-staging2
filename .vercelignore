@@ -1,6 +1,6 @@
 uploads/
-.git/
+_legacy/
+supabase/
+design-source/
 .DS_Store
 *.zip
-supabase/
-assets/_icons-shibasuke-backup/

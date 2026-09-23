@@ -1,0 +1,335 @@
+/* Two souls, coloured from design.tsuin.ai itself. Each theme belongs to one of them:
+     light mode -> the human's teal is primary; dark mode -> the twin's blue is primary.
+     the human = the light-mode primary teal  (--primary hsl(175 59% 40%) = #2AA198)
+     the twin  = the dark-mode primary blue   (--primary hsl(221 92% 72%) = #7AA2F7)
+   Surfaces are the repo's own: Solarized Light and Tokyo Night Storm.
+   No purple — the repo's decorative --accent purple is dropped. No moss.
+   Bright values are illustration colours; the *-ink values are what passes as text.
+   See guidelines/colors-contrast.card.html. */
+:root{
+  /* --- Surfaces: Solarized Light, verbatim from the repo's src/index.css --- */
+  --paper:hsl(44 87% 94%);      /* #FDF6E3 — page */
+  --paper-2:hsl(44 70% 90%);    /* cards */
+  --paper-3:hsl(45 47% 89%);    /* #EEE8D5 — secondary bands, tracks */
+  --ink:hsl(192 10% 20%);       /* body text — 11.8:1 on paper */
+  --ink-2:#2B3134;              /* headings */
+  --ink-muted:hsl(192 10% 40%); /* captions, meta — 4.8:1 */
+  --rule:hsl(45 20% 80%);       /* hairlines */
+
+  /* The Human/Twin switch shell. Declared once on :root only — it must NOT flip
+     with the theme, or the floating control vanishes into whichever page it sits on. */
+  --toggle-shell:#2A2724;
+  --toggle-shell-fg:#9C948A;
+  --toggle-thumb:#F5EEDC;
+
+  /* --- The human: the repo's teal --- */
+  --human:hsl(175 59% 30%);     /* #207A73 — fill / primary action, paper text 5.0:1 */
+  --human-bright:hsl(175 59% 40%); /* #2AA198 — the repo primary: illustration, large graphics */
+  --human-ink:hsl(175 59% 30%); /* #207A73 — teal as TEXT on paper */
+  --human-wash:hsl(177 36% 79%); /* #B4DEDC — the repo's primary-light */
+
+  /* --- The twin: the repo's dark-mode blue --- */
+  --twin:#3F63CC;               /* fill on paper — cream text 5.4:1 */
+  --twin-bright:hsl(221 92% 72%); /* #7AA2F7 — illustration, and the dark-mode CTA */
+  --twin-ink:#2F55BE;           /* blue as TEXT on paper — 6.6:1 */
+  --twin-wash:#E2E9FA;
+  --phosphor:#9ECE6A;           /* Tokyo Night green — code surfaces only */
+
+  /* --- Artifact ink --- */
+  --hanko:#B33A2B;              /* the red seal, and only the seal */
+
+  /* --- Semantic --- */
+  --success:#2E7D4F;
+  --warning:#B4740C;
+  --destructive:hsl(0 72% 51%);
+
+  /* --- ShadCN-compatible aliases: existing components read these --- */
+  --background:var(--paper);
+  --foreground:var(--ink);
+  --card:var(--paper-2);
+  --card-foreground:var(--ink);
+  --popover:var(--paper);
+  --popover-foreground:var(--ink);
+  --primary:var(--human);
+  --primary-foreground:var(--paper);
+  --primary-dark:var(--human-ink);
+  --primary-light:var(--human-wash);
+  --secondary:var(--paper-3);
+  --secondary-foreground:var(--ink-2);
+  --muted:var(--paper-3);
+  --muted-foreground:var(--ink-muted);
+  --accent:var(--twin);
+  --accent-foreground:var(--paper);
+  --destructive-foreground:var(--paper);
+  --border:var(--rule);
+  --input:var(--rule);
+  --ring:var(--human);
+}
+
+/* Tokyo Night Storm — the dark palette, signed off from the repo's own values. */
+.dark{
+  --paper:#1A1B26;              /* hsl(235 24% 13%) — deep navy canvas */
+  --paper-2:hsl(231 25% 16%);
+  --paper-3:#252737;            /* hsl(231 25% 22%) — hover, disabled, secondary surfaces */
+  --ink:#C0CAF5;                /* hsl(228 35% 85%) — cool lavender-white */
+  --ink-2:#D5DCF0;
+  --ink-muted:hsl(228 20% 60%);
+  --rule:#414868;               /* hsl(231 15% 30%) — all UI borders */
+
+  --human:hsl(175 59% 40%);     /* #2AA198 — teal holds up on navy */
+  --human-bright:hsl(177 36% 79%);
+  --human-ink:hsl(177 36% 79%); /* #B4DEDC — teal as text on navy */
+  --human-wash:hsl(175 59% 18%);
+
+  --twin:hsl(221 92% 72%);      /* #7AA2F7 — the CTA colour in dark mode */
+  --twin-bright:#9DBBFA;
+  --twin-ink:#9DBBFA;
+  --twin-wash:#1B2440;
+  --phosphor:#9ECE6A;
+
+  --hanko:#D4503C;
+
+  --success:#9ECE6A;
+  --warning:#E0AF68;
+  --destructive:hsl(0 63% 55%);
+
+  /* Dark mode belongs to the twin: blue is primary, accent and ring here.
+     Teal stays available as --human-* for the human's own moments. */
+  --primary:var(--twin);
+  --primary-foreground:#1A1B26;
+  --primary-dark:var(--twin-bright);
+  --primary-light:var(--twin-wash);
+  --accent:var(--twin);
+  --accent-foreground:#1A1B26;
+  --ring:var(--twin);
+  --destructive-foreground:#1A1B26;
+
+  /* Surface aliases must be re-declared here, not inherited: var() resolves at the
+     declaring element, so a .dark on a wrapper (not :root) would otherwise keep the
+     light values its ancestors already resolved. This is what makes nested dark
+     bands — the Solo section, a dark CTA — actually flip. */
+  --background:var(--paper);
+  --foreground:var(--ink);
+  --card:var(--paper-2);
+  --card-foreground:var(--ink);
+  --popover:var(--paper-2);
+  --popover-foreground:var(--ink);
+  --secondary:var(--paper-3);
+  --secondary-foreground:var(--ink-2);
+  --muted:var(--paper-3);
+  --muted-foreground:var(--ink-muted);
+  --border:var(--rule);
+  --input:var(--rule);
+}
+
+/* Code and terminal surfaces are always Tokyo Night, in both themes —
+   the original design.tsuin.ai dark palette, kept verbatim.
+   Purple survives HERE ONLY, as a syntax colour; it is not a brand role colour. */
+:root{
+  --code-bg:#1a1b26;
+  --code-bg-chrome:#16161e;
+  --code-bg-pane:#1f2335;
+  --code-border:#2f334d;
+  --code-fg:#c0caf5;
+  --code-fg-dim:#a9b1d6;
+  --code-gutter:#3b4261;
+  --code-comment:#565f89;
+  --code-muted:#787c99;
+
+  /* Syntax palette (Tokyo Night literals, as used in the repo's Hero mockup) */
+  --code-blue:#7aa2f7;
+  --code-purple:#bb9af7;
+  --code-cyan:#2ac3de;
+  --code-green:#9ece6a;
+  --code-yellow:#e0af68;
+  --code-orange:#ff9e64;
+  --code-red:#f7768e;
+
+  /* Role aliases for annotation UI drawn on code surfaces */
+  --code-twin:#7aa2f7;      /* the twin speaking — blue */
+  --code-human:#2ac3de;     /* the human's identifiers — teal */
+  --code-phosphor:#9ece6a;
+  --code-keyword:#bb9af7;
+  --code-number:#ff9e64;
+  --code-alert:#f7768e;
+}
+
+/* Rule 0, made typographic: who is speaking decides the font.
+   Lora = the human voice. Martian Mono = the twin voice. Never blended into mush.
+
+   THEME RULE (locked): the theme decides whose world you are in.
+     Light mode is the human's  -> Lora carries headlines and body.
+     Dark mode is the twin's    -> Martian Mono carries everything, serif gives way.
+   Nothing in a component needs to know this: --font-human resolves to Martian Mono
+   inside .dark, so every existing usage follows the rule automatically. */
+:root{
+  --face-lora:var(--font-lora),Georgia,serif; /* @kind font */
+  --face-martian:var(--font-martian),ui-monospace,"SFMono-Regular",monospace; /* @kind font */
+
+  --font-human:var(--face-lora);      /* emotional headlines, story, manifesto, the human's dialogue */
+  --font-twin:var(--face-martian);   /* UI, labels, data, specs, the twin's dialogue */
+  --font-voice:var(--face-lora);     /* whichever voice owns the current theme */
+  --font-body:var(--face-lora);      /* light mode reads as Lora */
+  /* Legacy aliases so older markup keeps rendering; prefer the two above. */
+  --font-display:var(--font-human);
+  --font-mono:var(--font-twin);
+
+  /* Human scale (Lora) — emotional claim */
+  --human-display:52px;
+  --human-h1:38px;
+  --human-h2:28px;
+  --human-lead:19px;      /* manifesto / story paragraph */
+  --human-quote:17px;
+
+  /* Twin scale (Martian Mono) — labels, data, system voice.
+     Martian Mono runs wide and tall; sizes sit a step below a normal mono. */
+  --twin-h3:16px;
+  --twin-body:13px;
+  --twin-label:12px;
+  --twin-caption:11px;
+  --twin-code:12px;
+  --twin-micro:10px;      /* uppercase section labels, widest tracking */
+
+  /* Compatibility aliases for components written against the earlier scale */
+  --text-display:var(--human-display);
+  --text-h1:var(--human-h1);
+  --text-h2:var(--human-h2);
+  --text-h3:var(--twin-h3);
+  --text-body:16px;             /* Lora body in light mode; the twin scale takes over in .dark */
+  --text-label:var(--twin-label);
+  --text-caption:var(--twin-caption);
+  --text-code:var(--twin-code);
+  --text-micro:var(--twin-micro);
+  --human-body:16px;
+
+  --weight-regular:400;
+  --weight-medium:500;
+  --weight-semibold:600;
+  --weight-bold:700;
+
+  --leading-tight:1.12;
+  --leading-snug:1.35;
+  --leading-normal:1.5;
+  --leading-relaxed:1.7;   /* Martian Mono needs air */
+  --leading-loose:1.9;
+
+  --tracking-tight:-0.015em;  /* Lora headlines */
+  --tracking-normal:0;
+  --tracking-twin:-0.02em;    /* Martian Mono at body sizes */
+  --tracking-widest:0.14em;   /* micro-labels only */
+}
+
+/* Dark mode is the twin's world: one face, his. Martian Mono runs wide and tall,
+   so the human display scale steps down to hold the same layouts. */
+.dark{
+  --font-human:var(--face-martian);
+  --font-voice:var(--face-martian);
+  --font-body:var(--face-martian);
+
+  --human-display:34px;
+  --human-h1:26px;
+  --human-h2:20px;
+  --human-lead:14px;
+  --human-quote:13px;
+  --text-body:var(--twin-body);
+
+  --tracking-tight:-0.03em;
+  --leading-tight:1.25;
+}
+
+/* Rule 1 — texture over flatness. The hand has to show.
+   Paper grain is a CSS/SVG noise layer, never a heavy bitmap.
+   Do NOT apply texture to dense data UI (tables, code, long forms) — it stays clean. */
+:root{
+  /* Fine paper grain — put on hero and section surfaces at low opacity */
+  --texture-paper:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23g)' opacity='0.5'/%3E%3C/svg%3E"); /* @kind other */
+  --texture-paper-opacity:0.055; /* @kind other */
+  --texture-paper-blend:multiply; /* @kind other */
+
+  /* Coarser wash — for large watercolour-adjacent fills */
+  --texture-wash:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.16' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23w)' opacity='0.6'/%3E%3C/svg%3E"); /* @kind other */
+  --texture-wash-opacity:0.08; /* @kind other */
+
+  /* Desk-object shadows: warm, soft, low. Never floating glass. */
+  --shadow-desk-sm:0 1px 2px rgba(58,42,20,0.10);
+  --shadow-desk:0 2px 6px rgba(58,42,20,0.12),0 1px 2px rgba(58,42,20,0.08);
+  --shadow-desk-lg:0 8px 20px rgba(58,42,20,0.14),0 2px 6px rgba(58,42,20,0.08);
+  --shadow-desk-lift:0 14px 32px rgba(58,42,20,0.16);
+
+  /* Spec-Sheet Futurism: the twin's register */
+  --spec-grid:linear-gradient(to right,color-mix(in srgb,var(--rule) 55%,transparent) 1px,transparent 1px),linear-gradient(to bottom,color-mix(in srgb,var(--rule) 55%,transparent) 1px,transparent 1px);
+  --spec-grid-size:16px 16px;
+  --spec-hairline:1px solid color-mix(in srgb,var(--twin) 40%,transparent);
+
+  /* Stamp perforation edge */
+  --perf-size:9px;
+}
+
+/* 4px base grid (Tailwind-derived, as used across both source repos). */
+:root{
+  --space-0:0px;
+  --space-1:4px;
+  --space-1-5:6px;
+  --space-2:8px;
+  --space-2-5:10px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-5:20px;
+  --space-6:24px;
+  --space-8:32px;
+  --space-10:40px;
+  --space-12:48px;
+  --space-14:56px;
+  --space-16:64px;
+  --space-20:80px;
+  --space-24:96px;
+  --space-32:128px;
+
+  /* Layout */
+  --container-max:1152px;   /* max-w-6xl — every marketing section */
+  --container-prose:896px;  /* max-w-4xl — docs column */
+  --gutter:16px;            /* px-4 */
+  --nav-height:64px;        /* site header h-16 */
+  --docs-header-height:56px;/* docs header h-14 */
+  --sidebar-width:288px;    /* w-72 */
+  --spec-cell:16px;         /* spec-grid background-size — the twin's register */
+}
+
+/* Printed objects have modest, honest corners. Nothing pill-shaped by default. */
+:root{
+  --radius:6px;                 /* base — buttons, inputs, badges */
+  --radius-lg:var(--radius);
+  --radius-md:4px;
+  --radius-sm:3px;
+  --radius-xl:10px;             /* cards, panels */
+  --radius-2xl:14px;            /* the floating Twin window */
+  --radius-full:9999px;         /* seals, avatars, postmarks only */
+  --radius-artifact:2px;        /* stamps, box labels, certificates — paper is cut, not rounded */
+}
+
+/* Shadows are desk-object shadows: warm, soft, close. See tokens/texture.css
+   for the --shadow-desk-* set, which is the preferred vocabulary.
+   The neutral --shadow-* aliases below exist so earlier components keep working. */
+:root{
+  --shadow-sm:var(--shadow-desk-sm);
+  --shadow:var(--shadow-desk);
+  --shadow-md:var(--shadow-desk);
+  --shadow-lg:var(--shadow-desk-lg);
+  --shadow-xl:var(--shadow-desk-lg);
+  --shadow-2xl:var(--shadow-desk-lift);
+
+  --border-width:1px;
+  --border-width-emphasis:2px;
+  --backdrop-blur:blur(6px); /* @kind other */
+}
+
+/* Motion is functional: colour and opacity transitions on interaction.
+   No bounce, no spring, no decorative entrance animation. */
+:root{
+  --duration-fast:120ms; /* @kind other */   /* dropdown close delay, rotate chevron */
+  --duration:150ms; /* @kind other */
+  --duration-slow:200ms; /* @kind other */   /* card hover, sidebar slide */
+  --ease:cubic-bezier(0.4,0,0.2,1); /* @kind other */
+  --transition-colors:color var(--duration) var(--ease),background-color var(--duration) var(--ease),border-color var(--duration) var(--ease);
+}
+

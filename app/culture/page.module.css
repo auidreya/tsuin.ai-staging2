@@ -1,0 +1,117 @@
+/* --- Company Values page ---------------------------------------------------
+   Imported from Claude Design: "Company Values.dc.html"
+   (project 69e4ce12, design system tsuin-ai-design-system-64a181c8).
+
+   That design system is a later generation than the one bound site-wide:
+   cream #FAF3E3, industrial orange as the human, electric blue as the twin.
+   Its token names collide with the site tokens (--rule is a colour there and a
+   2px length here, --human is teal there and orange here), so the 64a181c8
+   tokens are declared on the page's <main> instead of :root. They inherit down
+   into the page body only, and the site header and footer keep the site-wide
+   values untouched. */
+.cv {
+  /* paper + warm ink */
+  --cream-50: #FAF7F0; --cream-100: #FAF3E3; --cream-200: #F1E8D3; --cream-300: #E2D6BC;
+  --ink-900: #111111; --ink-800: #1A1A1A; --ink-700: #2B2A27; --ink-600: #403C34;
+  --ink-500: #57524A; --ink-400: #7C7568;
+  /* the human register */
+  --orange-900: #7A3510; --orange-800: #96491A; --orange-700: #B85720; --orange-600: #D96B27;
+  --orange-200: #F4CBA5; --orange-100: #FBE7D2;
+  /* the twin register */
+  --electric-900: #00246E; --electric-600: #0055FF; --electric-200: #BFD2FF; --electric-100: #E2EAFF;
+  /* semantic aliases */
+  --surface-page: var(--cream-100); --surface-card: var(--cream-50); --surface-sunken: var(--cream-200);
+  --text-body: var(--ink-900); --text-muted: var(--ink-500); --text-faint: var(--ink-400);
+  --border-hairline: var(--cream-300);
+  --human: var(--orange-600); --human-strong: var(--orange-800);
+  /* type. The legacy page named the families literally ("Lora", "Martian Mono");
+     next/font self-hosts them under generated family names, so point at the
+     site's font faces instead (same families, same fallbacks' intent). */
+  --font-human: var(--face-lora);
+  --font-twin: var(--face-martian);
+  --font-body: var(--font-human); --font-mono: var(--font-twin);
+  --text-h3: 1.4375rem; --text-lead: 1.1875rem; --text-body-size: 1.0625rem;
+  --tracking-label: 0.04em; --tracking-wide: 0.1em; --tracking-display: -0.015em;
+  /* space, radius, elevation, motion */
+  --space-1: 4px; --space-3: 12px; --space-4: 16px; --space-5: 20px; --space-6: 24px;
+  --space-7: 32px; --space-8: 40px; --space-10: 64px; --space-11: 80px;
+  --section-y: 96px; --container-max: 1180px;
+  --radius-1: 3px; --radius-3: 10px; --hairline: 1px;
+  --shadow-desk-sm: 0 1px 2px rgba(90, 62, 30, .10), 0 2px 6px rgba(90, 62, 30, .07);
+  --shadow-desk: 0 2px 4px rgba(43, 34, 20, .07), 0 10px 22px rgba(43, 34, 20, .09);
+  --ease-paper: cubic-bezier(.2, .8, .2, 1);
+
+  position: relative;
+  background: var(--surface-page);
+  color: var(--text-body);
+  font: 400 var(--text-body-size)/1.65 var(--font-human);
+}
+
+/* Page content sits above the <PaperTexture /> layer. */
+.hero,
+.values {
+  position: relative;
+  z-index: 1;
+}
+
+.wrap { max-width: var(--container-max); margin: 0 auto; padding: 0 28px; }
+.hero { padding: var(--section-y) 0 var(--space-11); }
+.heroGrid { display: grid; grid-template-columns: 1.08fr .92fr; gap: var(--space-10); align-items: center; }
+/* matches the manifesto page's section label exactly: --twin-ink #2F55BE at
+   --twin-micro 10px, --tracking-widest .14em, weight 700. Those three tokens are
+   deliberately NOT redeclared in the .cv block above, so they resolve to the
+   site-wide design system's values, the same ones the manifesto page reads. */
+.eyebrow {
+  font-family: var(--font-twin); font-size: var(--twin-micro); font-weight: 700;
+  line-height: 1.4; text-transform: uppercase; letter-spacing: var(--tracking-widest); color: var(--twin-ink);
+  margin-bottom: var(--space-5);
+}
+.h1 { margin: 0; font: 700 clamp(2.6rem, 4.2vw, 3.75rem)/1.05 var(--font-human); letter-spacing: var(--tracking-display); }
+.lead { margin: var(--space-6) 0 0; font: 400 var(--text-lead)/1.65 var(--font-human); color: var(--ink-700); max-width: 44ch; text-wrap: pretty; }
+.scene { margin: 0; display: flex; flex-direction: column; align-items: center; gap: var(--space-3); }
+.sceneImg { width: 380px; max-width: 100%; height: auto; }
+.caption { font: 400 13px/1.5 var(--font-body); color: var(--text-muted); max-width: 42ch; text-align: center; }
+
+.values { padding: 0 0 var(--section-y); scroll-margin-top: 80px; }
+.valuesGrid { display: grid; grid-template-columns: 200px 1fr; gap: var(--space-10); align-items: start; }
+.index {
+  position: sticky; top: 110px; display: flex; flex-direction: column; gap: 2px;
+  border-left: 2px solid var(--cream-300); padding-left: 16px;
+}
+.indexLabel {
+  font: 500 9px/1.4 var(--font-mono); letter-spacing: var(--tracking-wide);
+  text-transform: uppercase; color: var(--text-faint); margin-bottom: 10px;
+}
+.indexLink { font: 400 12px/1.9 var(--font-mono); letter-spacing: -.02em; text-decoration: none; color: var(--ink-600); }
+.indexLink:hover { color: var(--orange-800); }
+.rows { display: flex; flex-direction: column; gap: var(--space-6); }
+.row {
+  scroll-margin-top: 120px; display: grid; grid-template-columns: 120px 1fr; gap: var(--space-7);
+  padding: var(--space-7) var(--space-8); background: var(--surface-card); border: 2px solid var(--orange-600);
+  border-radius: 14px; box-shadow: 6px 6px 0 var(--orange-600);
+  transition: transform 200ms var(--ease-paper), box-shadow 200ms var(--ease-paper);
+}
+.row:hover { transform: translate(-2px, -2px); box-shadow: 9px 9px 0 var(--orange-600); }
+.num { font: 500 34px/1 var(--font-mono); letter-spacing: -.04em; color: var(--orange-600); }
+.rowTitle { margin: 0; font: 600 var(--text-h3)/1.2 var(--font-human); letter-spacing: 0; }
+.rowBody {
+  margin: var(--space-4) 0 0; font: 400 var(--text-body-size)/1.7 var(--font-human);
+  color: var(--ink-700); max-width: 58ch; text-wrap: pretty;
+}
+
+@media (max-width: 900px) {
+  .cv { --section-y: 56px; }
+  .wrap { padding: 0 20px; }
+  .heroGrid { grid-template-columns: 1fr; gap: var(--space-8); }
+  .scene { align-items: flex-start; }
+  .caption { text-align: left; }
+  .valuesGrid { grid-template-columns: 1fr; gap: var(--space-7); }
+  .index { position: static; top: auto; }
+}
+@media (max-width: 600px) {
+  .row { grid-template-columns: 1fr; gap: var(--space-4); padding: var(--space-6); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .row { transition: none; }
+  .row:hover { transform: none; }
+}

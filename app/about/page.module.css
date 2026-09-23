@@ -1,0 +1,356 @@
+.main {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-human);
+}
+
+.container {
+  margin: 0 auto;
+  max-width: var(--container-max);
+  padding: 0 var(--gutter);
+}
+
+.section {
+  padding: clamp(56px, 8vw, 88px) 0 0;
+}
+
+/* Shared micro-label look (Martian Mono, uppercase, widest tracking). */
+.heroTag,
+.sectionTag,
+.founderBar,
+.founderRole,
+.quote cite,
+.watchEyebrow {
+  font-family: var(--font-twin);
+  font-size: var(--twin-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  font-weight: 700;
+}
+
+/* Hero */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(56px, 8vw, 88px) 0 clamp(48px, 7vw, 72px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: clamp(32px, 5vw, 56px);
+  align-items: end;
+}
+
+.heroCopy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+}
+
+.heroTag {
+  color: var(--twin-ink);
+  border: 1px solid color-mix(in srgb, var(--twin) 45%, transparent);
+  border-radius: var(--radius-artifact);
+  padding: 6px 10px;
+}
+
+.heroTitle {
+  margin: 0;
+  font-family: var(--font-human);
+  font-size: clamp(32px, 5.6vw, 54px);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.08;
+  max-width: 24ch;
+  text-wrap: pretty;
+}
+
+.heroLead {
+  margin: 0;
+  font-family: var(--font-human);
+  font-size: var(--human-lead);
+  color: var(--ink-2);
+  line-height: 1.6;
+  max-width: 48ch;
+  text-wrap: pretty;
+}
+
+.heroImage {
+  display: block;
+  width: min(100%, 620px);
+  height: auto;
+  justify-self: end;
+}
+
+/* Intro prose */
+
+.prose {
+  margin: 0 auto;
+  max-width: var(--container-prose);
+  padding: 0 var(--gutter);
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  font-family: var(--font-human);
+  font-size: clamp(19px, 2.2vw, 21px);
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+.prose p {
+  margin: 0;
+}
+
+/* Section heading row */
+
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 0 0 32px;
+}
+
+.h2 {
+  margin: 0;
+  font-family: var(--font-human);
+  font-size: clamp(26px, 4vw, 34px);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.15;
+}
+
+.sectionTag {
+  color: var(--ink-muted);
+}
+
+/* Founders */
+
+.founders {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 24px;
+}
+
+.founderCard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-xl);
+  background: var(--paper-2);
+  overflow: hidden;
+  box-shadow: var(--shadow-desk-sm);
+}
+
+.founderBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.founderName {
+  color: var(--ink);
+}
+
+.badgeHuman {
+  color: var(--human-ink);
+}
+
+.badgeTwin {
+  color: var(--twin-ink);
+}
+
+/* Empty portrait slot: same size and tint as an empty <image-slot> (shape="rect"). */
+.portrait {
+  position: relative;
+  height: clamp(200px, 55vw, 260px);
+  border-bottom: 1px solid var(--rule);
+  background: rgba(127, 127, 127, 0.08);
+}
+
+.founderBody {
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.founderRole {
+  margin: 0;
+  color: var(--ink-muted);
+}
+
+.founderHeadline {
+  margin: 0;
+  font-family: var(--font-human);
+  font-size: clamp(22px, 2.6vw, 26px);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.28;
+}
+
+.quote {
+  margin: 0;
+  padding: 18px 0 0;
+  border-top: 2px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quote p {
+  margin: 0;
+  font-family: var(--font-human);
+  font-size: 17px;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.quote cite {
+  color: var(--ink-muted);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Video */
+
+.watch {
+  background: var(--paper);
+}
+
+.watchEyebrow {
+  color: var(--human);
+  margin: 0 0 14px;
+}
+
+.watchTitle {
+  font-family: var(--font-human);
+  font-size: clamp(26px, 4.5vw, var(--human-h1));
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  margin: 0 0 26px;
+}
+
+/* Beliefs */
+
+.beliefs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.belief {
+  background: var(--paper-2);
+  padding: 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.beliefNum {
+  font-family: var(--font-twin);
+  font-size: var(--twin-micro);
+  letter-spacing: var(--tracking-widest);
+  color: var(--twin-ink);
+  font-weight: 700;
+}
+
+.beliefTitle {
+  margin: 0;
+  font-family: var(--font-human);
+  font-size: clamp(22px, 2.6vw, 26px);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.25;
+}
+
+.beliefBody {
+  margin: 0;
+  font-family: var(--font-human);
+  font-size: 17px;
+  color: var(--ink-2);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+/* Closing CTA */
+
+.ctaSection {
+  padding-bottom: clamp(72px, 10vw, 120px);
+}
+
+.ctaGrid {
+  border-top: 1px solid var(--rule);
+  padding-top: clamp(40px, 6vw, 64px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: clamp(32px, 5vw, 56px);
+  align-items: center;
+}
+
+.ctaCopy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+}
+
+.ctaTitle {
+  margin: 0;
+  font-family: var(--font-human);
+  font-size: clamp(30px, 5vw, 46px);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.1;
+}
+
+.ctaLead {
+  margin: 0;
+  font-family: var(--font-human);
+  font-size: var(--human-lead);
+  color: var(--ink-2);
+  line-height: 1.6;
+  max-width: 44ch;
+}
+
+.ctaButtons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ctaNote {
+  margin: 0;
+  font-family: var(--font-human);
+  font-size: 17px;
+  color: var(--ink-muted);
+  line-height: 1.6;
+  max-width: 52ch;
+  text-wrap: pretty;
+}
+
+.ctaImage {
+  display: block;
+  width: min(100%, 420px);
+  height: auto;
+  justify-self: end;
+}

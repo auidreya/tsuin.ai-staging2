@@ -1,0 +1,89 @@
+.footer {
+  border-top: 1px solid var(--rule);
+  padding: 44px 0;
+  background: var(--paper);
+}
+
+.grid {
+  margin: 0 auto;
+  max-width: var(--container-max);
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+  gap: 40px;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.tagline {
+  font-family: var(--font-twin);
+  font-size: var(--twin-caption);
+  color: var(--ink-muted);
+  max-width: 230px;
+  line-height: var(--leading-relaxed);
+}
+
+.heading {
+  font-family: var(--font-twin);
+  font-size: var(--twin-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--ink-muted);
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  align-items: flex-start;
+}
+
+.links a {
+  color: var(--ink-muted);
+  font-family: var(--font-twin);
+  font-size: var(--twin-caption);
+  /* 24px tap targets that don't overlap (13px text + 11px gap). Padding grows
+     the hit area; the negative margin cancels it in the layout. */
+  display: inline-block;
+  padding: 5.5px 0;
+  margin: -5.5px 0;
+}
+
+.links a:hover,
+.legal a:hover {
+  color: var(--human-ink);
+}
+
+.bottom {
+  margin: 36px auto 0;
+  max-width: var(--container-max);
+  padding: 22px var(--gutter) 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-family: var(--font-twin);
+  font-size: var(--twin-caption);
+  color: var(--ink-muted);
+}
+
+.legal {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.legal a {
+  display: inline-block;
+  padding: 6px 0;
+  margin: -6px 0;
+}
