@@ -8,6 +8,7 @@ const COMPANY = [
   { label: "Culture", href: "/culture" },
   { label: "Manifesto", href: "/manifesto" },
   { label: "Research", href: "/research" },
+  { label: "Blog", href: "/blog" },
 ];
 
 const SHOPPING = [
