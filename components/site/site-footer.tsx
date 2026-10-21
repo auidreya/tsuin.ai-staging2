@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CONTACT_EMAIL, SOCIAL_LINKS } from "@/lib/site";
+import { SOCIAL_LINKS } from "@/lib/site";
 import { Logo } from "./logo";
 import styles from "./site-footer.module.css";
 
@@ -7,7 +7,7 @@ const COMPANY = [
   { label: "About Us", href: "/about" },
   { label: "Culture", href: "/culture" },
   { label: "Manifesto", href: "/manifesto" },
-  { label: "Research", href: "#" },
+  { label: "Research", href: "/research" },
 ];
 
 const SHOPPING = [
@@ -16,9 +16,10 @@ const SHOPPING = [
 ];
 
 const LEGAL = [
-  { label: "Terms & conditions", href: "#" },
-  { label: "Privacy policy", href: "#" },
-  { label: "Refund policy", href: "#" },
+  { label: "Terms of Use", href: "/terms" },
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Support", href: "/support" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 // Static server component: no client JS ships for the footer.
@@ -62,17 +63,19 @@ export function SiteFooter() {
             ))}
           </div>
         </div>
+        <div>
+          <p className={styles.heading}>LEGAL</p>
+          <div className={styles.links}>
+            {LEGAL.map((l) => (
+              <Link key={l.label} href={l.href}>
+                {l.label}
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
       <div className={styles.bottom}>
         <span>© 2026 Tsuin AI Sdn Bhd. All rights reserved.</span>
-        <div className={styles.legal}>
-          {LEGAL.map((l) => (
-            <a key={l.label} href={l.href}>
-              {l.label}
-            </a>
-          ))}
-          <a href={`mailto:${CONTACT_EMAIL}`}>Contact</a>
-        </div>
       </div>
     </footer>
   );

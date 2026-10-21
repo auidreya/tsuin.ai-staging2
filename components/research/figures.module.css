@@ -1,0 +1,136 @@
+/* Research figures: framed like a specimen on the page. Static SVG that reads
+   off the design tokens, so it follows the theme without any client JS. */
+
+.figure {
+  margin: 36px 0;
+}
+
+.frame {
+  position: relative;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-xl);
+  background: var(--paper-2);
+  padding: clamp(16px, 3vw, 28px);
+  overflow: hidden;
+}
+
+/* Faint spec grid behind the plot — the twin's register. */
+.frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--spec-grid);
+  background-size: var(--spec-grid-size);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.plot {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.legend {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 16px;
+  font-family: var(--font-twin);
+  font-size: var(--twin-caption);
+  letter-spacing: var(--tracking-twin);
+  color: var(--ink-muted);
+}
+
+.key {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.swatch {
+  width: 14px;
+  height: 3px;
+  border-radius: var(--radius-full);
+  flex: none;
+}
+
+.swatchDot {
+  width: 9px;
+  height: 9px;
+  border-radius: var(--radius-full);
+  flex: none;
+}
+
+.swatchDash {
+  width: 14px;
+  height: 0;
+  border-top: 2px dashed currentColor;
+  flex: none;
+}
+
+.caption {
+  margin: 12px 0 0;
+  font-family: var(--font-twin);
+  font-size: var(--twin-caption);
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-twin);
+  color: var(--ink-muted);
+  text-transform: none;
+}
+
+.note {
+  margin: 4px 0 0;
+  font-family: var(--font-twin);
+  font-size: var(--twin-micro);
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-twin);
+  color: var(--ink-muted);
+}
+
+/* SVG primitives, styled once so the markup stays lean. */
+.gridLine {
+  stroke: var(--rule);
+  stroke-width: 1;
+}
+
+.axisLabel {
+  font-family: var(--font-twin);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  fill: var(--ink-muted);
+}
+
+.tickLabel {
+  font-family: var(--font-twin);
+  font-size: 10px;
+  fill: var(--ink-muted);
+}
+
+.nodeLabel {
+  font-family: var(--font-twin);
+  font-size: 11px;
+  fill: var(--ink-2);
+}
+
+.nodeStep {
+  font-family: var(--font-twin);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  fill: var(--ink-muted);
+}
+
+.annot {
+  font-family: var(--font-twin);
+  font-size: 11px;
+  fill: var(--ink-2);
+  /* Keep value labels readable where they cross a bar or line. */
+  paint-order: stroke;
+  stroke: var(--paper-2);
+  stroke-width: 2.5px;
+  stroke-linejoin: round;
+}
