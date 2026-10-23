@@ -1,0 +1,168 @@
+.main {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(56px, 8vw, 96px) 0 clamp(64px, 9vw, 104px);
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+  max-width: var(--container-prose);
+  padding: 0 var(--gutter);
+}
+
+.eyebrow {
+  font-family: var(--font-twin);
+  font-size: var(--twin-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--twin-ink);
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+
+.title {
+  font-family: var(--font-human);
+  font-size: clamp(34px, 6vw, 56px);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  margin: 0 0 28px;
+}
+
+/* Rendered markdown. Body copy in the human serif, labels and tables in the
+   twin mono, matching the rest of the site. */
+
+.doc {
+  font-family: var(--font-human);
+  font-size: clamp(16px, 1.9vw, 18px);
+  line-height: 1.65;
+  color: var(--ink);
+  max-width: 68ch;
+  text-wrap: pretty;
+}
+
+.doc > :first-child {
+  margin-top: 0;
+}
+
+.doc p {
+  margin: 0 0 18px;
+}
+
+.doc h2 {
+  font-family: var(--font-human);
+  font-size: clamp(22px, 3.2vw, var(--human-h2));
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.25;
+  margin: 44px 0 14px;
+}
+
+.doc h3 {
+  font-family: var(--font-twin);
+  font-size: var(--twin-body);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--ink-2);
+  margin: 30px 0 12px;
+}
+
+.doc strong {
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.doc a {
+  color: var(--human-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.doc a:hover {
+  color: var(--twin-ink);
+}
+
+.doc ul,
+.doc ol {
+  margin: 0 0 18px;
+  padding-left: 1.4em;
+}
+
+.doc li {
+  margin: 0 0 8px;
+}
+
+.doc li > p {
+  margin: 0;
+}
+
+.doc hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 36px 0;
+}
+
+.doc blockquote {
+  margin: 0 0 18px;
+  padding: 12px 18px;
+  border-left: 3px solid var(--twin-ink);
+  background: var(--paper-2);
+  color: var(--ink-2);
+}
+
+.doc blockquote p {
+  margin: 0;
+}
+
+.doc code {
+  font-family: var(--font-twin);
+  font-size: 0.85em;
+  background: var(--paper-2);
+  padding: 1px 5px;
+  border-radius: var(--radius-sm);
+}
+
+/* Tables: spec-sheet style, mono, scroll on narrow screens */
+
+.doc table {
+  display: block;
+  overflow-x: auto;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 24px;
+  font-family: var(--font-twin);
+  font-size: var(--twin-body);
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-twin);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-artifact);
+  background: var(--paper-2);
+}
+
+.doc thead {
+  background: color-mix(in srgb, var(--rule) 35%, transparent);
+}
+
+.doc th {
+  text-align: left;
+  font-size: var(--twin-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--ink-muted);
+  font-weight: 700;
+}
+
+.doc th,
+.doc td {
+  padding: 10px 14px;
+  vertical-align: top;
+  border-bottom: 1px solid var(--rule);
+  min-width: 140px;
+}
+
+.doc tbody tr:last-child td {
+  border-bottom: 0;
+}

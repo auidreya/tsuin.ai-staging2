@@ -25,7 +25,6 @@ const SITE_GRAPH = {
       name: "Tsuin AI Sdn Bhd",
       alternateName: ["tsuin", "tsuin.ai", "ツイン"],
       url: "https://www.tsuin.ai/",
-      email: "hello@tsuin.ai",
       description:
         "tsuin builds the Cognitive AI Twin: a personal pre-AGI that captures your thinking and continuously learns from you, to become more like you.",
       sameAs: [

@@ -9,8 +9,15 @@
   max-width: var(--container-max);
   padding: 0 var(--gutter);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
   gap: 40px;
+}
+
+/* Brand block gets the widest column once there is room for all five. */
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: 1.6fr repeat(4, 1fr);
+  }
 }
 
 .brand {
@@ -56,8 +63,7 @@
   margin: -5.5px 0;
 }
 
-.links a:hover,
-.legal a:hover {
+.links a:hover {
   color: var(--human-ink);
 }
 
@@ -74,16 +80,4 @@
   font-family: var(--font-twin);
   font-size: var(--twin-caption);
   color: var(--ink-muted);
-}
-
-.legal {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.legal a {
-  display: inline-block;
-  padding: 6px 0;
-  margin: -6px 0;
 }

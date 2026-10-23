@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PaperTexture } from "@/components/paper-texture";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { ButtonLink } from "@/components/ui/button";
 import { pageMetadata } from "@/lib/metadata";
-import { CONTACT_EMAIL, STRIPE_PREORDER_URL } from "@/lib/site";
+import { STRIPE_PREORDER_URL } from "@/lib/site";
 import styles from "./page.module.css";
 
 const TITLE = "Pricing — own your twin outright | tsuin";
@@ -252,7 +253,7 @@ export default function PricingPage() {
               ))}
             </div>
             <p className={styles.faqFooter}>
-              Still have questions? <a href={`mailto:${CONTACT_EMAIL}`}>Email us</a> or{" "}
+              Still have questions? <Link href="/contact">Contact us</Link> or{" "}
               <a href="https://discord.gg/5DyMNFum44" target="_blank" rel="noopener noreferrer">
                 join our Discord
               </a>
