@@ -3,6 +3,7 @@ import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
 import { PaperTexture } from "@/components/paper-texture";
 import styles from "@/components/blog/article.module.css";
+import { AuthorBio } from "@/components/blog/author-bio";
 import { SeriesNav } from "@/components/blog/series-nav";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
@@ -150,6 +151,8 @@ export default function BlogArticlePage() {
               best sign is when it brings back a lesson I once forgot, and that augments my thinking.
             </p>
           </div>
+
+          <AuthorBio name={post.author} />
 
           <SeriesNav current={post.slug} />
 

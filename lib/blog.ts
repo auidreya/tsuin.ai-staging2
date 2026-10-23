@@ -14,14 +14,33 @@ export type BlogPost = {
   image: { url: string; alt: string }; // 1200x630 social card, also used in structured data
 };
 
+// Guest authors get a bio box at the end of their posts and sameAs links in
+// the structured data. Keyed by the post's `author` name.
+export type BlogAuthor = {
+  role: string;
+  bio: string;
+  links: { label: string; href: string }[];
+};
+
+export const BLOG_AUTHORS: Record<string, BlogAuthor> = {
+  "James Chu": {
+    role: "Closed beta user, Tsuin",
+    bio: "I want my AI twin to augment my thinking instead of reading LLMs spit out generic nonsense.",
+    links: [
+      { label: "Instagram", href: "https://www.instagram.com/jameschuthink/" },
+      { label: "LinkedIn", href: "https://www.linkedin.com/in/james-chu-think-a85b67391/" },
+    ],
+  },
+};
+
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "day-2-training-my-ai-twin",
     title: "Day 2 of training my AI twin as a closed beta user",
     date: "Oct 23, 2026",
     isoDate: "2026-10-23",
-    author: "James",
-    authorRole: "Testing Tsuin",
+    author: "James Chu",
+    authorRole: "Closed beta user",
     readingTime: "4 min read",
     dek: "Training my AI twin showed me my own reasoning is a mess. Day two of the closed beta: the bug behind “I don’t know”, and why explaining every correction made me think better.",
     image: { url: "/blog/og/day-2.jpg", alt: "The human shiba and the twin shiba high-five over a glowing network" },
@@ -31,8 +50,8 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Day 1 experience with the AI Twin as a closed beta user",
     date: "Oct 21, 2026",
     isoDate: "2026-10-21",
-    author: "James",
-    authorRole: "Testing Tsuin",
+    author: "James Chu",
+    authorRole: "Closed beta user",
     readingTime: "5 min read",
     dek: "My twin said “I don’t have enough from James on this yet” to almost everything I asked. A closed beta tester's first day: what I expected, what broke, and what I'd tell myself on day one.",
     image: { url: "/blog/og/day-1.jpg", alt: "The twin shiba training at a computer, with the human shiba on screen" },
@@ -60,6 +79,7 @@ export const BETA_LOGS = BLOG_POSTS.filter((p) => p.slug.startsWith("day-")).rev
 // BlogPosting plus a breadcrumb, as one JSON-LD graph for an article page.
 export function blogPostingJsonLd(post: BlogPost, description: string) {
   const url = `${SITE_URL}/blog/${post.slug}`;
+  const bio = BLOG_AUTHORS[post.author];
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -70,7 +90,11 @@ export function blogPostingJsonLd(post: BlogPost, description: string) {
         image: `${SITE_URL}${post.image.url}`,
         datePublished: post.isoDate,
         dateModified: post.isoDate,
-        author: { "@type": "Person", name: post.author },
+        author: {
+          "@type": "Person",
+          name: post.author,
+          ...(bio ? { description: bio.bio, sameAs: bio.links.map((l) => l.href) } : {}),
+        },
         publisher: { "@type": "Organization", name: "Tsuin AI Sdn Bhd", url: SITE_URL },
         mainEntityOfPage: url,
       },

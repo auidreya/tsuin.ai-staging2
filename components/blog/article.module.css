@@ -241,6 +241,78 @@
 
 /* Closing block */
 
+/* About the author: guest byline box at the end of a post */
+
+.author {
+  margin: 44px 0 0;
+  padding: 24px 28px;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--ink-2);
+  border-radius: var(--radius-xl);
+}
+
+.authorLabel {
+  font-family: var(--font-twin);
+  font-size: var(--twin-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  font-weight: 700;
+  color: var(--ink-muted);
+  margin: 0 0 12px;
+}
+
+.authorName {
+  font-family: var(--font-human);
+  font-size: clamp(19px, 2.2vw, 22px);
+  font-weight: 600;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+.authorRole {
+  font-family: var(--font-twin);
+  font-size: var(--twin-caption);
+  letter-spacing: var(--tracking-twin);
+  color: var(--ink-muted);
+  margin: 4px 0 0;
+}
+
+.authorQuote {
+  margin: 16px 0 0;
+  font-family: var(--font-human);
+  font-style: italic;
+  font-size: clamp(16px, 1.9vw, 18px);
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.authorQuote p {
+  margin: 0;
+}
+
+.authorLinks {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-family: var(--font-twin);
+  font-size: var(--twin-caption);
+  letter-spacing: var(--tracking-twin);
+}
+
+.authorLinks a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.authorLinks a:hover {
+  color: var(--ink-2);
+}
+
 /* Series box: every closed beta log, in order */
 
 .series {

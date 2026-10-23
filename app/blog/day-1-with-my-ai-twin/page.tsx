@@ -4,6 +4,7 @@ import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
 import { PaperTexture } from "@/components/paper-texture";
 import styles from "@/components/blog/article.module.css";
+import { AuthorBio } from "@/components/blog/author-bio";
 import { SeriesNav } from "@/components/blog/series-nav";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
@@ -205,6 +206,8 @@ export default function BlogArticlePage() {
               <li>Ask the team when you&rsquo;re stuck, because the commands aren&rsquo;t written down anywhere yet.</li>
             </ul>
           </div>
+
+          <AuthorBio name={post.author} />
 
           <SeriesNav current={post.slug} />
 
