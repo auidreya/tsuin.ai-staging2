@@ -26,6 +26,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.6,
     },
+    {
+      url: `${SITE_URL}/blog/sunway-ilabs-cradle-deep-tech-ventures-lab`,
+      lastModified: "2026-10-23",
+      changeFrequency: "yearly",
+      priority: 0.5,
+    },
     { url: `${SITE_URL}/about`, lastModified: "2026-08-15", changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/culture`, lastModified: "2026-09-03", changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/privacy`, lastModified: "2026-10-08", changeFrequency: "yearly", priority: 0.3 },

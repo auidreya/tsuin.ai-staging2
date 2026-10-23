@@ -8,9 +8,9 @@ import { pageMetadata } from "@/lib/metadata";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Blog | tsuin",
+  title: "AI twin training logs and field notes | tsuin blog",
   description:
-    "Field notes from building and training AI twins: closed beta logs, lessons from real users, and the honest, unpolished parts of teaching a twin to think like you.",
+    "Field notes from building and training AI twins: closed beta logs, lessons from real users, and the unpolished parts of teaching a twin to think like you.",
   path: "/blog",
   socialTitle: "tsuin Blog",
   socialDescription: "Field notes from building and training AI twins, including closed beta logs from real users.",

@@ -1,3 +1,5 @@
+import { SITE_URL } from "./site";
+
 // The blog index. One entry per post; the article pages live under
 // app/blog/<slug>/. Newest first — the index renders in array order.
 export type BlogPost = {
@@ -9,6 +11,7 @@ export type BlogPost = {
   authorRole: string;
   readingTime: string;
   dek: string; // one-line summary for the index and social cards
+  image: { url: string; alt: string }; // 1200x630 social card, also used in structured data
 };
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -21,6 +24,7 @@ export const BLOG_POSTS: BlogPost[] = [
     authorRole: "Testing Tsuin",
     readingTime: "4 min read",
     dek: "Training my AI twin showed me my own reasoning is a mess. Day two of the closed beta: the bug behind “I don’t know”, and why explaining every correction made me think better.",
+    image: { url: "/blog/og/day-2.jpg", alt: "The human shiba and the twin shiba high-five over a glowing network" },
   },
   {
     slug: "day-1-with-my-ai-twin",
@@ -31,6 +35,7 @@ export const BLOG_POSTS: BlogPost[] = [
     authorRole: "Testing Tsuin",
     readingTime: "5 min read",
     dek: "My twin said “I don’t have enough from James on this yet” to almost everything I asked. A closed beta tester's first day: what I expected, what broke, and what I'd tell myself on day one.",
+    image: { url: "/blog/og/day-1.jpg", alt: "The twin shiba training at a computer, with the human shiba on screen" },
   },
   {
     slug: "sunway-ilabs-cradle-deep-tech-ventures-lab",
@@ -41,9 +46,42 @@ export const BLOG_POSTS: BlogPost[] = [
     authorRole: "Founder & CEO, Tsuin AI",
     readingTime: "4 min read",
     dek: "Tsuin AI was one of 20 startups chosen from 69 for the Sunway iLabs and Cradle Startup Deep Tech Ventures Lab. The journey, from launch to the stage, told in photos.",
+    image: { url: "/blog/og/sunway.jpg", alt: "The Startup Deep Tech Ventures Lab launch at Sunway iLabs" },
   },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((p) => p.slug === slug);
+}
+
+// The closed beta logs, oldest first, for the series box under each log.
+export const BETA_LOGS = BLOG_POSTS.filter((p) => p.slug.startsWith("day-")).reverse();
+
+// BlogPosting plus a breadcrumb, as one JSON-LD graph for an article page.
+export function blogPostingJsonLd(post: BlogPost, description: string) {
+  const url = `${SITE_URL}/blog/${post.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        headline: post.title,
+        description,
+        image: `${SITE_URL}${post.image.url}`,
+        datePublished: post.isoDate,
+        dateModified: post.isoDate,
+        author: { "@type": "Person", name: post.author },
+        publisher: { "@type": "Organization", name: "Tsuin AI Sdn Bhd", url: SITE_URL },
+        mainEntityOfPage: url,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+          { "@type": "ListItem", position: 3, name: post.title, item: url },
+        ],
+      },
+    ],
+  };
 }

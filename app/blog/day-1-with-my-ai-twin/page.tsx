@@ -4,26 +4,31 @@ import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
 import { PaperTexture } from "@/components/paper-texture";
 import styles from "@/components/blog/article.module.css";
+import { SeriesNav } from "@/components/blog/series-nav";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { ButtonLink } from "@/components/ui/button";
-import { getBlogPost } from "@/lib/blog";
+import { blogPostingJsonLd, getBlogPost } from "@/lib/blog";
 import { pageMetadata } from "@/lib/metadata";
-import { SITE_URL, STRIPE_PREORDER_URL } from "@/lib/site";
+import { STRIPE_PREORDER_URL } from "@/lib/site";
 import humanHead from "@/images/shibasuke-human-head.webp";
 import twinHead from "@/images/shibasuke-twin-head.webp";
 
 const post = getBlogPost("day-1-with-my-ai-twin")!;
 const PATH = `/blog/${post.slug}`;
 
+const DESCRIPTION =
+  "A closed beta tester's first day training a Tsuin AI twin: why it kept saying it didn't know, a ? bug that lost answers, and why it needs about 1,000 examples.";
+
 export const metadata: Metadata = pageMetadata({
-  title: `${post.title} | tsuin blog`,
-  description:
-    "A closed beta tester's first day training a Tsuin AI twin: why it keeps saying it doesn't have enough yet, the ? bug that dropped answers, why training isn't real-time, and what it takes to make a twin useful.",
+  title: "Day 1 training an AI twin: a closed beta log | tsuin blog",
+  description: DESCRIPTION,
   socialDescription:
     "My twin said it didn't have enough from me to almost everything. A closed beta tester's honest first day with an AI twin.",
   path: PATH,
   socialTitle: post.title,
+  image: post.image,
+  article: { publishedTime: post.isoDate, authors: [post.author] },
 });
 
 // A single line of the recorded exchange. Two consecutive "me" turns are fine.
@@ -43,20 +48,7 @@ function Turn({ speaker, children }: { speaker: "me" | "twin"; children: React.R
 export default function BlogArticlePage() {
   return (
     <>
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
-          headline: post.title,
-          datePublished: post.isoDate,
-          dateModified: post.isoDate,
-          author: { "@type": "Person", name: post.author },
-          publisher: { "@type": "Organization", name: "Tsuin AI Sdn Bhd" },
-          mainEntityOfPage: `${SITE_URL}${PATH}`,
-          description:
-            "A closed beta tester's first day training a Tsuin AI twin, and what it taught him about how a twin actually learns.",
-        }}
-      />
+      <JsonLd data={blogPostingJsonLd(post, DESCRIPTION)} />
       <SiteHeader />
       <main className={styles.main}>
         <PaperTexture />
@@ -70,6 +62,8 @@ export default function BlogArticlePage() {
             <span className={styles.metaAuthor}>By {post.author}</span>
             <span className={styles.metaDot} aria-hidden="true" />
             <span>{post.authorRole}</span>
+            <span className={styles.metaDot} aria-hidden="true" />
+            <time dateTime={post.isoDate}>{post.date}</time>
             <span className={styles.metaDot} aria-hidden="true" />
             <span>{post.readingTime}</span>
           </div>
@@ -211,6 +205,8 @@ export default function BlogArticlePage() {
               <li>Ask the team when you&rsquo;re stuck, because the commands aren&rsquo;t written down anywhere yet.</li>
             </ul>
           </div>
+
+          <SeriesNav current={post.slug} />
 
           <div className={styles.closer}>
             <p>Written during the Tsuin closed beta.</p>

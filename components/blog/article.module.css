@@ -241,6 +241,51 @@
 
 /* Closing block */
 
+/* Series box: every closed beta log, in order */
+
+.series {
+  margin: 44px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+}
+
+/* Under a full-bleed story page (no article padding of its own) */
+.readNext {
+  padding-bottom: clamp(48px, 8vw, 80px);
+}
+
+.seriesHeading {
+  font-family: var(--font-twin);
+  font-size: var(--twin-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  font-weight: 700;
+  color: var(--ink-muted);
+  margin: 0 0 12px;
+}
+
+.seriesList {
+  margin: 0;
+  padding-left: 1.4em;
+  display: grid;
+  gap: 8px;
+  font-family: var(--font-human);
+  font-size: clamp(16px, 1.9vw, 18px);
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.seriesList a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.seriesList [aria-current] {
+  color: var(--ink-muted);
+}
+
 .closer {
   margin: 44px 0 0;
   padding: 28px;

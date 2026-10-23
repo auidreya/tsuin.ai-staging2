@@ -3,12 +3,13 @@ import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
 import { PaperTexture } from "@/components/paper-texture";
 import styles from "@/components/blog/article.module.css";
+import { SeriesNav } from "@/components/blog/series-nav";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { ButtonLink } from "@/components/ui/button";
-import { getBlogPost } from "@/lib/blog";
+import { blogPostingJsonLd, getBlogPost } from "@/lib/blog";
 import { pageMetadata } from "@/lib/metadata";
-import { SITE_URL, STRIPE_PREORDER_URL } from "@/lib/site";
+import { STRIPE_PREORDER_URL } from "@/lib/site";
 
 const post = getBlogPost("day-2-training-my-ai-twin")!;
 const PATH = `/blog/${post.slug}`;
@@ -17,30 +18,19 @@ const DESCRIPTION =
   "Day two of training an AI twin in the Tsuin closed beta: the bug behind “I don’t know”, and how explaining every correction exposed the flaws in my reasoning.";
 
 export const metadata: Metadata = pageMetadata({
-  title: `${post.title} | tsuin blog`,
+  title: "Day 2 training my AI twin: a closed beta log | tsuin blog",
   description: DESCRIPTION,
   socialDescription: "Training my AI twin showed me my own reasoning is a mess. Day two of the Tsuin closed beta.",
   path: PATH,
   socialTitle: post.title,
+  image: post.image,
+  article: { publishedTime: post.isoDate, authors: [post.author] },
 });
 
 export default function BlogArticlePage() {
   return (
     <>
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
-          headline: post.title,
-          datePublished: post.isoDate,
-          dateModified: post.isoDate,
-          author: { "@type": "Person", name: post.author },
-          publisher: { "@type": "Organization", name: "Tsuin AI Sdn Bhd" },
-          mainEntityOfPage: `${SITE_URL}${PATH}`,
-          description: DESCRIPTION,
-          keywords: ["AI twin", "train an AI twin", "closed beta", "reasoning", "Tsuin"],
-        }}
-      />
+      <JsonLd data={blogPostingJsonLd(post, DESCRIPTION)} />
       <SiteHeader />
       <main className={styles.main}>
         <PaperTexture />
@@ -54,6 +44,8 @@ export default function BlogArticlePage() {
             <span className={styles.metaAuthor}>By {post.author}</span>
             <span className={styles.metaDot} aria-hidden="true" />
             <span>{post.authorRole}</span>
+            <span className={styles.metaDot} aria-hidden="true" />
+            <time dateTime={post.isoDate}>{post.date}</time>
             <span className={styles.metaDot} aria-hidden="true" />
             <span>{post.readingTime}</span>
           </div>
@@ -158,6 +150,8 @@ export default function BlogArticlePage() {
               best sign is when it brings back a lesson I once forgot, and that augments my thinking.
             </p>
           </div>
+
+          <SeriesNav current={post.slug} />
 
           <div className={styles.closer}>
             <p>Written during the Tsuin closed beta.</p>
