@@ -13,16 +13,6 @@ export type BlogPost = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    slug: "sunway-ilabs-cradle-deep-tech-ventures-lab",
-    title: "Our Deep Tech Ventures Lab journey with Sunway iLabs",
-    date: "Nov 6, 2025",
-    isoDate: "2025-11-06",
-    author: "Audrey Aui Yong",
-    authorRole: "Founder & CEO, Tsuin AI",
-    readingTime: "4 min read",
-    dek: "Tsuin AI was one of 20 startups chosen from 69 for the Sunway iLabs and Cradle Startup Deep Tech Ventures Lab. The journey, from launch to the stage, told in photos.",
-  },
-  {
     slug: "day-2-training-my-ai-twin",
     title: "Day 2 of training my AI twin as a closed beta user",
     date: "Oct 23, 2026",
@@ -41,6 +31,16 @@ export const BLOG_POSTS: BlogPost[] = [
     authorRole: "Testing Tsuin",
     readingTime: "5 min read",
     dek: "My twin said “I don’t have enough from James on this yet” to almost everything I asked. A closed beta tester's first day: what I expected, what broke, and what I'd tell myself on day one.",
+  },
+  {
+    slug: "sunway-ilabs-cradle-deep-tech-ventures-lab",
+    title: "Our Deep Tech Ventures Lab journey with Sunway iLabs",
+    date: "Nov 6, 2025",
+    isoDate: "2025-11-06",
+    author: "Audrey Aui Yong",
+    authorRole: "Founder & CEO, Tsuin AI",
+    readingTime: "4 min read",
+    dek: "Tsuin AI was one of 20 startups chosen from 69 for the Sunway iLabs and Cradle Startup Deep Tech Ventures Lab. The journey, from launch to the stage, told in photos.",
   },
 ];
 

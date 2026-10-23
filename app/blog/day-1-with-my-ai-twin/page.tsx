@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
 import { PaperTexture } from "@/components/paper-texture";
@@ -9,6 +10,8 @@ import { ButtonLink } from "@/components/ui/button";
 import { getBlogPost } from "@/lib/blog";
 import { pageMetadata } from "@/lib/metadata";
 import { SITE_URL, STRIPE_PREORDER_URL } from "@/lib/site";
+import humanHead from "@/images/shibasuke-human-head.webp";
+import twinHead from "@/images/shibasuke-twin-head.webp";
 
 const post = getBlogPost("day-1-with-my-ai-twin")!;
 const PATH = `/blog/${post.slug}`;
@@ -28,8 +31,11 @@ function Turn({ speaker, children }: { speaker: "me" | "twin"; children: React.R
   const isMe = speaker === "me";
   return (
     <div className={`${styles.turn} ${isMe ? styles.turnMe : styles.turnTwin}`}>
-      <span className={styles.speaker}>{isMe ? "Me" : "Twin"}</span>
-      <p className={styles.bubble}>{children}</p>
+      <Image src={isMe ? humanHead : twinHead} alt="" sizes="40px" className={styles.avatar} />
+      <div className={styles.turnBody}>
+        <span className={styles.speaker}>{isMe ? "Me" : "Twin"}</span>
+        <p className={styles.bubble}>{children}</p>
+      </div>
     </div>
   );
 }
@@ -145,13 +151,13 @@ export default function BlogArticlePage() {
 
             <h2 className={styles.h2}>Training doesn&rsquo;t happen in real time</h2>
             <p>
-              Then the admin told me training doesn&rsquo;t happen in real time. Nothing I had asked or answered so far
+              Then the founders of tsuin.ai told me training doesn&rsquo;t happen in real time. Nothing I had asked or answered so far
               had been trained yet. The twin only learns when a training run starts, and you can&rsquo;t use it while it
               trains.
             </p>
-            <p>The admin also said to stop asking it to tell you back what it learned.</p>
+            <p>The founders also said to stop asking it to tell you back what it learned.</p>
             <p>
-              The admin&rsquo;s advice was to focus on teaching the twin about you, and to think of it as cloning
+              The founders&rsquo; advice was to focus on teaching the twin about you, and to think of it as cloning
               yourself.
             </p>
 
@@ -190,7 +196,7 @@ export default function BlogArticlePage() {
             </p>
             <p>
               That&rsquo;s when I learned it takes a lot of examples. Most of the time, the twin trains on your reasoning
-              about certain things, so a fact you share once won&rsquo;t just stick. According to the admin, it takes
+              about certain things, so a fact you share once won&rsquo;t just stick. According to the founders, it takes
               around a thousand examples from you before the twin performs like you.
             </p>
 

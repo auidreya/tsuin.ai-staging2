@@ -175,22 +175,31 @@
 .dialogue {
   margin: 28px 0;
   display: grid;
-  gap: 12px;
+  gap: 16px;
 }
 
+/* Chat bubbles follow the Tsuin design system (5.6): the human is cream with an
+   orange outline and deep-orange offset, the twin is vivid blue with a navy
+   offset. Fixed colours, so they read the same in light and dark. */
 .turn {
   display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  align-items: end;
+  gap: 10px;
+  max-width: 86%;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.turnBody {
+  display: grid;
   gap: 6px;
-  max-width: 82%;
-}
-
-.turnMe {
-  justify-self: start;
-}
-
-.turnTwin {
-  justify-self: start;
-  margin-left: clamp(18px, 6vw, 44px);
+  justify-items: start;
 }
 
 .speaker {
@@ -199,39 +208,35 @@
   text-transform: uppercase;
   letter-spacing: var(--tracking-widest);
   font-weight: 700;
-}
-
-.turnMe .speaker {
-  color: var(--human-ink);
-}
-
-.turnTwin .speaker {
-  color: var(--twin-ink);
+  color: var(--ink-2);
 }
 
 .bubble {
-  font-family: var(--font-human);
-  font-size: clamp(15px, 1.8vw, 17px);
-  line-height: 1.5;
+  margin: 0 4px 4px 0;
   padding: 12px 16px;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--rule);
+  border-radius: 16px 16px 16px 4px;
 }
 
 .turnMe .bubble {
-  background: var(--human-wash);
-  border-color: color-mix(in srgb, var(--human) 28%, transparent);
-  border-bottom-left-radius: var(--radius-sm);
+  background: #fdf6e2;
+  border: 1.5px solid #e4884b;
+  box-shadow: 4px 4px 0 #b75820;
+  color: #111111;
+  font-family: var(--font-lora), serif;
+  font-weight: 400;
+  font-size: clamp(16px, 1.8vw, 17px);
+  line-height: 1.55;
 }
 
 .turnTwin .bubble {
-  background: var(--twin-wash);
-  border-color: color-mix(in srgb, var(--twin) 28%, transparent);
-  font-family: var(--font-twin);
+  background: #0055ff;
+  box-shadow: 4px 4px 0 #0a2a7a;
+  color: #ffffff;
+  font-family: var(--font-martian), monospace;
+  font-weight: 500;
   font-size: clamp(13px, 1.6vw, 14px);
+  line-height: 1.5;
   letter-spacing: var(--tracking-twin);
-  color: var(--twin-ink);
-  border-bottom-left-radius: var(--radius-sm);
 }
 
 /* Closing block */
