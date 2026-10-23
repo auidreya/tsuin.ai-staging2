@@ -1,6 +1,8 @@
+import { loadPostHog } from "./posthog";
 import { GA_ID, GTM_ID } from "./site";
 
-// Injects the Google libraries (gtag.js for GA4, gtm.js for pixels) once.
+// Injects the Google libraries (gtag.js for GA4, gtm.js for pixels) and
+// PostHog once.
 // Commands pushed to dataLayer before this runs are queued by the inline stub
 // in components/third-party-scripts.tsx and replayed when gtag.js arrives.
 
@@ -23,7 +25,11 @@ export function loadAnalytics() {
     const gtag = inject(`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`).then(() => {
       gtagReady = true;
     });
-    loading = Promise.all([gtag, inject(`https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`)]).then(() => {});
+    loading = Promise.all([
+      gtag,
+      inject(`https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`),
+      loadPostHog(),
+    ]).then(() => {});
   }
   return loading;
 }

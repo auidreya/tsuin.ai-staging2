@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { sendEvent } from "@/components/analytics-events";
 import humanHead from "@/images/shibasuke-human-head.webp";
 import twinHead from "@/images/shibasuke-twin-head.webp";
 import styles from "../home.module.css";
@@ -42,6 +43,23 @@ export function ChatDemo({ animateDemo = true }: { animateDemo?: boolean }) {
   const reducedMotion = usePrefersReducedMotion();
   const animate = animateDemo && !reducedMotion;
   const [demo, setDemo] = useState<Demo>(START);
+  const root = useRef<HTMLDivElement>(null);
+
+  // chat_demo_viewed once, when at least half the demo is on screen.
+  useEffect(() => {
+    const el = root.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        io.disconnect();
+        sendEvent("chat_demo_viewed", { animated: animate });
+      },
+      { threshold: 0.5 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [animate]);
 
   useEffect(() => {
     if (!animate) return;
@@ -107,7 +125,7 @@ export function ChatDemo({ animateDemo = true }: { animateDemo?: boolean }) {
   const op4 = s.a2.length > 0 || s.typingA2 ? 1 : 0;
 
   return (
-    <div className={styles.chatBody}>
+    <div ref={root} className={styles.chatBody}>
       <div className={styles.chatRow} style={{ opacity: op1 }}>
         <Image src={humanHead} alt="You" sizes="56px" className={styles.chatAvatar} />
         <div className={styles.humanBubble}>

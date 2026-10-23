@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { sendEvent } from "@/components/analytics-events";
 import { Button } from "@/components/ui/button";
 import { Input, Label } from "@/components/ui/input";
+import { identifyPerson } from "@/lib/posthog";
 import styles from "../home.module.css";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -19,6 +20,8 @@ export function WaitlistForm() {
 
   // Guards against setting state after unmount while a request is in flight.
   const alive = useRef(true);
+  // One waitlist_form_started per page load: the funnel step between seeing the form and submitting it.
+  const started = useRef(false);
   useEffect(() => {
     alive.current = true;
     return () => {
@@ -71,6 +74,7 @@ export function WaitlistForm() {
       // No `value` is sent. A lead is not worth the $500 order value, and GA4
       // sums value across events, so reusing it would inflate reported revenue.
       // Set an estimated lead value here if one is ever agreed.
+      identifyPerson(trimmedEmail, { name: trimmedName });
       sendEvent("generate_lead", {
         form_location: "waitlist_section",
         use_case: useCase || "unspecified",
@@ -100,7 +104,15 @@ export function WaitlistForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate>
+    <form
+      onSubmit={onSubmit}
+      onFocus={() => {
+        if (started.current) return;
+        started.current = true;
+        sendEvent("waitlist_form_started", { form_location: "waitlist_section" });
+      }}
+      noValidate
+    >
       <p className={`${styles.eyebrow} ${styles.eyebrowMuted} ${styles.formHead}`}>JOIN THE WAITLIST</p>
       <div className={styles.field}>
         <Label htmlFor="wl-name">Name</Label>

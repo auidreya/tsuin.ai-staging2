@@ -23,6 +23,14 @@ npm run typecheck
 
 The table schema is in `supabase/schema.sql`.
 
+PostHog (product analytics, session replay, heatmaps) is optional. Without the
+key it stays off:
+
+- `NEXT_PUBLIC_POSTHOG_KEY` (the project API key, `phc_...`; safe to expose)
+- `NEXT_PUBLIC_POSTHOG_REGION` (`us` or `eu`, defaults to `us`; must match the PostHog cloud)
+
+Events go through the `/ingest` rewrite in `next.config.ts`.
+
 ## Layout
 
 ```

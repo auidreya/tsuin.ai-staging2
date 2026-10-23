@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { isAnalyticsReady, loadAnalytics } from "@/lib/load-analytics";
+import { captureEvent } from "@/lib/posthog";
 
 // GA4 events, using Google's recommended-event names (begin_checkout,
 // select_content) so they map onto built-in reports and Ads conversion import.
@@ -18,7 +19,9 @@ declare global {
   }
 }
 
+// Sends to GA4 and PostHog under the same name, so both tools see the same events.
 export function sendEvent(name: string, params: Record<string, unknown>) {
+  captureEvent(name, params);
   if (typeof window.gtag !== "function") return;
   window.gtag("event", name, { page_path: window.location.pathname, ...params });
 }

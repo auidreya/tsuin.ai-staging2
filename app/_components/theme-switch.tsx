@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { sendEvent } from "@/components/analytics-events";
 import humanHead from "@/images/shibasuke-human-head.webp";
 import twinHead from "@/images/shibasuke-twin-head.webp";
 import styles from "../home.module.css";
@@ -16,6 +17,7 @@ export function ThemeSwitch({ human, twin }: { human: React.ReactNode; twin: Rea
   const label = dark ? "Switch to the human's side" : "Switch to your twin's side";
 
   function toggle() {
+    sendEvent("view_toggled", { to: dark ? "human" : "twin" });
     setDark((d) => !d);
     window.scrollTo(0, 0);
   }
