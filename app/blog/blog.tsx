@@ -24,11 +24,8 @@ export default function BlogIndexPage() {
         <PaperTexture />
         <div className={styles.inner}>
           <p className={styles.eyebrow}>Blog</p>
-          <h1 className={styles.title}>Field notes from teaching a twin.</h1>
-          <p className={styles.lead}>
-            Stories from building Tsuin and from the people training their twins right now, including the closed beta
-            logs. The good parts and the frustrating parts, written as they happened.
-          </p>
+          <h1 className={styles.title}>Written by a human</h1>
+          <p className={styles.lead}>(my twin&rsquo;s still training)</p>
 
           {BLOG_POSTS.length === 0 ? (
             <p className={styles.empty}>More soon.</p>

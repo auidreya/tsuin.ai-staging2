@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Our Deep Tech Ventures Lab journey | Tsuin AI</title>
+<meta name="description" content="Tsuin AI's journey through the Sunway iLabs and Cradle Startup Deep Tech Ventures Lab, told in photos: launch, build, showcase, and the stage." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Figtree:wght@400;500;600&family=Martian+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --phi:1.618;
+    --canvas:#EEF1F5; --white:#FFFFFF; --cream:#FDF6E2; --chrome:#2C3A4F;
+    --ink:#2B2930; --ink-muted:#5E5C66; --line:#D9D9DE; --placeholder:#76747E;
+    --human-surface:#FDF6E2; --human-line:#E4884B; --human-deep:#B75820;
+    --twin:#0055FF; --twin-shadow:#0A2A7A; --twin-ink:#1F4FBF;
+    --tint:#B5E0D9; --tsuin-ink:#1F7A73; --tsuin-on-tint:#0F5A54;
+    --f-head:"Lora",Georgia,serif;
+    --f-ui:"Figtree",system-ui,-apple-system,sans-serif;
+    --f-twin:"Martian Mono",ui-monospace,monospace;
+    --t-hero:clamp(34px,6vw,60px);
+    --t-h2:clamp(24px,3.2vw,42px);
+    --t-h3:clamp(20px,2.3vw,26px);
+    --t-body:clamp(16px,1.25vw,17px);
+    --t-twin:clamp(13px,1.1vw,15px);
+    --t-cap:13px; --t-label:12px;
+    --s1:10px; --s2:16px; --s3:26px; --s4:42px; --s5:68px; --s6:110px;
+    --maxw:1120px; --ease:cubic-bezier(.16,1,.3,1); --gutter:24px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  html.lenis,html.lenis body{height:auto}
+  .lenis.lenis-smooth{scroll-behavior:auto!important}
+  .lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+  .lenis.lenis-stopped{overflow:hidden}
+  body{
+    margin:0;background:var(--canvas);color:var(--ink);
+    font-family:var(--f-ui);font-size:var(--t-body);line-height:1.55;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:var(--f-head);font-weight:600;line-height:1.1;margin:0;letter-spacing:-.01em}
+  p{margin:0}
+  img{max-width:100%;display:block}
+  a{color:var(--tsuin-ink)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+  .em-act{color:var(--human-deep);font-family:var(--f-head);font-style:italic}
+  .em-brand{color:var(--tsuin-ink);font-family:var(--f-head);font-style:italic}
+  .label{font-family:var(--f-ui);font-weight:600;font-size:var(--t-label);letter-spacing:.16em;text-transform:uppercase}
+
+  /* word-mask reveal wrappers (added by JS) */
+  .word{display:inline-block;overflow:hidden;vertical-align:top}
+  .word > span{display:inline-block;will-change:transform}
+
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:50;background:var(--ink)}
+
+  .chip{position:fixed;top:16px;left:50%;transform:translateX(-50%) translateY(-140%);
+    z-index:49;padding:8px 16px;border-radius:999px;background:var(--chrome);color:#fff;
+    font-family:var(--f-ui);font-weight:600;font-size:var(--t-label);letter-spacing:.14em;
+    text-transform:uppercase;white-space:nowrap;transition:transform .5s var(--ease),opacity .5s var(--ease);opacity:0}
+  .chip.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+  /* ---------- HERO ---------- */
+  .hero{background:var(--white);padding:clamp(84px,13vh,150px) 0 var(--s5);text-align:center;position:relative;overflow:hidden}
+  .hero .eyebrow{color:var(--tsuin-ink);margin-bottom:var(--s3)}
+  .hero h1{font-size:var(--t-hero);max-width:15ch;margin:0 auto}
+  .hero__sub{font-family:var(--f-ui);color:var(--ink-muted);font-size:clamp(16px,1.9vw,19px);max-width:54ch;margin:var(--s3) auto 0}
+  .hero__meta{margin-top:var(--s3);display:flex;gap:var(--s3);justify-content:center;flex-wrap:wrap;font-size:var(--t-cap);color:var(--ink-muted)}
+  .hero__meta span{display:inline-flex;align-items:center;gap:8px}
+  .hero__frame{max-width:980px;margin:var(--s5) auto 0;padding:0 var(--gutter)}
+  .cue{margin-top:var(--s4);color:var(--ink-muted);font-size:var(--t-label);letter-spacing:.2em;text-transform:uppercase}
+  .cue::after{content:"";display:block;width:1px;height:30px;margin:10px auto 0;background:var(--line);animation:cue 1.9s infinite}
+  @keyframes cue{0%{transform:scaleY(.2);transform-origin:top;opacity:.3}50%{transform:scaleY(1);opacity:1}100%{transform:scaleY(.2);transform-origin:bottom;opacity:.3}}
+
+  /* ---------- FRAMES ---------- */
+  .frame{position:relative;border-radius:20px;overflow:hidden;background:var(--white);
+    border:1.5px solid var(--ink);aspect-ratio:calc(var(--phi)/1);will-change:transform}
+  .frame img{width:100%;height:112%;object-fit:cover;transform:translateY(-6%) scale(1.08);will-change:transform}
+  .frame:hover img{filter:saturate(1.04)}
+  .tag{position:absolute;left:14px;bottom:13px;z-index:2;font-family:var(--f-ui);font-weight:600;
+    font-size:var(--t-label);letter-spacing:.1em;text-transform:uppercase;color:#fff;
+    padding:7px 12px;border-radius:999px;background:rgba(43,41,48,.62);backdrop-filter:blur(6px)}
+  [data-own="tsuin"] .frame,.frame.tsuin{box-shadow:9px 9px 0 var(--tint)}
+  [data-own="twin"] .frame,.frame.twin{border-color:var(--twin);box-shadow:9px 9px 0 var(--twin-shadow)}
+  [data-own="human"] .frame,.frame.human{border-color:var(--human-line);box-shadow:9px 9px 0 var(--human-deep)}
+
+  /* ---------- SPARKLES ---------- */
+  .spark{position:absolute;width:24px;height:24px;pointer-events:none;z-index:4}
+  .spark svg{width:100%;height:100%;display:block}
+  .spark.human{color:var(--human-line)} .spark.twin{color:var(--twin)} .spark.tsuin{color:var(--tsuin-ink)}
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{overflow:hidden;border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line);
+    background:var(--white);padding:16px 0}
+  .marquee__track{display:flex;width:max-content;will-change:transform}
+  .mhalf{display:flex;align-items:center}
+  .mhalf span{font-family:var(--f-head);font-weight:600;font-size:clamp(26px,4.4vw,52px);
+    color:var(--ink);padding:0 22px;display:inline-flex;align-items:center;white-space:nowrap}
+  .mhalf .star{color:var(--tsuin-ink);padding:0 22px;font-size:.7em}
+
+  /* ---------- STATS ---------- */
+  .stats{padding:var(--s6) 0 var(--s4);position:relative}
+  .stats h2{text-align:center;font-size:var(--t-h3);margin-bottom:var(--s4);color:var(--ink)}
+  .stats__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s2)}
+  .stat{background:var(--white);border:1.5px solid var(--line);border-radius:18px;
+    padding:var(--s3) var(--s2);text-align:center;box-shadow:5px 5px 0 rgba(43,41,48,.07)}
+  .stat b{font-family:var(--f-head);font-weight:600;font-size:clamp(30px,5vw,46px);display:block;color:var(--ink)}
+  .stat span{font-family:var(--f-ui);color:var(--ink-muted);font-size:var(--t-cap)}
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{position:relative;padding:var(--s4) 0}
+  .rail{position:absolute;left:50%;top:0;bottom:0;width:2px;transform:translateX(-50%);background:var(--line)}
+  .rail__fill{position:absolute;top:0;left:0;right:0;height:0;background:var(--ink)}
+  .scene{position:relative;display:grid;grid-template-columns:calc(var(--phi)*1fr) 1fr;
+    gap:min(7vw,var(--s5));align-items:center;padding:var(--s5) 0}
+  .scene[data-side="right"]{grid-template-columns:1fr calc(var(--phi)*1fr)}
+  .scene[data-side="right"] .scene__media{order:2}
+  .scene[data-side="right"] .scene__text{order:1;justify-self:end;text-align:right}
+  .scene__text{max-width:44ch}
+  .node{position:absolute;left:50%;top:50%;width:15px;height:15px;border-radius:50%;
+    transform:translate(-50%,-50%) scale(.3);background:var(--canvas);border:2px solid var(--line);
+    z-index:3;transition:transform .5s var(--ease),border-color .5s,box-shadow .5s}
+  .node.on{transform:translate(-50%,-50%) scale(1);border-color:var(--ink);box-shadow:0 0 0 4px rgba(43,41,48,.08)}
+  .kicker{margin-bottom:var(--s1);display:flex;align-items:center;gap:10px}
+  .scene[data-side="right"] .kicker{justify-content:flex-end}
+  .kicker .label{color:var(--tsuin-ink)}
+  .kicker .no{font-family:var(--f-ui);font-weight:600;font-size:var(--t-label);color:var(--ink-muted)}
+  [data-own="twin"] .kicker .label{color:var(--twin-ink);font-family:var(--f-twin);text-transform:none;letter-spacing:.02em}
+  [data-own="human"] .kicker .label{color:var(--human-deep)}
+  .scene__text h2{font-size:var(--t-h2);margin-bottom:var(--s1);color:var(--ink)}
+  .scene__text p{font-family:var(--f-ui);color:var(--ink-muted);font-size:var(--t-body)}
+
+  .twin-bubble{display:inline-block;background:var(--twin);color:#fff;font-family:var(--f-twin);
+    font-weight:500;font-size:var(--t-twin);line-height:1.5;border-radius:16px 16px 16px 4px;
+    padding:16px 18px;box-shadow:4px 4px 0 var(--twin-shadow);max-width:34ch}
+  .scene[data-side="right"] .twin-bubble{border-radius:16px 16px 4px 16px}
+  .twin-bubble .meta{display:block;margin-top:8px;font-size:11px;color:rgba(255,255,255,.8)}
+  .float{animation:float 4s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+  /* ---------- PINNED ---------- */
+  .pin{position:relative}
+  .pin[data-steps="3"]{height:300vh}
+  .pin[data-steps="4"]{height:400vh}
+  .pin__sticky{position:sticky;top:0;height:100vh;display:grid;grid-template-columns:1fr calc(var(--phi)*1fr);
+    align-items:center;gap:min(7vw,var(--s5));max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+  .pin[data-side="left"] .pin__sticky{grid-template-columns:calc(var(--phi)*1fr) 1fr}
+  .pin__media .frame{aspect-ratio:calc(1/var(--phi));max-height:76vh;margin:0 auto}
+  .pin[data-side="right"] .pin__media{order:2}
+  .pin__steps{position:relative;min-height:220px}
+  .pin__badge{margin-bottom:var(--s3);color:var(--ink-muted)}
+  .step{position:absolute;inset:0;opacity:0;transform:translateY(22px);
+    transition:opacity .55s var(--ease),transform .65s var(--ease);pointer-events:none}
+  .step.on{opacity:1;transform:none;position:relative;pointer-events:auto}
+  .step h2{font-family:var(--f-head);font-weight:600;font-size:clamp(28px,4.6vw,48px);line-height:1.04;margin-bottom:var(--s1);color:var(--ink)}
+  .step p{font-family:var(--f-ui);color:var(--ink-muted);font-size:var(--t-body)}
+  .pin[data-own="twin"] .step h2{font-family:var(--f-twin);font-weight:500;font-size:clamp(22px,3.6vw,38px);color:var(--twin-ink)}
+  .pin__track{position:absolute;left:-26px;top:6px;bottom:6px;width:2px;background:var(--line);border-radius:2px}
+  .pin__dots{position:absolute;left:-30px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:13px}
+  .pdot{width:9px;height:9px;border-radius:50%;background:var(--line);transition:.4s var(--ease)}
+  .pdot.on{background:var(--ink)}
+  .pin[data-own="twin"] .pdot.on{background:var(--twin)}
+
+  /* ---------- HORIZONTAL GALLERY ---------- */
+  .hgallery{position:relative;background:var(--canvas);overflow:hidden}
+  .hgallery__inner{height:100vh;display:flex;align-items:center}
+  .hgallery__head{position:absolute;top:var(--s5);left:0;right:0;text-align:center;z-index:3}
+  .hgallery__head .label{color:var(--tsuin-ink)}
+  .hgallery__head h2{font-size:var(--t-h2);color:var(--ink);margin-top:var(--s1)}
+  .hgallery__track{display:flex;gap:min(5vw,var(--s5));padding:0 12vw;will-change:transform}
+  .hcard{flex:0 0 auto;width:min(60vw,540px)}
+  .hcard .frame{aspect-ratio:calc(var(--phi)/1)}
+  .hcard.tall{width:min(42vw,380px)} .hcard.tall .frame{aspect-ratio:calc(1/var(--phi))}
+
+  /* ---------- FINALE ---------- */
+  .finale{background:var(--white);padding:var(--s6) 0;text-align:center;position:relative;overflow:hidden}
+  .finale .frame{aspect-ratio:calc(var(--phi)/1);max-width:860px;margin:0 auto var(--s5)}
+  .letter{max-width:760px;margin:0 auto;background:var(--cream);border:1.5px solid var(--human-line);
+    border-radius:22px;box-shadow:10px 10px 0 var(--human-deep);padding:clamp(28px,5vw,52px);text-align:left}
+  .letter .label{color:var(--human-deep);display:block;margin-bottom:var(--s2)}
+  .letter blockquote{margin:0;font-family:var(--f-head);font-weight:400;color:#111111;font-size:clamp(22px,3.4vw,34px);line-height:1.3}
+  .letter .by{margin-top:var(--s3);font-family:var(--f-ui);font-weight:500;color:var(--ink);font-size:var(--t-cap)}
+  .parties{display:flex;gap:9px;justify-content:center;margin:var(--s4) 0 var(--s3)}
+  .parties i{width:9px;height:9px;border-radius:50%;display:inline-block}
+  .parties .p1{background:var(--human-line)} .parties .p2{background:var(--twin)} .parties .p3{background:var(--tint)}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:0 26px;height:56px;border-radius:16px;
+    background:var(--tint);border:1.5px solid var(--ink);color:var(--ink);font-family:var(--f-ui);
+    font-weight:600;font-size:17px;box-shadow:4px 4px 0 var(--ink);
+    transition:transform .14s var(--ease),box-shadow .14s var(--ease)}
+  .btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+  .btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+
+  footer{border-top:1.5px solid var(--line);padding:var(--s4) 0;color:var(--ink-muted);font-family:var(--f-ui);font-size:var(--t-cap);text-align:center;background:var(--canvas)}
+
+  @media(max-width:820px){
+    :root{--gutter:20px}
+    .stats__grid{grid-template-columns:repeat(2,1fr)}
+    .rail{left:18px}
+    .node{display:none}
+    .scene,.scene[data-side="right"]{grid-template-columns:1fr;gap:var(--s3);padding:var(--s4) 0 var(--s4) 12px}
+    .scene[data-side="right"] .scene__media{order:0}
+    .scene[data-side="right"] .scene__text{order:0;justify-self:start;text-align:left}
+    .scene[data-side="right"] .kicker{justify-content:flex-start}
+    .pin,.pin[data-steps="3"],.pin[data-steps="4"]{height:auto!important}
+    .pin__sticky,.pin[data-side="left"] .pin__sticky{position:relative;grid-template-columns:1fr;height:auto;align-content:center;gap:var(--s3);padding-top:var(--s4);padding-bottom:var(--s4)}
+    .pin[data-side="right"] .pin__media{order:0}
+    .pin__media .frame{aspect-ratio:calc(var(--phi)/1);max-height:52vh}
+    .pin__dots,.pin__track{display:none}
+    .pin__steps{min-height:0}
+    .pin__steps .step{position:relative;opacity:1;transform:none;pointer-events:auto;margin-bottom:var(--s3)}
+    .hgallery__inner{height:auto;flex-direction:column;padding:120px 0 var(--s5)}
+    .hgallery__track{flex-direction:column;gap:var(--s3);padding:0 var(--gutter);transform:none!important}
+    .hcard,.hcard.tall{width:100%}
+    .hcard.tall .frame{aspect-ratio:calc(var(--phi)/1)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="chip" id="chip"><span id="chipName">The journey</span></div>
+
+<!-- HERO -->
+<header class="hero" data-chip="The journey" data-own="tsuin">
+  <span class="spark tsuin" style="top:14%;left:12%"><svg viewBox="0 0 24 24"><path d="M12 0c.6 6 5.4 10.8 12 11.4C17.4 12 12.6 16.8 12 24c-.6-7.2-5.4-12-12-12.6C6.6 10.8 11.4 6 12 0z" fill="currentColor"/></svg></span>
+  <span class="spark human" style="top:22%;right:14%;width:18px"><svg viewBox="0 0 24 24"><path d="M12 0c.6 6 5.4 10.8 12 11.4C17.4 12 12.6 16.8 12 24c-.6-7.2-5.4-12-12-12.6C6.6 10.8 11.4 6 12 0z" fill="currentColor"/></svg></span>
+  <div class="wrap">
+    <div class="eyebrow label">Sunway iLabs &times; Cradle &middot; Deep Tech Ventures Lab</div>
+    <h1 class="mask">Our deep tech journey, in photos.</h1>
+    <p class="hero__sub fade">A six-month sprint through the Startup Deep Tech Ventures Lab. More show than tell, scroll to live it.</p>
+    <div class="hero__meta fade">
+      <span>By Audrey Aui Yong, Tsuin AI</span>
+      <span>July&ndash;December 2025</span>
+    </div>
+  </div>
+  <div class="hero__frame">
+    <div class="frame"><img id="heroImg" src="01-launch.webp" alt="The Startup Deep Tech Ventures Lab launch" /><span class="tag">The launch</span></div>
+  </div>
+  <div class="cue fade">Scroll</div>
+</header>
+
+<!-- MARQUEE -->
+<section class="marquee" aria-hidden="true">
+  <div class="marquee__track" id="mtrack">
+    <div class="mhalf"><span>Inspire</span><span class="star">&#10022;</span><span>Build</span><span class="star">&#10022;</span><span>Scale</span><span class="star">&#10022;</span><span>Deep tech</span><span class="star">&#10022;</span><span>Capture the mind</span><span class="star">&#10022;</span></div>
+    <div class="mhalf"><span>Inspire</span><span class="star">&#10022;</span><span>Build</span><span class="star">&#10022;</span><span>Scale</span><span class="star">&#10022;</span><span>Deep tech</span><span class="star">&#10022;</span><span>Capture the mind</span><span class="star">&#10022;</span></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats wrap" data-chip="Selected">
+  <span class="spark twin" style="top:18%;right:8%;width:20px"><svg viewBox="0 0 24 24"><path d="M12 0c.6 6 5.4 10.8 12 11.4C17.4 12 12.6 16.8 12 24c-.6-7.2-5.4-12-12-12.6C6.6 10.8 11.4 6 12 0z" fill="currentColor"/></svg></span>
+  <h2 class="mask">One cohort, chosen carefully.</h2>
+  <div class="stats__grid">
+    <div class="stat"><b class="num" data-to="20">0</b><span>startups selected</span></div>
+    <div class="stat"><b class="num" data-to="69">0</b><span>applicants</span></div>
+    <div class="stat"><b class="num" data-to="29" data-suffix="%">0</b><span>acceptance rate</span></div>
+    <div class="stat"><b class="num" data-to="7">0</b><span>deep tech verticals</span></div>
+  </div>
+</section>
+
+<!-- TIMELINE 1 -->
+<div class="timeline wrap">
+  <div class="rail"><div class="rail__fill" id="railFill"></div></div>
+
+  <section class="scene" data-side="left" data-own="tsuin" data-chip="Day one">
+    <div class="scene__media">
+      <span class="node"></span>
+      <div class="frame"><img src="02-ilabs-inspire-build-scale.jpg" alt="At the Sunway iLabs Inspire Build Scale wall" loading="lazy"/><span class="tag">Sunway iLabs</span></div>
+    </div>
+    <div class="scene__text">
+      <div class="kicker"><span class="no">01</span><span class="label">Stepping in</span></div>
+      <h2 class="mask">Inspire. Build. Scale.</h2>
+      <p>We walked into Sunway iLabs knowing the order mattered. One of 20 startups, picked from 69.</p>
+    </div>
+  </section>
+
+  <section class="scene" data-side="right" data-own="tsuin" data-chip="The programme">
+    <div class="scene__media">
+      <span class="node"></span>
+      <div class="frame"><img src="03-dtvl-backdrop-2025.jpg" alt="Startup Deep Tech Ventures Lab 2025 partner backdrop" loading="lazy"/><span class="tag">The partners</span></div>
+    </div>
+    <div class="scene__text">
+      <div class="kicker"><span class="no">02</span><span class="label">Backed well</span></div>
+      <h2 class="mask">Organised by iLabs, <span class="em-brand">powered by Cradle</span>.</h2>
+      <p>Strategic partners from Cambridge to Singapore: Deep Tech Labs, CloudMile, and Investible.</p>
+    </div>
+  </section>
+</div>
+
+<!-- PIN A -->
+<section class="pin" data-side="left" data-steps="4" data-own="tsuin" data-chip="The build">
+  <div class="pin__sticky">
+    <div class="pin__media">
+      <div class="frame"><img src="06-booth-visitor.jpg" alt="Explaining the AI Twin at the Sunway iLabs booth" loading="lazy"/><span class="tag">Six months of work</span></div>
+    </div>
+    <div class="pin__steps">
+      <div class="pin__track"></div>
+      <div class="pin__dots" id="dotsA"></div>
+      <div class="pin__badge label">02 &middot; The build</div>
+      <div class="step on"><h2>Workshops.</h2><p>Expert-led, every week. We rebuilt how we explain what we are building.</p></div>
+      <div class="step"><h2>Mentorship.</h2><p>Monthly office hours with people who had already done the hard parts.</p></div>
+      <div class="step"><h2>Investor-ready.</h2><p>Sessions that turned a demo into a story investors could follow.</p></div>
+      <div class="step"><h2>One cohort.</h2><p>Seven verticals, from AI to energy transition, pushing each other forward.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE 2 -->
+<div class="timeline wrap">
+  <div class="rail"><div class="rail__fill" id="railFill2"></div></div>
+
+  <section class="scene" data-side="left" data-own="twin" data-chip="The showcase">
+    <div class="scene__media">
+      <span class="node"></span>
+      <div class="frame"><img src="05-booth-poster.jpg" alt="The tsuin.ai booth poster: your code has a story" loading="lazy"/><span class="tag">The message</span></div>
+    </div>
+    <div class="scene__text">
+      <div class="kicker"><span class="no">03</span><span class="label">The hook</span></div>
+      <div class="twin-bubble float">Your code has a story. Don&rsquo;t let it die when developers leave.<span class="meta">&middot; meet your AI Twin</span></div>
+    </div>
+  </section>
+
+  <section class="scene" data-side="right" data-own="tsuin" data-chip="The showcase">
+    <div class="scene__media">
+      <span class="node"></span>
+      <div class="frame"><img src="08-vips-booth.jpg" alt="VIP visit at the booth during the summit" loading="lazy"/><span class="tag">VIP walkabout</span></div>
+    </div>
+    <div class="scene__text">
+      <div class="kicker"><span class="no">04</span><span class="label">The floor</span></div>
+      <h2 class="mask">Everyone stopped by.</h2>
+      <p>Founders, investors, and a steady stream of VIPs. This is why you show up in person.</p>
+    </div>
+  </section>
+</div>
+
+<!-- HORIZONTAL GALLERY -->
+<section class="hgallery" data-chip="On the floor">
+  <div class="hgallery__head">
+    <span class="label">The cohort</span>
+    <h2>Scroll the floor.</h2>
+  </div>
+  <div class="hgallery__inner">
+    <div class="hgallery__track" id="htrack">
+      <div class="hcard"><div class="frame"><img src="07-cohort-booth.jpg" alt="The cohort at the Sunway iLabs booth" loading="lazy"/><span class="tag">At the booth</span></div></div>
+      <div class="hcard tall"><div class="frame"><img src="10-cohort-thumbsup.jpg" alt="Cohort celebrating at the booth" loading="lazy"/><span class="tag">Thumbs up</span></div></div>
+      <div class="hcard"><div class="frame"><img src="09-cohort-group.jpg" alt="The cohort group photo" loading="lazy"/><span class="tag">The cohort</span></div></div>
+      <div class="hcard tall"><div class="frame"><img src="12-pitch-closeup.jpg" alt="Audrey on stage" loading="lazy"/><span class="tag">On the mic</span></div></div>
+      <div class="hcard"><div class="frame"><img src="04-booth-demo-ai-twin.jpg" alt="Live AI Twin demo" loading="lazy"/><span class="tag">Live demo</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PIN B -->
+<section class="pin" data-side="right" data-steps="3" data-own="twin" data-chip="Live demo">
+  <div class="pin__sticky">
+    <div class="pin__media">
+      <div class="frame"><img src="04-booth-demo-ai-twin.jpg" alt="Live AI Twin demo on screen at the booth" loading="lazy"/><span class="tag">Live at the booth</span></div>
+    </div>
+    <div class="pin__steps">
+      <div class="pin__track"></div>
+      <div class="pin__dots" id="dotsB"></div>
+      <div class="pin__badge label" style="color:var(--twin-ink)">03 &middot; The demo</div>
+      <div class="step on"><h2>We went live.</h2><p>The AI Twin on the big screen, capturing a developer&rsquo;s thinking in real time.</p></div>
+      <div class="step"><h2>Every &lsquo;why&rsquo; preserved.</h2><p>Every decision remembered, so the knowledge stays when people move on.</p></div>
+      <div class="step"><h2>Every demo, a talk.</h2><p>That is where you learn what actually resonates.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINALE -->
+<section class="finale" data-chip="The stage">
+  <span class="spark tsuin" style="top:8%;left:10%"><svg viewBox="0 0 24 24"><path d="M12 0c.6 6 5.4 10.8 12 11.4C17.4 12 12.6 16.8 12 24c-.6-7.2-5.4-12-12-12.6C6.6 10.8 11.4 6 12 0z" fill="currentColor"/></svg></span>
+  <span class="spark human" style="top:14%;right:11%;width:18px"><svg viewBox="0 0 24 24"><path d="M12 0c.6 6 5.4 10.8 12 11.4C17.4 12 12.6 16.8 12 24c-.6-7.2-5.4-12-12-12.6C6.6 10.8 11.4 6 12 0z" fill="currentColor"/></svg></span>
+  <div class="wrap">
+    <div class="frame tsuin"><img src="11-pitch-stage.jpg" alt="Pitching Tsuin AI on stage: Capturing the Developer's Mind" loading="lazy"/><span class="tag">Capturing the Developer&rsquo;s Mind</span></div>
+    <div class="letter">
+      <span class="label">From the stage</span>
+      <blockquote class="mask">&ldquo;Moving forward, our startup&rsquo;s journey is <span class="em-act">very exciting</span>, because through the Deep Tech Ventures Lab we are progressing really fast.&rdquo;</blockquote>
+      <div class="by">Audrey Aui Yong &middot; Founder &amp; CEO, Tsuin AI</div>
+    </div>
+    <div class="parties" aria-hidden="true"><i class="p1"></i><i class="p2"></i><i class="p3"></i></div>
+    <div><a class="btn" href="https://tsuin.ai">See what we are building &rarr;</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Tsuin AI &middot; Startup Deep Tech Ventures Lab &middot; Sunway iLabs &amp; Cradle &middot; 2025</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script>
+(function(){
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var hasGSAP = window.gsap && window.ScrollTrigger;
+
+  /* progress bar + chip work regardless of GSAP */
+  var progress = document.getElementById("progress");
+  var chip = document.getElementById("chip"), chipName = document.getElementById("chipName");
+  var chapters = Array.prototype.slice.call(document.querySelectorAll("[data-chip]"));
+  function hud(){
+    var docEl = document.documentElement;
+    var h = docEl.scrollHeight - docEl.clientHeight;
+    progress.style.width = (h>0 ? (window.scrollY/h*100) : 0) + "%";
+    var mid = window.innerHeight*0.35, current=null;
+    chapters.forEach(function(c){ var r=c.getBoundingClientRect(); if(r.top<=mid && r.bottom>=mid) current=c.getAttribute("data-chip"); });
+    if(current){ if(chipName.textContent!==current) chipName.textContent=current; chip.classList.add("show"); }
+    else chip.classList.remove("show");
+  }
+
+  if(reduce || !hasGSAP){
+    window.addEventListener("scroll", hud, {passive:true});
+    hud();
+    // static fallback: count-up instantly, show all pin steps
+    document.querySelectorAll(".num").forEach(function(el){ el.textContent = el.getAttribute("data-to") + (el.getAttribute("data-suffix")||""); });
+    document.querySelectorAll(".pin .step").forEach(function(s){ s.classList.add("on"); });
+    document.querySelectorAll(".rail__fill").forEach(function(f){ f.style.height="100%"; });
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ---- Lenis smooth scroll (wodniack-style inertia) ---- */
+  var lenis = new Lenis({ lerp:0.1, wheelMultiplier:1, smoothWheel:true });
+  lenis.on("scroll", ScrollTrigger.update);
+  gsap.ticker.add(function(t){ lenis.raf(t*1000); });
+  gsap.ticker.lagSmoothing(0);
+  lenis.on("scroll", hud); hud();
+
+  /* ---- word-mask reveal on headings ---- */
+  function splitWords(el){
+    var nodes = Array.prototype.slice.call(el.childNodes);
+    el.innerHTML = "";
+    nodes.forEach(function(node){
+      if(node.nodeType===3){
+        node.textContent.split(/(\s+)/).forEach(function(tok){
+          if(tok.trim()===""){ el.appendChild(document.createTextNode(tok)); return; }
+          var w=document.createElement("span"); w.className="word";
+          var i=document.createElement("span"); i.textContent=tok; w.appendChild(i); el.appendChild(w);
+        });
+      } else {
+        var w=document.createElement("span"); w.className="word";
+        node.style.display="inline-block"; w.appendChild(node); el.appendChild(w);
+      }
+    });
+    return el.querySelectorAll(".word > span");
+  }
+  document.querySelectorAll(".mask").forEach(function(el){
+    var inners = splitWords(el);
+    gsap.set(inners,{yPercent:115});
+    gsap.to(inners,{yPercent:0,duration:.8,ease:"power3.out",stagger:.045,
+      scrollTrigger:{trigger:el,start:"top 86%"}});
+  });
+
+  /* ---- fade-rise for sub text ---- */
+  gsap.utils.toArray(".fade").forEach(function(el){
+    gsap.from(el,{autoAlpha:0,y:18,duration:.8,ease:"power2.out",scrollTrigger:{trigger:el,start:"top 92%"}});
+  });
+
+  /* ---- image clip reveal + parallax (skip hero & horizontal gallery) ---- */
+  document.querySelectorAll(".scene .frame, .finale .frame, .pin__media .frame").forEach(function(f){
+    var img=f.querySelector("img");
+    gsap.set(f,{clipPath:"inset(0% 0% 100% 0%)"});
+    gsap.to(f,{clipPath:"inset(0% 0% 0% 0%)",duration:1.05,ease:"power3.out",scrollTrigger:{trigger:f,start:"top 85%"}});
+    gsap.fromTo(img,{scale:1.22},{scale:1.08,duration:1.2,ease:"power3.out",scrollTrigger:{trigger:f,start:"top 85%"}});
+    gsap.fromTo(img,{yPercent:-7},{yPercent:5,ease:"none",scrollTrigger:{trigger:f,start:"top bottom",end:"bottom top",scrub:true}});
+  });
+  /* hero image gentle parallax only */
+  gsap.fromTo("#heroImg",{yPercent:-6},{yPercent:6,ease:"none",scrollTrigger:{trigger:".hero",start:"top top",end:"bottom top",scrub:true}});
+
+  /* ---- scroll-velocity skew (wodniack signature) ---- */
+  var skewTo = gsap.quickTo(".frame","skewY",{duration:.5,ease:"power3"});
+  lenis.on("scroll",function(e){
+    var v = Math.max(-5,Math.min(5,(e.velocity||0)*0.06));
+    skewTo(v);
+  });
+
+  /* ---- rail fill ---- */
+  document.querySelectorAll(".timeline").forEach(function(tl){
+    var fill=tl.querySelector(".rail__fill"); if(!fill) return;
+    gsap.fromTo(fill,{height:"0%"},{height:"100%",ease:"none",
+      scrollTrigger:{trigger:tl,start:"top 60%",end:"bottom 60%",scrub:true}});
+  });
+  document.querySelectorAll(".scene").forEach(function(s){
+    ScrollTrigger.create({trigger:s,start:"top 60%",end:"bottom 60%",
+      onToggle:function(self){ var n=s.querySelector(".node"); if(n) n.classList.toggle("on",self.isActive); }});
+  });
+
+  /* ---- count-up ---- */
+  document.querySelectorAll(".num").forEach(function(el){
+    var to=parseFloat(el.getAttribute("data-to")), suffix=el.getAttribute("data-suffix")||"", obj={v:0};
+    ScrollTrigger.create({trigger:el,start:"top 85%",once:true,onEnter:function(){
+      gsap.to(obj,{v:to,duration:1.2,ease:"power2.out",onUpdate:function(){ el.textContent=Math.round(obj.v)+suffix; }});
+    }});
+  });
+  gsap.utils.toArray(".stat").forEach(function(el){
+    gsap.from(el,{y:30,autoAlpha:0,duration:.7,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 88%"}});
+  });
+
+  /* ---- pinned word-swap (sticky via CSS; progress via ScrollTrigger) ---- */
+  document.querySelectorAll(".pin").forEach(function(pin){
+    var steps=pin.querySelectorAll(".step"), dots=pin.querySelector(".pin__dots");
+    if(dots) steps.forEach(function(_,i){ var d=document.createElement("span"); d.className="pdot"+(i===0?" on":""); dots.appendChild(d); });
+    var pdots=pin.querySelectorAll(".pdot");
+    ScrollTrigger.create({trigger:pin,start:"top top",end:"bottom bottom",
+      onUpdate:function(self){
+        var idx=Math.min(steps.length-1,Math.floor(self.progress*steps.length));
+        steps.forEach(function(s,i){ s.classList.toggle("on",i===idx); });
+        pdots.forEach(function(d,i){ d.classList.toggle("on",i===idx); });
+      }});
+  });
+
+  /* ---- horizontal pinned gallery ---- */
+  var htrack=document.getElementById("htrack");
+  if(htrack && window.matchMedia("(min-width:821px)").matches){
+    var amt=function(){ return htrack.scrollWidth - window.innerWidth; };
+    gsap.to(htrack,{x:function(){ return -amt(); },ease:"none",
+      scrollTrigger:{trigger:".hgallery",start:"top top",end:function(){ return "+="+amt(); },
+        scrub:1,pin:true,anticipatePin:1,invalidateOnRefresh:true}});
+  }
+
+  /* ---- kinetic marquee (auto + velocity nudge) ---- */
+  var mtrack=document.getElementById("mtrack");
+  if(mtrack){
+    var half=mtrack.querySelector(".mhalf").getBoundingClientRect().width;
+    var mtl=gsap.to(mtrack,{x:-half,duration:18,ease:"none",repeat:-1,
+      modifiers:{x:function(x){ return (parseFloat(x)%half)+"px"; }}});
+    lenis.on("scroll",function(e){
+      var ts=1+Math.min(6,Math.abs((e.velocity||0)*0.08));
+      gsap.to(mtl,{timeScale:ts,duration:.3,overwrite:true});
+      gsap.to(mtl,{timeScale:1,duration:1.2,delay:.3,overwrite:false});
+    });
+  }
+
+  ScrollTrigger.refresh();
+})();
+</script>
+</body>
+</html>

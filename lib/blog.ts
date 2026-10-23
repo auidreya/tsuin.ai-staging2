@@ -13,6 +13,26 @@ export type BlogPost = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "sunway-ilabs-cradle-deep-tech-ventures-lab",
+    title: "Our Deep Tech Ventures Lab journey with Sunway iLabs",
+    date: "Nov 6, 2025",
+    isoDate: "2025-11-06",
+    author: "Audrey Aui Yong",
+    authorRole: "Founder & CEO, Tsuin AI",
+    readingTime: "4 min read",
+    dek: "Tsuin AI was one of 20 startups chosen from 69 for the Sunway iLabs and Cradle Startup Deep Tech Ventures Lab. The journey, from launch to the stage, told in photos.",
+  },
+  {
+    slug: "day-2-training-my-ai-twin",
+    title: "Day 2 of training my AI twin as a closed beta user",
+    date: "Oct 23, 2026",
+    isoDate: "2026-10-23",
+    author: "James",
+    authorRole: "Testing Tsuin",
+    readingTime: "4 min read",
+    dek: "Training my AI twin showed me my own reasoning is a mess. Day two of the closed beta: the bug behind “I don’t know”, and why explaining every correction made me think better.",
+  },
+  {
     slug: "day-1-with-my-ai-twin",
     title: "Day 1 experience with the AI Twin as a closed beta user",
     date: "Oct 21, 2026",
