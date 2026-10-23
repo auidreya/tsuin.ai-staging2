@@ -6,13 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/`, lastModified: "2026-08-15", changeFrequency: "weekly", priority: 1.0 },
     { url: `${SITE_URL}/pricing`, lastModified: "2026-08-15", changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/manifesto`, lastModified: "2026-08-15", changeFrequency: "monthly", priority: 0.7 },
-    { url: `${SITE_URL}/research`, lastModified: "2026-10-21", changeFrequency: "weekly", priority: 0.7 },
-    {
-      url: `${SITE_URL}/research/teaching-a-twin-without-making-it-forget`,
-      lastModified: "2026-10-21",
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
+    { url: `${SITE_URL}/research`, lastModified: "2026-10-23", changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/blog`, lastModified: "2026-10-23", changeFrequency: "weekly", priority: 0.7 },
     {
       url: `${SITE_URL}/blog/day-2-training-my-ai-twin`,

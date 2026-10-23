@@ -35,7 +35,15 @@ export function pageMetadata({
 }: PageMetaInput): Metadata {
   const ogTitle = socialTitle ?? title;
   const social = socialDescription ?? description;
-  const ogImage = image ? { url: image.url, width: 1200, height: 630, type: "image/jpeg", alt: image.alt } : OG_IMAGE;
+  const ogImage = image
+    ? {
+        url: image.url,
+        width: 1200,
+        height: 630,
+        type: image.url.endsWith(".png") ? "image/png" : "image/jpeg",
+        alt: image.alt,
+      }
+    : OG_IMAGE;
   const type = article
     ? ({ type: "article", publishedTime: article.publishedTime, authors: article.authors } as const)
     : ({ type: "website" } as const);

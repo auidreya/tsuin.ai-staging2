@@ -1,27 +1,53 @@
-// The research index. One entry per post; the article pages live under
-// app/research/<slug>/. Newest first — the index renders in array order.
-export type ResearchPost = {
-  slug: string;
-  title: string;
-  date: string; // display string, e.g. "Oct 21, 2026"
-  isoDate: string; // for <time> and sitemap lastModified
-  author: string;
-  readingTime: string;
-  dek: string; // one-line summary for the index and social cards
+import { SITE_URL } from "./site";
+
+// The research note. It lives on /research itself as one page; new findings go
+// in as dated updates on that page rather than as separate posts.
+export const RESEARCH = {
+  title: "Continual Learning for Cognitive AI Twins",
+  date: "Oct 21, 2026",
+  isoDate: "2026-10-21", // for <time> and sitemap lastModified
+  author: "David Fu",
+  authorRole: "Chief AI Officer & Co-founder",
+  readingTime: "6 min read",
+  image: {
+    url: "/research/og/teaching-a-twin.png",
+    alt: "As training strength rises, the twin's refusals of impossible tasks fall from 27 to 4 out of 60 while voice match climbs",
+  },
 };
 
-export const RESEARCH_POSTS: ResearchPost[] = [
-  {
-    slug: "teaching-a-twin-without-making-it-forget",
-    title: "Teaching a twin without making it forget",
-    date: "Oct 21, 2026",
-    isoDate: "2026-10-21",
-    author: "Audrey",
-    readingTime: "6 min read",
-    dek: "What it takes to teach a twin a second thing without wiping out the first: the voice-versus-judgement trade, the 8% mix that fixed it, and the one number between us and a real result.",
-  },
-];
+export const RESEARCH_DESCRIPTION =
+  "How we teach an AI twin to learn from one person without forgetting: the voice vs judgement trade-off, an 8% replay mix, and when training beats lookup.";
 
-export function getPost(slug: string): ResearchPost | undefined {
-  return RESEARCH_POSTS.find((p) => p.slug === slug);
+// TechArticle plus a breadcrumb, as one JSON-LD graph.
+export function researchJsonLd() {
+  const url = `${SITE_URL}/research`;
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        headline: RESEARCH.title,
+        description: RESEARCH_DESCRIPTION,
+        image: `${SITE_URL}${RESEARCH.image.url}`,
+        datePublished: RESEARCH.isoDate,
+        dateModified: RESEARCH.isoDate,
+        about: ["Continual learning", "Catastrophic forgetting", "Fine-tuning large language models"],
+        author: {
+          "@type": "Person",
+          name: RESEARCH.author,
+          jobTitle: "Chief AI Officer & Co-founder",
+          url: `${SITE_URL}/about`,
+        },
+        publisher: { "@type": "Organization", name: "Tsuin AI Sdn Bhd", url: SITE_URL },
+        mainEntityOfPage: url,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+          { "@type": "ListItem", position: 2, name: "Research", item: url },
+        ],
+      },
+    ],
+  };
 }

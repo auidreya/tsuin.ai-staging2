@@ -29,92 +29,53 @@ function Frame({
 
 /* ---------------------------------------------------------------- Figure 1 --
    The learning loop: four steps, step 4 is where a new lesson can erase an
-   old one. Horizontal flow with a return arrow, so it stays legible narrow. */
+   old one. Built from HTML boxes, not SVG text, so each label wraps inside its
+   box at any width. Four across on wide screens, stacked on narrow ones. */
 
 const LOOP_STEPS = [
   { step: "01", label: "You work" },
-  { step: "02", label: "The twin guesses\nwhat you meant" },
-  { step: "03", label: "You correct it with\nyour real reasoning" },
-  { step: "04", label: "A small training\nupdate", accent: true },
+  { step: "02", label: "The twin guesses what you meant" },
+  { step: "03", label: "You correct it with your real reasoning" },
+  { step: "04", label: "A small training update", accent: true },
 ];
 
 export function LoopFigure() {
-  const W = 680;
-  const H = 240;
-  const boxW = 138;
-  const boxH = 86;
-  const gap = (W - boxW * 4) / 3;
-  const top = 36;
-
   return (
     <Frame
       caption="The twin's learning loop, from our October 2026 research review."
       note="Step 04 lands on a model that already carries yesterday's update. If the new lesson quietly erases the old one, the twin is changing, not learning."
     >
-      <svg
-        className={styles.plot}
-        viewBox={`0 0 ${W} ${H}`}
-        role="img"
-        aria-label="A four-step loop: you work; the twin guesses what you meant; you correct it with your real reasoning; a small training update, which feeds back to the start."
-      >
-        <defs>
-          <marker id="loopArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-            <path d="M0 0 L10 5 L0 10 z" fill="var(--ink-muted)" />
-          </marker>
-        </defs>
+      <div className={styles.loop}>
+        <ol className={styles.loopSteps}>
+          {LOOP_STEPS.map((s) => (
+            <li key={s.step} className={`${styles.loopStep} ${s.accent ? styles.loopStepAccent : ""}`}>
+              <span className={styles.loopNo}>{s.step}</span>
+              <span className={styles.loopLabel}>{s.label}</span>
+            </li>
+          ))}
+        </ol>
 
-        {LOOP_STEPS.map((s, i) => {
-          const x = i * (boxW + gap);
-          const accent = s.accent;
-          return (
-            <g key={s.step}>
-              <rect
-                x={x}
-                y={top}
-                width={boxW}
-                height={boxH}
-                rx={10}
-                fill="var(--paper)"
-                stroke={accent ? "var(--twin)" : "var(--rule)"}
-                strokeWidth={accent ? 2 : 1}
-              />
-              <text className={styles.nodeStep} x={x + 14} y={top + 22} fill={accent ? "var(--twin-ink)" : undefined}>
-                {s.step}
-              </text>
-              {s.label.split("\n").map((line, li) => (
-                <text key={li} className={styles.nodeLabel} x={x + 14} y={top + 44 + li * 17}>
-                  {line}
-                </text>
-              ))}
-              {i < 3 ? (
-                <line
-                  x1={x + boxW + 6}
-                  y1={top + boxH / 2}
-                  x2={x + boxW + gap - 6}
-                  y2={top + boxH / 2}
-                  className={styles.gridLine}
-                  stroke="var(--ink-muted)"
-                  markerEnd="url(#loopArrow)"
-                />
-              ) : null}
-            </g>
-          );
-        })}
-
-        {/* Return arrow from step 04 back to step 01. */}
-        <path
-          d={`M ${W - boxW / 2} ${top + boxH + 2}
-              C ${W - boxW / 2} ${H - 14}, ${boxW / 2} ${H - 14}, ${boxW / 2} ${top + boxH + 10}`}
-          fill="none"
-          stroke="var(--ink-muted)"
-          strokeWidth={1}
-          strokeDasharray="4 4"
-          markerEnd="url(#loopArrow)"
-        />
-        <text className={styles.annot} x={W / 2} y={H - 16} textAnchor="middle" fill="var(--ink-muted)">
+        {/* Return arrow from step 04 back to step 01. Decorative: the label says it. */}
+        <div className={styles.loopReturnWrap} aria-hidden="true">
+          <span className={styles.loopReturnHead} />
+          <svg className={styles.loopReturn} viewBox="0 0 100 40" preserveAspectRatio="none">
+            <path
+              d="M 87.5 2 C 87.5 38, 12.5 38, 12.5 4"
+              fill="none"
+              stroke="var(--ink-muted)"
+              strokeWidth={1}
+              strokeDasharray="4 4"
+              vectorEffect="non-scaling-stroke"
+            />
+          </svg>
+        </div>
+        <p className={styles.loopRepeat}>
+          <span className={styles.loopRepeatIcon} aria-hidden="true">
+            ↺
+          </span>
           repeats, on yesterday&apos;s model
-        </text>
-      </svg>
+        </p>
+      </div>
     </Frame>
   );
 }

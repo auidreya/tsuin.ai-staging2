@@ -19,6 +19,8 @@ const nextConfig: NextConfig = {
     return [
       { source: "/index.html", destination: "/", permanent: true },
       { source: "/:page(about|pricing|culture|manifesto).html", destination: "/:page", permanent: true },
+      // Research used to be a list of posts; it is one page now.
+      { source: "/research/teaching-a-twin-without-making-it-forget", destination: "/research", permanent: true },
     ];
   },
   // First-party proxy for PostHog (see lib/posthog.ts), so ad blockers don't drop events.
