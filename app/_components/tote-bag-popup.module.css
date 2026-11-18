@@ -1,0 +1,351 @@
+/* Tote bag claim pop-up. Light (human) palette, desk-object shadow, paper card. */
+
+.dialog {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  max-width: min(440px, calc(100vw - 32px));
+  width: 100%;
+  max-height: calc(100dvh - 32px);
+  overflow: visible;
+  color: var(--ink);
+}
+
+.dialog::backdrop {
+  background: color-mix(in srgb, #1a1b26 55%, transparent);
+  backdrop-filter: blur(2px);
+}
+
+.dialog[open] {
+  animation: tote-in var(--duration-slow) var(--ease);
+}
+
+@keyframes tote-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.panel {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-desk-lift);
+  padding: 32px 28px 24px;
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: var(--transition-colors);
+}
+
+.close:hover {
+  background: var(--paper-3);
+  color: var(--ink-2);
+}
+
+.close:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 1px;
+}
+
+/* Product photo band across the top of the form. Bleeds to the panel edges. */
+.hero {
+  margin: -32px -28px 20px;
+  padding: 22px 0 0;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  background: radial-gradient(ellipse at 50% 70%, var(--twin-wash) 0%, var(--paper-3) 70%);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.heroImg {
+  display: block;
+  width: auto;
+  height: 210px;
+  filter: drop-shadow(0 10px 14px rgba(58, 42, 20, 0.22));
+  transform: translateY(6px);
+}
+
+.eyebrow {
+  font-family: var(--font-twin);
+  font-size: var(--twin-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  font-weight: 700;
+  color: var(--human-ink);
+  margin: 0 0 10px;
+}
+
+.title {
+  font-family: var(--font-human);
+  font-size: 26px;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--ink-2);
+  font-weight: 600;
+  margin: 0 0 10px;
+  text-wrap: balance;
+}
+
+.lead {
+  font-family: var(--font-human);
+  font-size: 16px;
+  line-height: var(--leading-snug);
+  color: var(--ink-muted);
+  margin: 0 0 22px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
+.field label {
+  font-size: var(--twin-label);
+  line-height: 1.4;
+}
+
+.field input {
+  font-size: 16px; /* 16px stops iOS zooming on focus */
+  height: 42px;
+  background: var(--background);
+}
+
+.textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 96px;
+  background: var(--background);
+  color: var(--ink);
+  border: 1px solid var(--input);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  font-family: var(--font-twin);
+  font-size: 16px;
+  line-height: var(--leading-normal);
+  box-shadow: var(--shadow-sm);
+  outline: none;
+}
+
+.textarea::placeholder,
+.field input::placeholder {
+  color: var(--ink-muted);
+  opacity: 0.7;
+}
+
+.textarea:focus {
+  outline: 2px solid var(--ring);
+  outline-offset: 1px;
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.error {
+  font-family: var(--font-twin);
+  font-size: var(--twin-caption);
+  color: var(--destructive);
+  margin: 0 0 12px;
+}
+
+.fine {
+  font-family: var(--font-twin);
+  font-size: var(--twin-caption);
+  color: var(--ink-muted);
+  text-align: center;
+  margin: 12px 0 0;
+}
+
+/* ---------- Screen 2: the staff pass ---------- */
+
+.pass {
+  text-align: center;
+  padding-top: 8px;
+}
+
+.passArt {
+  position: relative;
+  width: max-content;
+  margin: 0 auto 18px;
+}
+
+.passImg {
+  display: block;
+  width: auto;
+  height: 150px;
+  filter: drop-shadow(0 8px 12px rgba(58, 42, 20, 0.2));
+}
+
+/* The check sits on the bag's corner like a "paid" stamp. */
+.seal {
+  position: absolute;
+  right: -14px;
+  bottom: 4px;
+  width: 56px;
+  height: 56px;
+  border: 3px solid var(--paper);
+  border-radius: var(--radius-full);
+  background: var(--human);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-desk);
+}
+
+.pass .title {
+  font-size: 32px;
+}
+
+.passLead {
+  font-family: var(--font-human);
+  font-size: 19px;
+  line-height: var(--leading-snug);
+  color: var(--ink);
+  margin: 0 auto 22px;
+  max-width: 30ch;
+  text-wrap: balance;
+}
+
+.ticket {
+  margin: 0;
+  border: 1px dashed var(--rule);
+  border-radius: var(--radius-artifact);
+  background: var(--paper-2);
+  padding: 14px 16px;
+  display: grid;
+  gap: 10px;
+  text-align: left;
+}
+
+.ticket div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.ticket dt {
+  font-family: var(--font-twin);
+  font-size: var(--twin-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--ink-muted);
+  flex-shrink: 0;
+}
+
+.ticket dd {
+  margin: 0;
+  font-family: var(--font-twin);
+  font-size: var(--twin-label);
+  color: var(--ink-2);
+  overflow-wrap: anywhere;
+  text-align: right;
+}
+
+.ticket .code {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--human-ink);
+}
+
+.note {
+  font-family: var(--font-twin);
+  font-size: var(--twin-caption);
+  color: var(--warning);
+  margin: 14px 0 0;
+}
+
+/* ---------- Reopen pill (bottom-left, clear of the human/twin toggle) ---------- */
+
+.pill {
+  position: fixed;
+  left: 16px;
+  bottom: 28px;
+  z-index: 79;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 14px 0 8px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-full);
+  background: var(--paper);
+  color: var(--ink-2);
+  font-family: var(--font-twin);
+  font-size: var(--twin-label);
+  font-weight: 500;
+  box-shadow: var(--shadow-desk-lg);
+  cursor: pointer;
+  transition: var(--transition-colors);
+}
+
+.pill:hover {
+  background: var(--paper-2);
+}
+
+.pill:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.pillArt {
+  width: auto;
+  height: 30px;
+}
+
+@media (max-width: 480px) {
+  .panel {
+    padding: 28px 20px 20px;
+  }
+
+  .hero {
+    margin: -28px -20px 18px;
+  }
+
+  .heroImg {
+    height: 170px;
+  }
+
+  .title {
+    font-size: 23px;
+  }
+
+  /* On phones the toggle sits bottom-centre; keep the pill compact and left. */
+  .pill {
+    left: 12px;
+    bottom: 34px;
+    padding: 0 10px 0 6px;
+  }
+}

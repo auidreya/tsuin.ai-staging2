@@ -1,0 +1,165 @@
+/* Live testimonial billboard: a tinted band under the hero with a slow
+   right-to-left marquee of paper cards. Pauses on hover/focus; with reduced
+   motion it becomes a plain horizontal scroller. */
+
+.billboard {
+  padding: clamp(40px, 6vw, 64px) 0;
+  background: color-mix(in srgb, var(--paper-3) 55%, transparent);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  overflow: hidden;
+}
+
+.head {
+  margin: 0 auto 24px;
+  max-width: var(--container-max);
+  padding: 0 var(--gutter);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-twin);
+  font-size: var(--twin-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  font-weight: 700;
+  color: var(--human-ink);
+  margin: 0 0 12px;
+}
+
+.liveDot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--hanko);
+  animation: live-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.title {
+  font-family: var(--font-human);
+  font-size: clamp(24px, 4vw, var(--human-h2));
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.2;
+  color: var(--ink-2);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.viewport {
+  /* Fade the cards out at both edges instead of a hard cut. */
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+
+.static {
+  mask-image: none;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  overflow-x: auto;
+}
+
+.track {
+  list-style: none;
+  margin: 0;
+  padding: 4px 0 8px;
+  display: flex;
+  gap: 16px;
+  width: max-content;
+}
+
+.scrolling {
+  padding-left: 16px;
+  animation: billboard-scroll var(--marquee-duration, 40s) linear infinite;
+}
+
+.viewport:hover .scrolling,
+.viewport:focus-within .scrolling {
+  animation-play-state: paused;
+}
+
+@keyframes billboard-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* Track is the list twice over (+ one gap), so -50% lands on the clone. */
+    transform: translateX(calc(-50% - 8px));
+  }
+}
+
+.card {
+  position: relative;
+  flex: 0 0 auto;
+  width: min(320px, 78vw);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 20px 18px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-desk);
+}
+
+.badge {
+  position: absolute;
+  top: -9px;
+  right: 14px;
+  padding: 2px 8px;
+  border-radius: var(--radius-artifact);
+  background: var(--hanko);
+  color: var(--paper);
+  font-family: var(--font-twin);
+  font-size: var(--twin-micro);
+  font-weight: 700;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+}
+
+.quote {
+  margin: 0;
+  font-family: var(--font-human);
+  font-size: 17px;
+  line-height: var(--leading-snug);
+  color: var(--ink);
+  overflow-wrap: anywhere;
+  /* Long testimonials are clamped so every card stays billboard-sized. */
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.name {
+  margin: 0;
+  font-family: var(--font-twin);
+  font-size: var(--twin-label);
+  font-weight: 500;
+  color: var(--ink-muted);
+  overflow-wrap: anywhere;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .viewport {
+    overflow-x: auto;
+    mask-image: none;
+  }
+
+  .scrolling {
+    animation: none;
+  }
+}

@@ -12,6 +12,7 @@ import highfive from "@/images/shibasuke-scene-highfive.webp";
 import { STRIPE_PREORDER_URL } from "@/lib/site";
 import styles from "../home.module.css";
 import { ChatDemo } from "./chat-demo";
+import { TestimonialBillboard } from "./testimonial-billboard";
 import { WaitlistForm } from "./waitlist-form";
 
 const FEATURES = [
@@ -93,6 +94,8 @@ export function HumanView({ animateDemo = true }: { animateDemo?: boolean }) {
             </div>
           </div>
         </section>
+
+        <TestimonialBillboard />
 
         <section className={`${styles.section} ${styles.video}`}>
           <div className={styles.container}>

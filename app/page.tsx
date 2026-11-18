@@ -2,6 +2,7 @@ import { JsonLd } from "@/components/json-ld";
 import { pageMetadata } from "@/lib/metadata";
 import { HumanView } from "./_components/human-view";
 import { ThemeSwitch } from "./_components/theme-switch";
+import { ToteBagPopup } from "./_components/tote-bag-popup";
 import { TwinView } from "./_components/twin-view";
 
 export const metadata = pageMetadata({
@@ -111,6 +112,7 @@ export default function Page() {
       <JsonLd data={SITE_GRAPH} />
       <JsonLd data={VIDEO} />
       <ThemeSwitch human={<HumanView animateDemo={ANIMATE_DEMO} />} twin={<TwinView />} />
+      <ToteBagPopup />
     </>
   );
 }
