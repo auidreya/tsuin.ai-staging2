@@ -23,6 +23,39 @@ const OPEN_DELAY_MS = 1200;
 // Fired after a successful claim so the billboard refetches straight away.
 export const TESTIMONIAL_EVENT = "tsuin:testimonial-added";
 
+// The 5 Mom Test questions: past behaviour, not opinions about tsuin. Answers
+// are private (Supabase only). Keys match the columns in supabase/testimonials.sql.
+export const SURVEY = [
+  {
+    key: "q1_lost_knowhow",
+    en: "When did know-how last get lost — someone left, a handover, or you forgot why you did something? What happened?",
+    zh: "上次有經驗或知識流失是什麼時候？可能是有人離開、工作交接，或忘了自己當初為什麼這樣做。發生了什麼事？",
+  },
+  {
+    key: "q2_where_it_lives",
+    en: "Where does how you work live today? Notes, docs, .md files, or just your head?",
+    zh: "你的工作方法現在都存在哪裡？筆記、文件、.md 檔，還是只在腦袋裡？",
+  },
+  {
+    key: "q3_ai_reexplain",
+    en: "Last time you used AI for real work, what did you have to explain again or fix?",
+    zh: "上次用 AI 處理正事時，你得重新解釋或修正哪些地方？",
+  },
+  {
+    key: "q4_tried",
+    en: "What have you tried to fix this — tools, docs, hiring? How did it go?",
+    zh: "你試過哪些方法解決？工具、文件、找人？結果如何？",
+  },
+  {
+    key: "q5_magic_wand",
+    en: "If you had a magic wand, what one thing would you change about this?",
+    zh: "如果你有一根魔法棒，你會改變這件事的哪一點？",
+  },
+] as const;
+
+type SurveyKey = (typeof SURVEY)[number]["key"];
+const EMPTY_ANSWERS = Object.fromEntries(SURVEY.map((q) => [q.key, ""])) as Record<SurveyKey, string>;
+
 type Claim = { email: string; code: string; claimedAt: string; alreadyClaimed?: boolean };
 
 // localStorage read through useSyncExternalStore: null on the server, the raw
@@ -70,6 +103,7 @@ export function ToteBagPopup() {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [answers, setAnswers] = useState<Record<SurveyKey, string>>(EMPTY_ANSWERS);
   const [testimonial, setTestimonial] = useState("");
   const [company, setCompany] = useState("");
   const [error, setError] = useState("");
@@ -120,18 +154,27 @@ export function ToteBagPopup() {
       setError("That address doesn't look right. Check it and try again.");
       return;
     }
-    const trimmedTestimonial = testimonial.trim();
-    if (!trimmedTestimonial) {
-      setError("Tell us a little about what you think first.");
+    const missing = SURVEY.findIndex((q) => !answers[q.key].trim());
+    if (missing !== -1) {
+      setError(`Please answer question ${missing + 1}. A few words is fine. 請回答第 ${missing + 1} 題，簡短幾個字也可以。`);
+      document.getElementById(`tote-${SURVEY[missing].key}`)?.focus();
       return;
     }
+    const trimmedAnswers = Object.fromEntries(SURVEY.map((q) => [q.key, answers[q.key].trim()]));
+    const trimmedTestimonial = testimonial.trim();
     setSending(true);
     setError("");
     try {
       const r = await fetch("/api/testimonials", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: trimmedName, email: trimmedEmail, testimonial: trimmedTestimonial, company }),
+        body: JSON.stringify({
+          name: trimmedName,
+          email: trimmedEmail,
+          answers: trimmedAnswers,
+          testimonial: trimmedTestimonial,
+          company,
+        }),
       });
       const data = (await r.json().catch(() => ({}))) as {
         error?: string;
@@ -154,7 +197,7 @@ export function ToteBagPopup() {
         localStorage.setItem(CLAIM_KEY, JSON.stringify(next));
       } catch {}
       identifyPerson(next.email, { name: trimmedName });
-      window.dispatchEvent(new Event(TESTIMONIAL_EVENT));
+      if (trimmedTestimonial) window.dispatchEvent(new Event(TESTIMONIAL_EVENT));
       sendEvent("generate_lead", { form_location: "tote_popup", already_claimed: Boolean(data.alreadyClaimed) });
       setSending(false);
       setClaim(next);
@@ -193,10 +236,11 @@ export function ToteBagPopup() {
               </div>
               <p className={styles.eyebrow}>FREE TSUIN TOTE BAG</p>
               <h2 id="tote-title" className={styles.title}>
-                Tell us what you think. Take home a tote.
+                Tell us your story. Take home a tote.
               </h2>
               <p className={styles.lead}>
-                Leave your name, email and a few words about the Cognitive AI Twin, and the tote is yours.
+                Five quick questions about how you work. Short answers are fine.
+                <span className={styles.zh}>回答五個關於你工作方式的小問題，簡短回答就可以。</span>
               </p>
 
               <div className={styles.field}>
@@ -235,16 +279,47 @@ export function ToteBagPopup() {
                 />
               </div>
 
-              <div className={styles.field}>
-                <Label htmlFor="tote-testimonial">What do you think of the Cognitive AI Twin?</Label>
-                <textarea
+              <ol className={styles.survey}>
+                {SURVEY.map((q, i) => (
+                  <li key={q.key} className={styles.field}>
+                    <Label htmlFor={`tote-${q.key}`} className={styles.question}>
+                      <span className={styles.qNum}>{i + 1}</span>
+                      <span>
+                        {q.en}
+                        <span className={styles.zh}>{q.zh}</span>
+                      </span>
+                    </Label>
+                    <textarea
+                      id={`tote-${q.key}`}
+                      name={q.key}
+                      rows={2}
+                      maxLength={1000}
+                      required
+                      className={styles.textarea}
+                      value={answers[q.key]}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        setAnswers((a) => ({ ...a, [q.key]: value }));
+                        setError("");
+                      }}
+                    />
+                  </li>
+                ))}
+              </ol>
+
+              <div className={`${styles.field} ${styles.wall}`}>
+                <Label htmlFor="tote-testimonial" className={styles.question}>
+                  <span>
+                    Anything to say about tsuin? <em className={styles.optional}>Optional · shown on our live wall</em>
+                    <span className={styles.zh}>想對 tsuin 說些什麼嗎？（選填，會顯示在我們的留言牆上）</span>
+                  </span>
+                </Label>
+                <Input
                   id="tote-testimonial"
                   name="testimonial"
-                  rows={4}
-                  maxLength={600}
-                  required
-                  placeholder="Your use case, a comment, or honest feedback."
-                  className={styles.textarea}
+                  type="text"
+                  maxLength={280}
+                  placeholder="One line for the wall"
                   value={testimonial}
                   onChange={(e) => {
                     setTestimonial(e.target.value);
@@ -276,8 +351,9 @@ export function ToteBagPopup() {
                 {sending ? "Claiming…" : "Claim my tote bag"}
               </Button>
               <p className={styles.fine}>
-                Your name and comment appear on our live testimonial wall. Your email stays private. One tote per
+                Your answers and email stay private. Only your name and the optional wall line are shown. One tote per
                 email, while stocks last.
+                <span className={styles.zh}>你的回答與 email 不會公開，只有名字和選填的留言會顯示。每個 email 限領一個，送完為止。</span>
               </p>
             </form>
           ) : null}
@@ -306,9 +382,12 @@ function PassScreen({ claim }: { claim: Claim }) {
         </div>
       </div>
       <h2 id="tote-title" className={styles.title}>
-        Thank you!
+        Thank you! 謝謝你！
       </h2>
-      <p className={styles.passLead}>Please show this to tsuin.ai staff to claim your tote bag.</p>
+      <p className={styles.passLead}>
+        Please show this to tsuin.ai staff to claim your tote bag.
+        <span className={styles.zh}>請出示此畫面給 tsuin.ai 工作人員，領取你的托特包。</span>
+      </p>
 
       <dl className={styles.ticket}>
         <div>

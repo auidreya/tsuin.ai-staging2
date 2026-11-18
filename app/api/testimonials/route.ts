@@ -3,16 +3,22 @@
 // Server-side so the service_role key never reaches the browser. Schema in
 // supabase/testimonials.sql.
 //
-//   POST  name + email + testimonial -> saves the claim, returns a claim code.
+//   POST  name + email + 5 survey answers (+ optional wall line) -> saves the
+//         claim, returns a claim code. Survey answers are private.
 //         Email is unique: a repeat doesn't overwrite, it returns the original
 //         claim flagged `alreadyClaimed` so staff can see it on the pass.
-//   GET   latest visible testimonials for the billboard: name + text only.
-//         Email never leaves the server.
+//   GET   latest visible wall lines for the billboard: name + text only.
+//         Email and survey answers never leave the server.
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const MAX_EMAIL = 254;
 const MAX_NAME = 80;
-const MAX_TESTIMONIAL = 600;
+const MAX_TESTIMONIAL = 280;
+const MAX_ANSWER = 1000;
+
+// Mirrors SURVEY in app/_components/tote-bag-popup.tsx and the q*_ columns in
+// supabase/testimonials.sql.
+const SURVEY_KEYS = ["q1_lost_knowhow", "q2_where_it_lives", "q3_ai_reexplain", "q4_tried", "q5_magic_wand"] as const;
 const BILLBOARD_LIMIT = 30;
 
 const SAVE_FAILED = "We couldn't save that just now. Please try again, or ask a tsuin staff member.";
@@ -51,7 +57,7 @@ export async function GET() {
   if (!db) return json(200, { testimonials: [] });
   try {
     const r = await fetch(
-      `${db.url}/rest/v1/testimonials?select=id,name,testimonial,created_at&hidden=is.false&order=created_at.desc&limit=${BILLBOARD_LIMIT}`,
+      `${db.url}/rest/v1/testimonials?select=id,name,testimonial,created_at&hidden=is.false&testimonial=not.is.null&order=created_at.desc&limit=${BILLBOARD_LIMIT}`,
       { headers: db.headers, cache: "no-store" },
     );
     if (!r.ok) {
@@ -88,10 +94,17 @@ export async function POST(request: Request) {
     return json(400, { error: "That address doesn't look right. Check it and try again." });
   }
 
-  const testimonial = clean(body.testimonial, MAX_TESTIMONIAL);
-  if (!testimonial) {
-    return json(400, { error: "Tell us a little about what you think first." });
+  const raw = (body.answers && typeof body.answers === "object" ? body.answers : {}) as Record<string, unknown>;
+  const answers: Record<string, string> = {};
+  for (const [i, key] of SURVEY_KEYS.entries()) {
+    // Keep line breaks in private answers; only trim and cap them.
+    const value = String(raw[key] ?? "").trim().slice(0, MAX_ANSWER);
+    if (!value) return json(400, { error: `Please answer question ${i + 1}.` });
+    answers[key] = value;
   }
+
+  // Optional public wall line. Empty -> null, so it never shows on the billboard.
+  const testimonial = clean(body.testimonial, MAX_TESTIMONIAL) || null;
 
   const db = supabase();
   if (!db) {
@@ -103,7 +116,7 @@ export async function POST(request: Request) {
     const r = await fetch(`${db.url}/rest/v1/testimonials?select=id,created_at`, {
       method: "POST",
       headers: { ...db.headers, Prefer: "return=representation" },
-      body: JSON.stringify({ name, email, testimonial, source: "home-popup" }),
+      body: JSON.stringify({ name, email, testimonial, ...answers, source: "home-popup" }),
     });
 
     if (r.ok) {
