@@ -36,6 +36,18 @@ export const BLOG_AUTHORS: Record<string, BlogAuthor> = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "my-ai-twin-learned-my-voice",
+    title: "The strangest thing my AI twin did wasn’t a bug",
+    date: "Nov 3, 2026",
+    isoDate: "2026-11-03",
+    author: "James Chu",
+    authorRole: "Closed beta user",
+    readingTime: "2 min read",
+    dek: "I corrected my AI twin and it didn't learn the fix. It learned the way I say \u201cwrong\u201d, and then it learned my voice.",
+    image: { url: "/blog/og/learned-my-voice.jpg", alt: "The twin shiba in glasses studying a rule book at a desk" },
+    betaLog: true,
+  },
+  {
     slug: "tsuin-closed-beta-feels-like-chatgpt-3-5",
     title: "Testing Tsuin in closed beta feels like ChatGPT 3.5",
     date: "Oct 26, 2026",
