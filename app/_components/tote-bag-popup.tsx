@@ -234,9 +234,8 @@ export function ToteBagPopup() {
               <div className={styles.hero}>
                 <Image src={toteBag} alt="The tsuin.ai tote bag with Shibasuke the twin shiba" sizes="200px" className={styles.heroImg} priority={false} />
               </div>
-              <p className={styles.eyebrow}>FREE TSUIN TOTE BAG</p>
               <h2 id="tote-title" className={styles.title}>
-                Tell us your story. Take home a tote.
+                Claim a FREE tote bag
               </h2>
               <p className={styles.lead}>
                 Five quick questions about how you work. Short answers are fine.
