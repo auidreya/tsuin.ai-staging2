@@ -1,6 +1,5 @@
 // Server Component: the dark "twin side" terminal. No header or footer. The chat
 // answers are shown in their final state (the legacy forced them when dark).
-import { STRIPE_PREORDER_URL } from "@/lib/site";
 import styles from "../home.module.css";
 import { A1, A2 } from "./demo-copy";
 
@@ -49,12 +48,12 @@ const PRICE: Row[] = [
     key: "solo plan",
     value: (
       <>
-        USD500 <span className={styles.muted}>— one time, no subscription</span>
+        open source <span className={styles.muted}>— self-hosted, no subscription</span>
       </>
     ),
     wrap: true,
   },
-  { key: "terms", value: "pre-order solo plan, lifetime access · launching on steam", wrap: true },
+  { key: "terms", value: "solo plan runs on your own machine · launching on steam", wrap: true },
 ];
 
 function KeyValues({ rows }: { rows: Row[] }) {
@@ -140,14 +139,6 @@ export function TwinView() {
             }
           </div>
           <div className={styles.signoff}>— Audrey Aui Yong, CEO, tsuin.ai&nbsp;</div>
-        </div>
-
-        <div>
-          <div className={styles.prompt}>{PS1}tsuin preorder</div>
-          <div className={`${styles.out} ${styles.preorderOut}`}>
-            Checkout runs on Stripe: <a href={STRIPE_PREORDER_URL}>tsuin.ai/pricing</a>
-            {"\nSolo plan, USD500 one time — lifetime access."}
-          </div>
         </div>
 
         <div>

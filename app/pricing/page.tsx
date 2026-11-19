@@ -5,7 +5,6 @@ import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { ButtonLink } from "@/components/ui/button";
 import { pageMetadata } from "@/lib/metadata";
-import { STRIPE_PREORDER_URL } from "@/lib/site";
 import styles from "./page.module.css";
 
 const TITLE = "Pricing — own your twin outright | tsuin";
@@ -14,9 +13,9 @@ const SOCIAL_TITLE = "Pricing — own your twin outright";
 export const metadata: Metadata = pageMetadata({
   title: TITLE,
   description:
-    "Solo plan: a one-time payment for lifetime access to your own Cognitive AI Twin, including the Shibasuke 1.0 twin model. Team plans priced per seat. Every tool you use already learns from you and the vendor keeps the copy — this one belongs to you.",
+    "Solo plan: open source and self-hosted — your own Cognitive AI Twin, including the Shibasuke 1.0 twin model, running on your machine. Team plans priced per seat. Every tool you use already learns from you and the vendor keeps the copy — this one belongs to you.",
   socialDescription:
-    "A one-time payment for lifetime access to your own Cognitive AI Twin. Every tool you use already learns from you and the vendor keeps the copy. This one belongs to you.",
+    "An open-source, self-hosted Cognitive AI Twin that runs on your machine. Every tool you use already learns from you and the vendor keeps the copy. This one belongs to you.",
   path: "/pricing",
   socialTitle: SOCIAL_TITLE,
 });
@@ -38,9 +37,9 @@ type Plan = {
 const PLANS: readonly Plan[] = [
   {
     name: "Solo",
-    price: "$500",
-    unit: "one time",
-    badge: "Lifetime access",
+    price: "Open source",
+    unit: "self-hosted",
+    badge: "Free to self-host",
     badgeTone: "human",
     tagline: "Your twin, on your machine.",
     features: [
@@ -53,7 +52,7 @@ const PLANS: readonly Plan[] = [
       { text: "Available on Windows/MacOS on Steam" },
       { text: "First 100 buyers: a seat on our Technical Advisory Board, plus early-supporter merch" },
     ],
-    cta: { label: "Pre-order", href: STRIPE_PREORDER_URL },
+    cta: { label: "Join the waitlist", href: "/#waitlist" },
     featured: true,
   },
   {

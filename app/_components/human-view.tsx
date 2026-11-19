@@ -9,7 +9,6 @@ import { YouTubeEmbed } from "@/components/youtube-embed";
 import deskWithTwin from "@/images/scene-desk-with-twin.webp";
 import humanHead from "@/images/shibasuke-human-head.webp";
 import highfive from "@/images/shibasuke-scene-highfive.webp";
-import { STRIPE_PREORDER_URL } from "@/lib/site";
 import styles from "../home.module.css";
 import { ChatDemo } from "./chat-demo";
 import { TestimonialBillboard } from "./testimonial-billboard";
@@ -61,7 +60,7 @@ export function HumanView({ animateDemo = true }: { animateDemo?: boolean }) {
             <div className={`${styles.twoCol} ${styles.heroGrid}`}>
               <div>
                 <p className={`${styles.eyebrow} ${styles.eyebrowHuman} ${styles.heroEyebrow}`}>
-                  Pre-order · Solo plan · Lifetime access
+                  Open source · Solo plan · Self-hosted
                 </p>
                 <h1 className={styles.h1}>Train your twin.</h1>
                 <p className={`${styles.lead} ${styles.heroLead}`}>
@@ -69,8 +68,8 @@ export function HumanView({ animateDemo = true }: { animateDemo?: boolean }) {
                 </p>
                 <p className={`${styles.lead} ${styles.heroLeadLast}`}>Not an asset to train big AI models.</p>
                 <div className={styles.ctaRow}>
-                  <ButtonLink href={STRIPE_PREORDER_URL} size="lg">
-                    Pre-order now
+                  <ButtonLink href="#waitlist" size="lg">
+                    Join the waitlist
                   </ButtonLink>
                   <span className={styles.caption}>
                     <Link href="/manifesto" className={styles.manifestoLink}>
@@ -159,16 +158,16 @@ export function HumanView({ animateDemo = true }: { animateDemo?: boolean }) {
           <section className={`${styles.section} ${styles.pricing}`}>
             <div className={`${styles.container} ${styles.twoCol} ${styles.pricingGrid}`}>
               <div>
-                <p className={`${styles.eyebrow} ${styles.eyebrowHumanInk}`}>Solo plan · lifetime access</p>
+                <p className={`${styles.eyebrow} ${styles.eyebrowHumanInk}`}>Solo plan · self-hosted</p>
                 <h2 className={`${styles.h2} ${styles.pricingTitle}`}>Own your intelligence.</h2>
                 <div className={styles.priceRow}>
-                  <span className={styles.price}>USD500</span>
-                  <span className={styles.priceTag}>One time</span>
+                  <span className={styles.price}>Open source</span>
+                  <span className={styles.priceTag}>Self-hosted</span>
                 </div>
                 <p className={`${styles.caption} ${styles.priceNote}`}>Launching on Steam</p>
                 <div className={styles.ctaRow}>
-                  <ButtonLink href={STRIPE_PREORDER_URL} size="lg">
-                    Pre-order now
+                  <ButtonLink href="#waitlist" size="lg">
+                    Join the waitlist
                   </ButtonLink>
                 </div>
               </div>
@@ -230,13 +229,10 @@ export function HumanView({ animateDemo = true }: { animateDemo?: boolean }) {
               <p className={`${styles.eyebrow} ${styles.eyebrowTwin}`}>TRAIN YOUR TWIN</p>
               <h2 className={styles.h2}>Stop the cognitive overload.</h2>
               <p className={`${styles.lead} ${styles.waitlistLead}`}>
-                Pre-order the Solo plan and own your twin for good.
+                Join the waitlist for the open-source Solo plan and own your twin for good.
               </p>
               <div className={`${styles.ctaRow} ${styles.waitlistCtas}`}>
-                <ButtonLink href={STRIPE_PREORDER_URL} size="lg">
-                  Pre-order now
-                </ButtonLink>
-                <span className={styles.caption}>USD500 · lifetime access</span>
+                <span className={styles.caption}>Open source · self-hosted on your machine</span>
               </div>
               <div className={styles.formCard}>
                 <WaitlistForm />

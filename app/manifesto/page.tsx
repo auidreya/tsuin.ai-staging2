@@ -4,7 +4,6 @@ import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { ButtonLink } from "@/components/ui/button";
 import { pageMetadata } from "@/lib/metadata";
-import { STRIPE_PREORDER_URL } from "@/lib/site";
 import styles from "./page.module.css";
 
 // og/twitter titles drop the " | tsuin" suffix that <title> carries.
@@ -133,8 +132,8 @@ export default function ManifestoPage() {
           <p className={styles.closer}>Train your twin.</p>
 
           <div className={styles.ctas}>
-            <ButtonLink href={STRIPE_PREORDER_URL} size="lg">
-              Pre-order now
+            <ButtonLink href="/#waitlist" size="lg">
+              Join the waitlist
             </ButtonLink>
             <ButtonLink href="/pricing" variant="outline" size="lg">
               See pricing

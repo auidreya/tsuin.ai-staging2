@@ -76,8 +76,8 @@ const SITE_GRAPH = {
       ],
       offers: {
         "@type": "Offer",
-        name: "Solo plan — lifetime access",
-        price: "500",
+        name: "Solo plan — open source, self-hosted",
+        price: "0",
         priceCurrency: "USD",
         availability: "https://schema.org/PreOrder",
         url: "https://www.tsuin.ai/pricing",

@@ -10,7 +10,6 @@ import { SiteHeader } from "@/components/site/site-header";
 import { ButtonLink } from "@/components/ui/button";
 import { blogPostingJsonLd, getBlogPost } from "@/lib/blog";
 import { pageMetadata } from "@/lib/metadata";
-import { STRIPE_PREORDER_URL } from "@/lib/site";
 
 const post = getBlogPost("my-ai-twin-learned-my-voice")!;
 const PATH = `/blog/${post.slug}`;
@@ -106,8 +105,8 @@ export default function BlogArticlePage() {
           <div className={styles.closer}>
             <p>Written during the Tsuin closed beta.</p>
             <div className={styles.ctas}>
-              <ButtonLink href={STRIPE_PREORDER_URL} size="lg">
-                Pre-order now
+              <ButtonLink href="/#waitlist" size="lg">
+                Join the waitlist
               </ButtonLink>
               <ButtonLink href="/blog/tsuin-closed-beta-feels-like-chatgpt-3-5" variant="outline" size="lg">
                 Read the previous log

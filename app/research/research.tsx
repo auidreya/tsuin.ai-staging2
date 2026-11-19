@@ -9,7 +9,6 @@ import { SiteHeader } from "@/components/site/site-header";
 import { ButtonLink } from "@/components/ui/button";
 import { pageMetadata } from "@/lib/metadata";
 import { RESEARCH, RESEARCH_DESCRIPTION, researchJsonLd } from "@/lib/research";
-import { STRIPE_PREORDER_URL } from "@/lib/site";
 
 const post = RESEARCH;
 
@@ -149,8 +148,8 @@ export default function ResearchPage() {
               twin, I&rsquo;d love to hear from you.
             </p>
             <div className={styles.ctas}>
-              <ButtonLink href={STRIPE_PREORDER_URL} size="lg">
-                Pre-order now
+              <ButtonLink href="/#waitlist" size="lg">
+                Join the waitlist
               </ButtonLink>
               <ButtonLink href="/contact" variant="outline" size="lg">
                 Get in touch

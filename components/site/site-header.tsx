@@ -1,5 +1,4 @@
 import { ButtonLink } from "@/components/ui/button";
-import { STRIPE_PREORDER_URL } from "@/lib/site";
 import { Logo } from "./logo";
 import { HeaderShell } from "./mobile-menu";
 import { NavLinks } from "./nav-links";
@@ -15,7 +14,7 @@ export function SiteHeader() {
         </div>
       }
       nav={<NavLinks />}
-      cta={<ButtonLink href={STRIPE_PREORDER_URL}>Pre-order</ButtonLink>}
+      cta={<ButtonLink href="/#waitlist">Join waitlist</ButtonLink>}
     />
   );
 }

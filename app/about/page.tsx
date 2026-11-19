@@ -7,7 +7,6 @@ import { SiteHeader } from "@/components/site/site-header";
 import { ButtonLink } from "@/components/ui/button";
 import { YouTubeEmbed } from "@/components/youtube-embed";
 import { pageMetadata } from "@/lib/metadata";
-import { STRIPE_PREORDER_URL } from "@/lib/site";
 import highfive from "@/images/shibasuke-scene-highfive.webp";
 import training from "@/images/shibasuke-scene-training.webp";
 import styles from "./page.module.css";
@@ -187,8 +186,8 @@ export default function AboutPage() {
                   We&apos;re gathering our Technical Advisory Board. <br />A small group. High signal.
                 </p>
                 <div className={styles.ctaButtons}>
-                  <ButtonLink href={STRIPE_PREORDER_URL} size="lg">
-                    Pre-order now
+                  <ButtonLink href="/#waitlist" size="lg">
+                    Join the waitlist
                   </ButtonLink>
                   <ButtonLink href="/pricing" variant="outline" size="lg">
                     See pricing

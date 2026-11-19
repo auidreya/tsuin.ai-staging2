@@ -11,7 +11,6 @@ import { SiteHeader } from "@/components/site/site-header";
 import { ButtonLink } from "@/components/ui/button";
 import { blogPostingJsonLd, getBlogPost } from "@/lib/blog";
 import { pageMetadata } from "@/lib/metadata";
-import { STRIPE_PREORDER_URL } from "@/lib/site";
 import humanHead from "@/images/shibasuke-human-head.webp";
 import twinHead from "@/images/shibasuke-twin-head.webp";
 
@@ -214,8 +213,8 @@ export default function BlogArticlePage() {
           <div className={styles.closer}>
             <p>Written during the Tsuin closed beta.</p>
             <div className={styles.ctas}>
-              <ButtonLink href={STRIPE_PREORDER_URL} size="lg">
-                Pre-order now
+              <ButtonLink href="/#waitlist" size="lg">
+                Join the waitlist
               </ButtonLink>
               <ButtonLink href="/research" variant="outline" size="lg">
                 Read the research
