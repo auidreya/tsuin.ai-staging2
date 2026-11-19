@@ -39,7 +39,7 @@ const OWN = [
   { num: "03", text: "own your intelligence — reasoning and decisions stored in your own Twin model" },
   {
     num: "04",
-    text: "more to come — the only subscription is the cloud version for twin-to-twin communication (release date TBC)",
+    text: "more to come — pro ($50/month, up to 8 hours a day) and pro max ($500/month, unlimited 24/7) subscriptions (release date TBC)",
   },
 ];
 

@@ -36,7 +36,7 @@ const FEATURES = [
   {
     num: "04",
     title: "More to come",
-    text: "The only subscription is the cloud version for twin-to-twin communication (release date TBC).",
+    text: "Pro ($50/month, up to 8 hours a day) and Pro Max ($500/month, unlimited 24/7) subscriptions (release date TBC).",
     border: "",
   },
 ];

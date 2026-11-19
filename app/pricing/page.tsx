@@ -13,7 +13,7 @@ const SOCIAL_TITLE = "Pricing — own your twin outright";
 export const metadata: Metadata = pageMetadata({
   title: TITLE,
   description:
-    "Solo plan: open source and self-hosted — your own Cognitive AI Twin, including the Shibasuke 1.0 twin model, running on your machine. Team plans priced per seat. Every tool you use already learns from you and the vendor keeps the copy — this one belongs to you.",
+    "Solo plan: open source and self-hosted — your own Cognitive AI Twin, including the Shibasuke 1.0 twin model, running on your machine. Pro and Pro Max subscriptions from $50 a month. Every tool you use already learns from you and the vendor keeps the copy — this one belongs to you.",
   socialDescription:
     "An open-source, self-hosted Cognitive AI Twin that runs on your machine. Every tool you use already learns from you and the vendor keeps the copy. This one belongs to you.",
   path: "/pricing",
@@ -56,35 +56,33 @@ const PLANS: readonly Plan[] = [
     featured: true,
   },
   {
-    name: "Team",
-    price: "$200",
-    unit: "per seat / month",
-    badge: "TWIN-TO-TWIN COMMUNICATION",
+    name: "Pro",
+    price: "$50",
+    unit: "per month",
+    badge: "Up to 8 hours a day",
     badgeTone: "twin",
-    tagline: "The cloud between twins. Your twin itself is never rented.",
+    tagline: "Your twin, there for your working day.",
     features: [
-      { text: "Everything in Solo, per person" },
+      { text: "Everything in Solo" },
+      { text: "Use your twin up to 8 hours a day" },
       { text: "Twins talk to each other" },
-      { text: "Onboarding on your past decisions" },
-      { text: "Shared reasoning across the team" },
-      { text: "Priority support" },
     ],
     cta: { label: "Join the waitlist", href: "/#waitlist", variant: "outline" },
   },
   {
-    name: "Enterprise",
-    price: "Contact Us",
-    badge: "Enterprise-grade security and scalability",
+    name: "Pro Max",
+    price: "$500",
+    unit: "per month",
+    badge: "Unlimited, 24/7",
     badgeTone: "neutral",
-    tagline: "When twins learn to talk at scale.",
+    tagline: "Your own personal AI Twin model, always on.",
     features: [
-      { text: "Volume licensing" },
-      { text: "SSO / SAML" },
-      { text: "Audit logs" },
-      { text: "Flexible deployment (on-premise or cloud)" },
-      { text: "Dedicated support" },
+      { text: "Everything in Pro" },
+      { text: "Unlimited use, 24/7" },
+      { text: "Own your personal AI Twin model" },
+      { text: "Priority support" },
     ],
-    cta: { label: "Talk to us", href: "/#waitlist", variant: "outline" },
+    cta: { label: "Join the waitlist", href: "/#waitlist", variant: "outline" },
   },
 ];
 
@@ -101,7 +99,7 @@ const FAQS: readonly { question: string; answer: string }[] = [
   {
     question: "Is Solo really free?",
     answer:
-      "Yes. Solo is open source and self-hosted: the twin model runs on your own machine, so there is no licence fee and no subscription. You only pay if your team wants twins that talk to each other on the Team plan.",
+      "Yes. Solo is open source and self-hosted: the twin model runs on your own machine, so there is no licence fee and no subscription. You only pay if you choose a Pro or Pro Max subscription.",
   },
   {
     question: "Why is Solo distributed on Steam?",
@@ -123,14 +121,9 @@ const FAQS: readonly { question: string; answer: string }[] = [
       "The first 100 users at launch get to be on our Technical Advisory Board (TAB), which will be in a closed community group with the founders of tsuin.ai to share feedback, crazy ideas and influence the product roadmap. On top of that, get exclusive merchandise as early supporters.",
   },
   {
-    question: "What counts as a 'seat' on the Team plan?",
+    question: "What's the difference between Pro and Pro Max?",
     answer:
-      "A seat is any developer who installs the Tsuin extension and is actively contributing reasoning to the shared knowledge base. Read-only users (e.g. product managers searching decisions) don't consume seats.",
-  },
-  {
-    question: "How is Enterprise priced?",
-    answer:
-      "Enterprise is custom-quoted based on team size, deployment model (cloud vs on-prem), and compliance requirements. Most Enterprise customers land between $12–18 per seat per month at volume. Reach out and we'll scope it within 24 hours.",
+      "Pro is $50 a month and lets you use your twin for up to 8 hours a day. Pro Max is $500 a month and removes the limit: your own personal AI Twin model, available 24/7, with priority support.",
   },
 ];
 
