@@ -33,7 +33,7 @@ This policy covers:
 - the **tsuin app for iPhone**, distributed through the Apple App Store ("the app")
 - the website at tsuin.ai
 
-Other tsuin products (the desktop app and Team plans) are not yet released. This policy will be updated before they launch.
+Other tsuin products (the desktop app and the Pro and Pro Max plans) are not yet released. This policy will be updated before they launch.
 
 ## 3. What we collect
 

@@ -22,7 +22,7 @@ These Terms of Use ("Terms") are a contract between you and Tsuin AI Sdn. Bhd. (
 
 By signing in or using the Service you agree to these Terms and to our Privacy Policy at tsuin.ai/privacy. If you do not agree, do not use the Service.
 
-Other tsuin products (the desktop app and Team plans) are not yet released. These Terms will be updated before they launch.
+Other tsuin products (the desktop app and the Pro and Pro Max plans) are not yet released. These Terms will be updated before they launch.
 
 ## 2. Who can use tsuin
 
