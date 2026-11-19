@@ -28,8 +28,8 @@ export const TESTIMONIAL_EVENT = "tsuin:testimonial-added";
 export const SURVEY = [
   {
     key: "q1_lost_knowhow",
-    en: "When did know-how last get lost — someone left, a handover, or you forgot why you did something? What happened?",
-    zh: "上次有經驗或知識流失是什麼時候？可能是有人離開、工作交接，或忘了自己當初為什麼這樣做。發生了什麼事？",
+    en: "When did your knowledge get lost when working in a company or school? someone left the team, a handover, or you forgot why you did something? What happened?",
+    zh: "你在公司或學校時，什麼時候遇過知識流失？可能是有人離開團隊、工作交接，或忘了自己當初為什麼這樣做。發生了什麼事？",
   },
   {
     key: "q2_where_it_lives",

@@ -38,7 +38,6 @@ const PLANS: readonly Plan[] = [
   {
     name: "Solo",
     price: "Open source",
-    unit: "self-hosted",
     badge: "Free to self-host",
     badgeTone: "human",
     tagline: "Your twin, on your machine.",
