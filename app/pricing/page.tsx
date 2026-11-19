@@ -50,7 +50,7 @@ const PLANS: readonly Plan[] = [
       },
       { text: "Software Engineer Skill" },
       { text: "Available on Windows/MacOS on Steam" },
-      { text: "First 100 buyers: a seat on our Technical Advisory Board, plus early-supporter merch" },
+      { text: "First 100 users at launch: a seat on our Technical Advisory Board, plus early-supporter merch" },
     ],
     cta: { label: "Join the waitlist", href: "/#waitlist" },
     featured: true,
@@ -99,9 +99,14 @@ const BADGE_TONE = {
 // so they could never be opened). Order matches the legacy page.
 const FAQS: readonly { question: string; answer: string }[] = [
   {
-    question: "Why is Solo only available on Steam?",
+    question: "Is Solo really free?",
     answer:
-      "Steam handles our distribution, licensing, and updates for Solo. It gives you a permanent license tied to your Steam account, automatic updates, and refund protection under Steam's standard policy. Just search 'Tsuin' on Steam to find it.",
+      "Yes. Solo is open source and self-hosted: the twin model runs on your own machine, so there is no licence fee and no subscription. You only pay if your team wants twins that talk to each other on the Team plan.",
+  },
+  {
+    question: "Why is Solo distributed on Steam?",
+    answer:
+      "Steam handles distribution and automatic updates for Solo on Windows and macOS, so you always have the latest version. Just search 'Tsuin' on Steam to find it.",
   },
   {
     question: "How does the AI Twin learn? Do I need to write prompts or do anything special?",
@@ -113,14 +118,9 @@ const FAQS: readonly { question: string; answer: string }[] = [
     answer: "Yes. Just train your reasoning and it will still capture your thought process.",
   },
   {
-    question: "Can I get a refund if my machine can't run it?",
-    answer:
-      "Yes. The pre-order is charged through Stripe, not Steam — so the refund is ours to handle, not theirs. Write to us any time before launch, or after launch if the twin will not run on your machine, and we refund the full amount. Your Steam key is only issued when the Solo plan ships, and Steam's own policy applies to anything you buy there later. Check the minimum requirements above first: 16GB GPU VRAM (NVIDIA), 16GB CPU RAM, 32GB available storage.",
-  },
-  {
     question: "What perks do I get on Solo?",
     answer:
-      "First 100 customers get to be on our Technical Advisory Board (TAB), which will be in a closed community group with the founders of tsuin.ai to share feedback, crazy ideas and influence the product roadmap. On top of that, get exclusive merchandise as early supporters.",
+      "The first 100 users at launch get to be on our Technical Advisory Board (TAB), which will be in a closed community group with the founders of tsuin.ai to share feedback, crazy ideas and influence the product roadmap. On top of that, get exclusive merchandise as early supporters.",
   },
   {
     question: "What counts as a 'seat' on the Team plan?",

@@ -44,7 +44,7 @@ const FEATURES = [
 const INCLUDED = [
   { item: "Twin model - Shibasuke 1.0", value: "Included" },
   { item: "Software Engineer Skills", value: "Included" },
-  { item: "Technical Advisory Board seat", value: "First 100 buyers" },
+  { item: "Technical Advisory Board seat", value: "First 100 users at launch" },
 ];
 
 const REQUIREMENTS = ["16GB GPU VRAM (NVIDIA)", "16GB CPU RAM", "32GB available storage"];
